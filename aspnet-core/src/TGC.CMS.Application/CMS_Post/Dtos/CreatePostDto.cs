@@ -1,0 +1,19 @@
+﻿using Abp.AutoMapper;
+using Abp.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TGC.CMS.CMS_Post.Dtos
+{
+    public class CreatePostDto
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public DateTime PostDate { get; set; }
+        public int CategoryId { get; set; }
+        public int DisplayOrderNo { get; set; }
+    }
+}

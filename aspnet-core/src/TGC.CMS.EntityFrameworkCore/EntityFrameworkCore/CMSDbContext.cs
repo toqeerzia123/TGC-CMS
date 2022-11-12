@@ -1,0 +1,20 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Abp.Zero.EntityFrameworkCore;
+using TGC.CMS.Authorization.Roles;
+using TGC.CMS.Authorization.Users;
+using TGC.CMS.MultiTenancy;
+using TGC.CMS.CMS_Post;
+
+namespace TGC.CMS.EntityFrameworkCore
+{
+    public class CMSDbContext : AbpZeroDbContext<Tenant, Role, User, CMSDbContext>
+    {
+        /* Define a DbSet for each entity of the application */
+        public CMSDbContext(DbContextOptions<CMSDbContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<Post> Posts { get; set; }
+    }
+}
