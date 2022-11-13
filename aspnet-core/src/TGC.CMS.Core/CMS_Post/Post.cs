@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TGC.CMS.CMS_Post
 {
-    public class Post : FullAuditedEntity<long>
+    public class Post :FullAuditedEntity<int>
     {
         public string Title { get; set; }
         public string Description { get; set; }

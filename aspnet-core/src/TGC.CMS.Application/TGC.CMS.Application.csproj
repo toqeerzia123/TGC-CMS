@@ -14,7 +14,4 @@
   <ItemGroup>
     <ProjectReference Include="..\TGC.CMS.Core\TGC.CMS.Core.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CMS_Post\MapProfile\" />
-  </ItemGroup>
 </Project>

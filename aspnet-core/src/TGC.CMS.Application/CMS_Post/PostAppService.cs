@@ -4,9 +4,9 @@ using TGC.CMS.CMS_Post.Dtos;
 
 namespace TGC.CMS.CMS_Post
 {
-    public class PostAppService : AsyncCrudAppService<Post, PostDto, long, PagedPostResultRequestDto, CreatePostDto, PostDto>, IPostAppService
+    public class PostAppService : AsyncCrudAppService<Post, PostDto, int, PagedPostResultRequestDto, CreatePostDto, PostDto>, IPostAppService
     {
-        public PostAppService(IRepository<Post, long> repository) : base(repository)
+        public PostAppService(IRepository<Post, int> repository) : base(repository)
         {
         }
     }

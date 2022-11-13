@@ -3,8 +3,8 @@ using Abp.AutoMapper;
 using System;
 namespace TGC.CMS.CMS_Post.Dtos
 {
-    [AutoMapTo(typeof(Post))]
-    public class PostDto : EntityDto<long>
+    [AutoMapFrom(typeof(Post))]
+    public class PostDto : EntityDto<int>
     {
         public string Title { get; set; }
         public string Description { get; set; }
