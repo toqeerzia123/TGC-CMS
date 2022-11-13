@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TGC.CMS.EntityFrameworkCore;
 
@@ -11,9 +12,10 @@ using TGC.CMS.EntityFrameworkCore;
 namespace TGC.CMS.Migrations
 {
     [DbContext(typeof(CMSDbContext))]
-    partial class CMSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221113093858_PostDetail")]
+    partial class PostDetail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1613,8 +1615,6 @@ namespace TGC.CMS.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("Posts");
                 });
 
@@ -2028,17 +2028,6 @@ namespace TGC.CMS.Migrations
                     b.Navigation("DeleterUser");
 
                     b.Navigation("LastModifierUser");
-                });
-
-            modelBuilder.Entity("TGC.CMS.CMS_Post.Post", b =>
-                {
-                    b.HasOne("TGC.CMS.CMS_Post.PostCategory", "PostCategory")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PostCategory");
                 });
 
             modelBuilder.Entity("TGC.CMS.CMS_Post.PostDetail", b =>
