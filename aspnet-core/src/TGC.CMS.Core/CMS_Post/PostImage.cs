@@ -12,6 +12,7 @@ namespace TGC.CMS.CMS_Post
     {
         public string ImageUrl { get; set; }
         public bool IsPrimaryImage { get; set; }
+
         [ForeignKey("Post")]
         public int PostId { get; set; }
         public Post Post { get; set; }

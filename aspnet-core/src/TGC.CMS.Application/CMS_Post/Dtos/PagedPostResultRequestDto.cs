@@ -11,5 +11,6 @@ namespace TGC.CMS.CMS_Post.Dtos
     {
         public string Keyword { get; set; }
         public bool? IsActive { get; set; }
+        public int? PostType { get; set; }
     }
 }
