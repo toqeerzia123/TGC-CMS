@@ -2,9 +2,14 @@
 using Abp.Application.Services.Dto;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
+using Abp.Extensions;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -14,11 +19,59 @@ namespace TGC.CMS.CMS_Post
 {
     public class PostAppService : AsyncCrudAppService<Post, PostDto, int, PagedPostResultRequestDto, CreatePostDto, PostDto>, IPostAppService
     {
-        public PostAppService(IRepository<Post, int> repository) : base(repository)
+        private IHostingEnvironment _environment;
+        private readonly IRepository<PostImage,int> _ImageRepository;
+        private readonly IRepository<PostDetail> _DetailRepository;
+        private readonly IUnitOfWorkManager _unitOfWorkManager;
+        public PostAppService(IUnitOfWorkManager unitOfWorkManager,IRepository<Post, int> repository, IRepository<PostImage,int> ImageRepository, IRepository<PostDetail> DetailRepository, IHostingEnvironment environment) : base(repository)
         {
+               _environment = environment;
+            _ImageRepository = ImageRepository;
+            _DetailRepository = DetailRepository;
+            _unitOfWorkManager = unitOfWorkManager;
         }
 
-        public object GetAllPostsByCategory(PagedPostResultRequestDto input)
+      
+   
+        public  async Task<object> CreatePost([FromForm] CreatePostDto input)
+        {
+            string uploads = Path.Combine(_environment.WebRootPath, "Content/PostImages");
+            var model = ObjectMapper.Map<Post>(input);
+            CheckCreatePermission();
+            model.CreationTime=DateTime.Now;
+            model.IsDeleted = false;
+            Repository.Insert(model);
+            _unitOfWorkManager.Current.SaveChanges();
+
+           PostDetail postDetail = new PostDetail();
+            postDetail.PostId = model.Id;
+            postDetail.Prize = input.Prize;
+            postDetail.Amount = input.Amount;
+            postDetail.Elimination = input.Elimination;
+            postDetail.CreationTime = DateTime.Now;
+            postDetail.IsDeleted = false;
+            _DetailRepository.Insert(postDetail);
+            foreach (var item in input.Image)
+            {
+                if (item.Length> 0)
+                {     
+                    var Filename = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString() + "_" + item.FileName;
+                    var filePath = Path.Combine(uploads, Filename);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        item.CopyTo(fileStream);
+                    }
+                    PostImage img = new PostImage();
+                    img.ImageUrl = Filename;
+                    img.PostId =model.Id;
+                    img.IsPrimaryImage = true;
+                    await _ImageRepository.InsertAsync(img);
+                }
+            }          
+            return postDetail;
+        }
+  
+    public object GetAllPostsByCategory(PagedPostResultRequestDto input)
         {
             var posts = Repository.GetAll().Include(v => v.PostDetail)
                                   .Include(v => v.PostImages)

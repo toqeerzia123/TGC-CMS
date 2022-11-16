@@ -1,5 +1,6 @@
 ﻿using Abp.AutoMapper;
 using Abp.Domain.Entities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,10 @@ namespace TGC.CMS.CMS_Post.Dtos
         public DateTime PostDate { get; set; }
         public int CategoryId { get; set; }
         public int DisplayOrderNo { get; set; }
+
+        public string Prize { get; set; }
+        public int? Amount { get; set; }
+        public string Elimination { get; set; }
+        public IList<IFormFile> Image { get; set; }
     }
 }

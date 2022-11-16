@@ -10,6 +10,9 @@ namespace TGC.CMS.CMS_Post.Dtos
         public string Description { get; set; }
         public DateTime PostDate { get; set; }
         public string Image { get; set; }
+
+
+
         //public PostDetailDto PostDetail { get; set; }
     }
     //public class PostDetailDto

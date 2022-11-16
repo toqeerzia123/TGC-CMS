@@ -16,10 +16,9 @@ namespace TGC.CMS.CMS_Post
 
         [ForeignKey("PostCategory")]
         public int CategoryId { get; set; }
+        public PostCategory PostCategory { get; set; }
         public int DisplayOrderNo { get; set; }
         public PostDetail PostDetail { get; set; }
-        public PostCategory PostCategory { get; set; }
-
         public virtual ICollection<PostImage> PostImages { get; set; }
     }
 }
