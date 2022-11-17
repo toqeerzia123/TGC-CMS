@@ -27,6 +27,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
     }
 
     ngOnInit(): void {
+        debugger
         this.menuItems = this.getMenuItems();
         this.patchMenuItems(this.menuItems);
         this.routerEvents
@@ -50,6 +51,24 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                 '/app/roles',
                 'fas fa-theater-masks',
                 'Pages.Roles'
+            ),
+            new MenuItem(
+                this.l('Tournaments'),
+                '/app/tournaments',
+                'fas fa-theater-masks',
+                'Pages.Tournaments'
+            ),
+            new MenuItem(
+                this.l('Games'),
+                '/app/games',
+                'fas fa-theater-masks',
+                'Pages.Games'
+            ),
+            new MenuItem(
+                this.l('Announcements'),
+                '/app/announcements',
+                'fas fa-theater-masks',
+                'Pages.Announcements'
             ),
             new MenuItem(
                 this.l('Tenants'),

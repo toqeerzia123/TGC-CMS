@@ -8,5 +8,8 @@
         public const string Pages_Users_Activation = "Pages.Users.Activation";
 
         public const string Pages_Roles = "Pages.Roles";
+        public const string Pages_Tournaments = "Pages.Tournaments";
+        public const string Pages_Games = "Pages.Games";
+        public const string Pages_Announcements = "Pages.Announcements";
     }
 }
