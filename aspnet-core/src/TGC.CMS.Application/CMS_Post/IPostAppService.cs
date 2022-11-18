@@ -10,5 +10,6 @@ namespace TGC.CMS.CMS_Post
     {
         object GetAllPostsByCategory(PagedPostResultRequestDto input);
        Task<object> CreatePost([FromForm] CreatePostDto input);
+        Task<object> UpdatePost([FromForm] CreatePostDto input);
     }
 }

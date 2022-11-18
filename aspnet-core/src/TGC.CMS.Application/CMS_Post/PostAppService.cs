@@ -35,12 +35,12 @@ namespace TGC.CMS.CMS_Post
    
         public  async Task<object> CreatePost([FromForm] CreatePostDto input)
         {
-            string uploads = Path.Combine(_environment.WebRootPath, "Content/PostImages");
+   
             var model = ObjectMapper.Map<Post>(input);
             CheckCreatePermission();
             model.CreationTime=DateTime.Now;
             model.IsDeleted = false;
-            Repository.Insert(model);
+            await Repository.InsertAsync(model);
             _unitOfWorkManager.Current.SaveChanges();
 
            PostDetail postDetail = new PostDetail();
@@ -50,11 +50,13 @@ namespace TGC.CMS.CMS_Post
             postDetail.Elimination = input.Elimination;
             postDetail.CreationTime = DateTime.Now;
             postDetail.IsDeleted = false;
-            _DetailRepository.Insert(postDetail);
+          await  _DetailRepository.InsertAsync(postDetail);
+
             foreach (var item in input.Image)
             {
                 if (item.Length> 0)
-                {     
+                {
+                    string uploads = Path.Combine(_environment.WebRootPath, "Content/PostImages");
                     var Filename = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString() + "_" + item.FileName;
                     var filePath = Path.Combine(uploads, Filename);
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -91,6 +93,48 @@ namespace TGC.CMS.CMS_Post
                 Prize = c.PostDetail?.Prize
             }).ToList();
             return postDtos;
+        }
+
+        public async Task<object> UpdatePost([FromForm] CreatePostDto input)
+        {
+    
+            var Post =await Repository.GetAllIncluding(x => x.Id == input.PostId).SingleOrDefaultAsync();
+            CheckCreatePermission();
+            Post.Title=input.Title;
+            Post.Description=input.Description;
+            Post.PostDate=input.PostDate;
+            Post.CategoryId=input.CategoryId;
+            Post.DisplayOrderNo=input.DisplayOrderNo;
+            Post.LastModificationTime=DateTime.Now;
+             await Repository.UpdateAsync(Post);
+            _unitOfWorkManager.Current.SaveChanges();
+
+            var postdetail= await _DetailRepository.GetAllIncluding(x=>x.Id==input.PostDetailId).SingleOrDefaultAsync();            
+            postdetail.Prize = input.Prize;
+            postdetail.Amount = input.Amount;
+            postdetail.Elimination = input.Elimination;
+            postdetail.LastModificationTime = DateTime.Now;
+            await  _DetailRepository.UpdateAsync(postdetail);
+
+            foreach (var item in input.Image)
+            {
+                string uploads = Path.Combine(_environment.WebRootPath, "Content/PostImages");
+                if (item.Length > 0)
+                {
+                    var Filename = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString() + "_" + item.FileName;
+                    var filePath = Path.Combine(uploads, Filename);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        item.CopyTo(fileStream);
+                    }
+                    PostImage img = new PostImage();
+                    img.ImageUrl = Filename;
+                    img.PostId = Post.Id;
+                    img.IsPrimaryImage = true;
+                    await _ImageRepository.InsertAsync(img);
+                }
+            }
+            return postdetail;
         }
 
 

@@ -11,6 +11,7 @@ namespace TGC.CMS.CMS_Post.Dtos
 {
     public class CreatePostDto
     {
+        public int? PostId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime PostDate { get; set; }
@@ -20,6 +21,9 @@ namespace TGC.CMS.CMS_Post.Dtos
         public string Prize { get; set; }
         public int? Amount { get; set; }
         public string Elimination { get; set; }
+
+        public int? PostDetailId { get; set; }
+
         public IList<IFormFile> Image { get; set; }
     }
 }
