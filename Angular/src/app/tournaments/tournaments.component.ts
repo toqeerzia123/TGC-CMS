@@ -7,9 +7,7 @@ import {
   PagedRequestDto
 } from '@shared/paged-listing-component-base';
 import {
-  RoleServiceProxy,
-  RoleDto,
-  RoleDtoPagedResultDto
+  PostServiceProxy,
 } from '@shared/service-proxies/service-proxies';
 
 class PagedRolesRequestDto extends PagedRequestDto {
@@ -20,13 +18,13 @@ class PagedRolesRequestDto extends PagedRequestDto {
   templateUrl: './tournaments.component.html',
   animations: [appModuleAnimation()]
 })
-export class TournamentsComponent extends PagedListingComponentBase<RoleDto> {
-  roles: RoleDto[] = [];
+export class TournamentsComponent extends PagedListingComponentBase<any> {
+  roles: [] = [];
   keyword = '';
 
   constructor(
     injector: Injector,
-    private _rolesService: RoleServiceProxy,
+    private _service: PostServiceProxy,
     private _modalService: BsModalService
   ) {
     super(injector);
@@ -38,27 +36,39 @@ export class TournamentsComponent extends PagedListingComponentBase<RoleDto> {
     finishedCallback: Function
   ): void {
     request.keyword = this.keyword;
+debugger;
 
-    this._rolesService
-      .getAll(request.keyword, request.skipCount, request.maxResultCount)
+this._service
+.getAllPostsByCategory(undefined,undefined,2,undefined,undefined)
+.subscribe(
+  res => {
+
+  },
+  error => {
+
+  }
+)
+
+    this._service
+      .getAllPostsByCategory("",true,2,0,1000)
       .pipe(
         finalize(() => {
           finishedCallback();
         })
       )
-      .subscribe((result: RoleDtoPagedResultDto) => {
-        this.roles = result.items;
+      .subscribe((result: any) => {
+        this.roles = result;
         this.showPaging(result, pageNumber);
       });
   }
 
-  delete(role: RoleDto): void {
+  delete(role: any): void {
     abp.message.confirm(
       this.l('RoleDeleteWarningMessage', role.displayName),
       undefined,
       (result: boolean) => {
         if (result) {
-          this._rolesService
+          this._service
             .delete(role.id)
             .pipe(
               finalize(() => {
@@ -76,7 +86,7 @@ export class TournamentsComponent extends PagedListingComponentBase<RoleDto> {
     this.showCreateOrEditRoleDialog();
   }
 
-  editRole(role: RoleDto): void {
+  editRole(role: any): void {
     this.showCreateOrEditRoleDialog(role.id);
   }
 

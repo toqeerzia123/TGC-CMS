@@ -47,8 +47,11 @@
                 [busy]="isTableLoading">
                 <thead class="bg-light">
                   <tr>
-                    <th>{{ "RoleName" | localize }}</th>
-                    <th>{{ "DisplayName" | localize }}</th>
+                    <th>{{ "Title" | localize }}</th>
+                    <th>{{ "Description" | localize }}</th>
+                    <th>{{ "Tournament Date" | localize }}</th>
+                    <th>{{ "Prize" | localize }}</th>
+                    <th>{{ "Image" | localize }}</th>
                     <th style="width: 200px;">{{ "Actions" | localize }}</th>
                   </tr>
                 </thead>
@@ -63,8 +66,13 @@
                             totalItems: totalItems
                           }
                   ">
-                    <td>{{ role.name }}</td>
-                    <td>{{ role.displayName }}</td>
+                    <td>{{ role.title }}</td>
+                    <td>{{ role.description }}</td>
+                    <td>{{ role.postDate | date:'MM/dd/yyyy hh:mm a' }}</td>
+                    <td>{{ role.amount }}</td>
+                    <td>
+                      <img [src]="role.image" width="100" height="100" />
+                    </td>
                     <td>
                       <button type="button"
                         class="btn btn-sm bg-secondary"

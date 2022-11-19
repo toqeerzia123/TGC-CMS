@@ -39,6 +39,7 @@ import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
 import { TournamentsComponent } from './tournaments/tournaments.component';
+import { GamesComponent } from './games/games.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { TournamentsComponent } from './tournaments/tournaments.component';
     SidebarLogoComponent,
     SidebarUserPanelComponent,
     SidebarMenuComponent,
-    TournamentsComponent
+    TournamentsComponent,
+    GamesComponent
   ],
   imports: [
     CommonModule,

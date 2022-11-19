@@ -13,12 +13,14 @@ namespace TGC.CMS.CMS_Post
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime PostDate { get; set; }
+        public string Prize { get; set; }
+        public int? Amount { get; set; }
+        public string Elimination { get; set; }
 
         [ForeignKey("PostCategory")]
         public int CategoryId { get; set; }
         public PostCategory PostCategory { get; set; }
         public int DisplayOrderNo { get; set; }
-        public PostDetail PostDetail { get; set; }
         public virtual ICollection<PostImage> PostImages { get; set; }
     }
 }

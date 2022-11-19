@@ -351,6 +351,9 @@ export class PostServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            
+             var g= this.processGetAllPostsByCategory(response_);
+            
             return this.processGetAllPostsByCategory(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {

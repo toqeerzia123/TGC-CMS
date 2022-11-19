@@ -20,30 +20,45 @@ namespace TGC.CMS.CMS_Post
     public class PostAppService : AsyncCrudAppService<Post, PostDto, int, PagedPostResultRequestDto, CreatePostDto, PostDto>, IPostAppService
     {
         private IHostingEnvironment _environment;
-        private readonly IRepository<PostImage,int> _ImageRepository;
+        private readonly IRepository<PostImage, int> _ImageRepository;
         private readonly IRepository<PostDetail> _DetailRepository;
         private readonly IUnitOfWorkManager _unitOfWorkManager;
-        public PostAppService(IUnitOfWorkManager unitOfWorkManager,IRepository<Post, int> repository, IRepository<PostImage,int> ImageRepository, IRepository<PostDetail> DetailRepository, IHostingEnvironment environment) : base(repository)
+        public PostAppService(IUnitOfWorkManager unitOfWorkManager, IRepository<Post, int> repository, IRepository<PostImage, int> ImageRepository, IRepository<PostDetail> DetailRepository, IHostingEnvironment environment) : base(repository)
         {
-               _environment = environment;
+            _environment = environment;
             _ImageRepository = ImageRepository;
             _DetailRepository = DetailRepository;
             _unitOfWorkManager = unitOfWorkManager;
         }
 
-      
-   
-        public  async Task<object> CreatePost([FromForm] CreatePostDto input)
+        //public override Task<PagedResultDto<PostDto>> GetAllTest2Async(PagedPostResultRequestDto input)
+        //{
+        //    try
+        //    {
+        //        var allIncludes = Repository.GetAllIncluding(c => c.PostDetail);
+        //        var dtoList = ObjectMapper.Map<List<PostDto>>(allIncludes);
+        //        PagedResultDto<PostDto> pagedResultDto = new PagedResultDto<PostDto>(dtoList.Count, dtoList);
+        //        return Task.FromResult<PagedResultDto<PostDto>>(pagedResultDto);
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+
+        //    return Task.FromResult<PagedResultDto<PostDto>>(new PagedResultDto<PostDto>());
+        //}
+
+        public async Task<object> CreatePost([FromForm] CreatePostDto input)
         {
             string uploads = Path.Combine(_environment.WebRootPath, "Content/PostImages");
             var model = ObjectMapper.Map<Post>(input);
             CheckCreatePermission();
-            model.CreationTime=DateTime.Now;
+            model.CreationTime = DateTime.Now;
             model.IsDeleted = false;
             Repository.Insert(model);
             _unitOfWorkManager.Current.SaveChanges();
 
-           PostDetail postDetail = new PostDetail();
+            PostDetail postDetail = new PostDetail();
             postDetail.PostId = model.Id;
             postDetail.Prize = input.Prize;
             postDetail.Amount = input.Amount;
@@ -53,8 +68,8 @@ namespace TGC.CMS.CMS_Post
             _DetailRepository.Insert(postDetail);
             foreach (var item in input.Image)
             {
-                if (item.Length> 0)
-                {     
+                if (item.Length > 0)
+                {
                     var Filename = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString() + "_" + item.FileName;
                     var filePath = Path.Combine(uploads, Filename);
                     using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -63,15 +78,15 @@ namespace TGC.CMS.CMS_Post
                     }
                     PostImage img = new PostImage();
                     img.ImageUrl = Filename;
-                    img.PostId =model.Id;
+                    img.PostId = model.Id;
                     img.IsPrimaryImage = true;
                     await _ImageRepository.InsertAsync(img);
                 }
-            }          
+            }
             return postDetail;
         }
-  
-    public object GetAllPostsByCategory(PagedPostResultRequestDto input)
+
+        public async Task<List<PostDto>> GetAllPostsByCategory(PagedPostResultRequestDto input)
         {
             var posts = Repository.GetAll().Include(v => v.PostDetail)
                                   .Include(v => v.PostImages)
@@ -79,18 +94,35 @@ namespace TGC.CMS.CMS_Post
                                   .OrderByDescending(c => c.PostDate)
                                   .ToList();
 
-            var postDtos = posts.Take(10).Select(c => new
+            var postDtos = posts.Take(10).Select(c => new PostDto
             {
                 Id = c.Id,
                 Description = c.Description,
                 PostDate = c.PostDate,
                 Title = c.Title,
-                Image = c.PostImages.GetPrimaryImage(),
-                Amount = c.PostDetail?.Amount,
-                Elimination = c.PostDetail?.Elimination,
-                Prize = c.PostDetail?.Prize
+                //Image = c.PostImages.GetPrimaryImage(),
+                //Amount = c.PostDetail?.Amount,
+                //Round = c.PostDetail?.Elimination,
+                //Prize = c.PostDetail?.Prize
             }).ToList();
             return postDtos;
+        }
+
+        public Task<PagedResultDto<PostDto>> GetAllTest2Async(PagedPostResultRequestDto input)
+        {
+            try
+            {
+                var allIncludes = Repository.GetAllIncluding(c => c.PostDetail);
+                var dtoList = ObjectMapper.Map<List<PostDto>>(allIncludes);
+                PagedResultDto<PostDto> pagedResultDto = new PagedResultDto<PostDto>(dtoList.Count, dtoList);
+                return Task.FromResult<PagedResultDto<PostDto>>(pagedResultDto);
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Task.FromResult<PagedResultDto<PostDto>>(new PagedResultDto<PostDto>());
         }
 
 
