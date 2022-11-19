@@ -12,5 +12,6 @@ namespace TGC.CMS.CMS_Post
        Task<List<PostDto>> GetAllPostsByCategory(PagedPostResultRequestDto input);
        Task<PagedResultDto<PostDto>> GetAllTest2Async(PagedPostResultRequestDto input);
        Task<object> CreatePost([FromForm] CreatePostDto input);
+        Task<object> UpdatePost([FromForm] CreatePostDto input);
     }
 }
