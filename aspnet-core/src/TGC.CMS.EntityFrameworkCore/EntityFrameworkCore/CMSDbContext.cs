@@ -4,6 +4,7 @@ using TGC.CMS.Authorization.Roles;
 using TGC.CMS.Authorization.Users;
 using TGC.CMS.MultiTenancy;
 using TGC.CMS.CMS_Post;
+using TGC.CMS.SkinConfig;
 
 namespace TGC.CMS.EntityFrameworkCore
 {
@@ -19,5 +20,15 @@ namespace TGC.CMS.EntityFrameworkCore
         public DbSet<PostDetail> PostDetails { get; set; }
         public DbSet<PostCategory> PostCategories { get; set; }
         public DbSet<PostImage> PostImages { get; set; }
+
+
+        // Dashboard
+
+        public DbSet<SkinLabel> skinLabels { get; set; }
+        public DbSet<SkinHeader> skinHeaders { get; set; }
+        public DbSet<SkinText> skinTexts { get; set; }
+        public DbSet<SkinText> SkinSections { get; set; }
+        public DbSet< SkinTextHeader> skinTextHeaders { get; set; }
+
     }
 }
