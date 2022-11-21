@@ -7,6 +7,7 @@ using Abp.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,188 +15,174 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using TGC.CMS.CMS_Post.Dtos;
+using TGC.CMS.Helper.Extensions;
 
 namespace TGC.CMS.CMS_Post
 {
-    public class PostAppService : AsyncCrudAppService<Post, PostDto, int, PagedPostResultRequestDto, CreatePostDto, PostDto>, IPostAppService
+    public class PostAppService : AsyncCrudAppService<Post, PostDto, int, PagedPostResultRequestDto, CreatePostDto, UpdatePostDto>, IPostAppService
     {
-        private IHostingEnvironment _environment;
+        private IWebHostEnvironment _environment;
         private readonly IRepository<PostImage, int> _ImageRepository;
-        private readonly IRepository<PostDetail> _DetailRepository;
         private readonly IUnitOfWorkManager _unitOfWorkManager;
-        public PostAppService(IUnitOfWorkManager unitOfWorkManager, IRepository<Post, int> repository, IRepository<PostImage, int> ImageRepository, IRepository<PostDetail> DetailRepository, IHostingEnvironment environment) : base(repository)
+        private readonly IConfiguration _configuration;
+        public PostAppService(IUnitOfWorkManager unitOfWorkManager,
+                              IRepository<Post, int> repository,
+                              IRepository<PostImage, int> ImageRepository,
+                              IWebHostEnvironment environment,
+                              IConfiguration configuration) : base(repository)
         {
             _environment = environment;
             _ImageRepository = ImageRepository;
-            _DetailRepository = DetailRepository;
             _unitOfWorkManager = unitOfWorkManager;
+            _configuration = configuration;
         }
 
-        //public override Task<PagedResultDto<PostDto>> GetAllTest2Async(PagedPostResultRequestDto input)
-        //{
-        //    try
-        //    {
-        //        var allIncludes = Repository.GetAllIncluding(c => c.PostDetail);
-        //        var dtoList = ObjectMapper.Map<List<PostDto>>(allIncludes);
-        //        PagedResultDto<PostDto> pagedResultDto = new PagedResultDto<PostDto>(dtoList.Count, dtoList);
-        //        return Task.FromResult<PagedResultDto<PostDto>>(pagedResultDto);
-        //    }
-        //    catch (Exception ex)
-        //    {
+        #region Post Crud APIS
 
-        //    }
-
-        //    return Task.FromResult<PagedResultDto<PostDto>>(new PagedResultDto<PostDto>());
-        //}
-
-        public async Task<object> CreatePost([FromForm] CreatePostDto input)
+        public override async Task<PostDto> CreateAsync([FromForm] CreatePostDto input)
         {
-   
+
+            #region PostDto to Entity Mapping
+
             var model = ObjectMapper.Map<Post>(input);
             CheckCreatePermission();
             model.CreationTime = DateTime.Now;
             model.IsDeleted = false;
+
+            #endregion
+
+            #region Storing PostImages into directory and Create a localList
+            if (input.PostImages != null && input.PostImages.Count > 0)
+            {
+                string uploads = Path.Combine(_environment.WebRootPath, "PostImages");
+                model.PostImages = input.PostImages.SaveFile(uploads);
+            }
+
+            #endregion
+
+            #region SaveFinal Changes to database
+
             await Repository.InsertAsync(model);
             _unitOfWorkManager.Current.SaveChanges();
 
-            PostDetail postDetail = new PostDetail();
-            postDetail.PostId = model.Id;
-            postDetail.Prize = input.Prize;
-            postDetail.Amount = input.Amount;
-            postDetail.Elimination = input.Elimination;
-            postDetail.CreationTime = DateTime.Now;
-            postDetail.IsDeleted = false;
-          await  _DetailRepository.InsertAsync(postDetail);
+            #endregion
 
-            foreach (var item in input.Image)
-            {
-                if (item.Length> 0)
-                {
-                    string uploads = Path.Combine(_environment.WebRootPath, "Content/PostImages");
-                    var Filename = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString() + "_" + item.FileName;
-                    var filePath = Path.Combine(uploads, Filename);
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
-                    {
-                        item.CopyTo(fileStream);
-                    }
-                    PostImage img = new PostImage();
-                    img.ImageUrl = Filename;
-                    img.PostId = model.Id;
-                    img.IsPrimaryImage = true;
-                    await _ImageRepository.InsertAsync(img);
-                }
-            }
-            return postDetail;
+            return new PostDto() { Id = model.Id, Title = model.Title };
         }
-
-        public async Task<List<PostDto>> GetAllPostsByCategory(PagedPostResultRequestDto input)
+        public override async Task<PostDto> UpdateAsync([FromForm] UpdatePostDto input)
         {
-            var posts = Repository.GetAll().Include(v => v.PostDetail)
-                                  .Include(v => v.PostImages)
-                                  .Where(b => b.CategoryId == input.PostType)
-                                  .OrderByDescending(c => c.PostDate)
-                                  .ToList();
-
-            var postDtos = posts.Take(10).Select(c => new PostDto
-            {
-                Id = c.Id,
-                Description = c.Description,
-                PostDate = c.PostDate,
-                Title = c.Title,
-                //Image = c.PostImages.GetPrimaryImage(),
-                //Amount = c.PostDetail?.Amount,
-                //Round = c.PostDetail?.Elimination,
-                //Prize = c.PostDetail?.Prize
-            }).ToList();
-            return postDtos;
-        }
-
-        public Task<PagedResultDto<PostDto>> GetAllTest2Async(PagedPostResultRequestDto input)
-        {
-            try
-            {
-                var allIncludes = Repository.GetAllIncluding(c => c.PostDetail);
-                var dtoList = ObjectMapper.Map<List<PostDto>>(allIncludes);
-                PagedResultDto<PostDto> pagedResultDto = new PagedResultDto<PostDto>(dtoList.Count, dtoList);
-                return Task.FromResult<PagedResultDto<PostDto>>(pagedResultDto);
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-            return Task.FromResult<PagedResultDto<PostDto>>(new PagedResultDto<PostDto>());
-        public async Task<object> UpdatePost([FromForm] CreatePostDto input)
-        {
-    
-            var Post =await Repository.GetAllIncluding(x => x.Id == input.PostId).SingleOrDefaultAsync();
+            var post = Repository.GetAllIncluding(x => x.PostImages)
+                .Where(c => c.Id == input.Id).FirstOrDefault();
             CheckCreatePermission();
-            Post.Title=input.Title;
-            Post.Description=input.Description;
-            Post.PostDate=input.PostDate;
-            Post.CategoryId=input.CategoryId;
-            Post.DisplayOrderNo=input.DisplayOrderNo;
-            Post.LastModificationTime=DateTime.Now;
-             await Repository.UpdateAsync(Post);
-            _unitOfWorkManager.Current.SaveChanges();
 
-            var postdetail= await _DetailRepository.GetAllIncluding(x=>x.Id==input.PostDetailId).SingleOrDefaultAsync();            
-            postdetail.Prize = input.Prize;
-            postdetail.Amount = input.Amount;
-            postdetail.Elimination = input.Elimination;
-            postdetail.LastModificationTime = DateTime.Now;
-            await  _DetailRepository.UpdateAsync(postdetail);
+            #region Update PostEntity with Dto
 
-            foreach (var item in input.Image)
+            post.Title = input.Title;
+            post.Description = input.Description;
+            post.PostDate = input.PostDate;
+            post.CategoryId = input.CategoryId;
+            post.DisplayOrderNo = input.DisplayOrderNo;
+            post.LastModificationTime = DateTime.Now;
+            post.Amount = input.Amount;
+            post.Elimination = input.Elimination;
+            post.Prize = input.Prize;
+
+            #endregion
+
+            #region Remove PostImages from database
+
+            if (post.PostImages != null && post.PostImages.Count > 0)
             {
-                string uploads = Path.Combine(_environment.WebRootPath, "Content/PostImages");
-                if (item.Length > 0)
+                foreach (PostImage postImage in post.PostImages)
                 {
-                    var Filename = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString() + "_" + item.FileName;
-                    var filePath = Path.Combine(uploads, Filename);
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
-                    {
-                        item.CopyTo(fileStream);
-                    }
-                    PostImage img = new PostImage();
-                    img.ImageUrl = Filename;
-                    img.PostId = Post.Id;
-                    img.IsPrimaryImage = true;
-                    await _ImageRepository.InsertAsync(img);
+                    await _ImageRepository.DeleteAsync(postImage);
+                    _unitOfWorkManager.Current.SaveChanges();
                 }
             }
-            return postdetail;
+
+            #endregion
+
+            #region Store Updated PostImages into directory and Create a localList
+            if (input.PostImages != null && input.PostImages.Count > 0)
+            {
+                string uploads = Path.Combine(_environment.WebRootPath, "PostImages");
+                post.PostImages = input.PostImages.SaveFile(uploads);
+            }
+            #endregion
+
+            await Repository.UpdateAsync(post);
+            _unitOfWorkManager.Current.SaveChanges();
+            return new PostDto() { Id = post.Id, Title = post.Title };
+        }
+        public override Task<PagedResultDto<PostDto>> GetAllAsync(PagedPostResultRequestDto input)
+        {
+            string imgBaseUrl = _configuration["Content:PostImagesPath"].ToString();
+
+            var allIncludes = Repository.GetAllIncluding(x => x.PostImages)
+                                        .Where(v => v.CategoryId == input.PostType)
+                                        .OrderByDescending(x => x.PostDate)
+                                        .AsQueryable();
+
+            IQueryable<Post> paginatedResult = ApplyPaging(allIncludes, input);
+
+            var dtoList = ObjectMapper.Map<List<PostDto>>(paginatedResult);
+
+            dtoList.ForEach(x =>
+            {
+                x.PostImages = x.PostImages.Select(v => new PostImageDto
+                {
+                    ImageUrl = imgBaseUrl + v.ImageUrl,
+                    IsPrimaryImage = v.IsPrimaryImage
+                }).ToList();
+            });
+
+            PagedResultDto<PostDto> pagedResultDto = new PagedResultDto<PostDto>(allIncludes.Count(), dtoList);
+            return Task.FromResult<PagedResultDto<PostDto>>(pagedResultDto);
+        }
+        public override async Task<PostDto> GetAsync(EntityDto<int> input)
+        {
+            var singlePost = await Repository.GetAllIncluding(x => x.PostImages).Where(v => v.Id == input.Id).FirstOrDefaultAsync();
+            if (singlePost != null)
+            {
+                string imgBaseUrl = _configuration["Content:PostImagesPath"].ToString();
+
+                var post = ObjectMapper.Map<PostDto>(singlePost);
+
+                post.PostImages.ToList().ForEach(x => x.ImageUrl = imgBaseUrl + x.ImageUrl);
+
+                return post;
+            }
+            else
+            {
+                return new PostDto();
+            }
+
         }
 
-
-
-
-        //public override Task<PagedResultDto<object>> GetAllAsync(PagedPostResultRequestDto input)
+        //public async Task<List<PostDto>> GetAllPostsByCategory(PagedPostResultRequestDto input)
         //{
-
-        //    var posts = Repository.GetAll().Include(v => v.PostDetail)
+        //    var posts = Repository.GetAll()
         //                          .Include(v => v.PostImages)
         //                          .Where(b => b.CategoryId == input.PostType)
         //                          .OrderByDescending(c => c.PostDate)
         //                          .ToList();
 
-        //    var postDtos = posts.Select(c => new
+        //    var postDtos = posts.Take(10).Select(c => new PostDto
         //    {
         //        Id = c.Id,
         //        Description = c.Description,
         //        PostDate = c.PostDate,
         //        Title = c.Title,
         //        Image = c.PostImages.GetPrimaryImage(),
-        //        PostDetail = new
-        //        {
-        //            Amount = c.PostDetail?.Amount,
-        //            Elimination = c.PostDetail?.Elimination,
-        //            Prize = c.PostDetail?.Prize
-        //        }
+        //        Amount = c.Amount,
+        //        Elimination = c.Elimination,
+        //        Prize = c.Prize
         //    }).ToList();
-        //    Task<PagedResultDto<object>> a=new Task<PagedResultDto<object>>( new PagedResultDto<object>(10, postDtos);
-        //    return base.GetAllAsync(input);
+        //    return postDtos;
         //}
+
+        #endregion
+
     }
 
     public static class PostImagesExtension

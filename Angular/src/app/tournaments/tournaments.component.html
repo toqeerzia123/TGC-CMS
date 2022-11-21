@@ -3,7 +3,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-6">
-            <h1>{{ "Roles" | localize }}</h1>
+            <h1>{{ "Tournaments" | localize }}</h1>
           </div>
           <div class="col-6 text-right">
             <a href="javascript:;"
@@ -57,7 +57,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="
-                    let role of roles
+                    let role of tournaments
                       | paginate
                         : {
                             id: 'server',
@@ -71,7 +71,7 @@
                     <td>{{ role.postDate | date:'MM/dd/yyyy hh:mm a' }}</td>
                     <td>{{ role.amount }}</td>
                     <td>
-                      <img [src]="role.image" width="100" height="100" />
+                      <img [src]="role.postImages.length > 0 ? role.postImages[0].imageUrl : ''" width="100" height="100" />
                     </td>
                     <td>
                       <button type="button"

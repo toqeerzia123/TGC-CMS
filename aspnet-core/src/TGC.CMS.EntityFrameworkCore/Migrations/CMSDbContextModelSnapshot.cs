@@ -1575,6 +1575,9 @@ namespace TGC.CMS.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int?>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -1596,6 +1599,9 @@ namespace TGC.CMS.Migrations
                     b.Property<int>("DisplayOrderNo")
                         .HasColumnType("int");
 
+                    b.Property<string>("Elimination")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -1607,6 +1613,9 @@ namespace TGC.CMS.Migrations
 
                     b.Property<DateTime>("PostDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Prize")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -1653,54 +1662,6 @@ namespace TGC.CMS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PostCategories");
-                });
-
-            modelBuilder.Entity("TGC.CMS.CMS_Post.PostDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Elimination")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("PostId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Prize")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("PostDetails");
                 });
 
             modelBuilder.Entity("TGC.CMS.CMS_Post.PostImage", b =>
@@ -2041,21 +2002,10 @@ namespace TGC.CMS.Migrations
                     b.Navigation("PostCategory");
                 });
 
-            modelBuilder.Entity("TGC.CMS.CMS_Post.PostDetail", b =>
-                {
-                    b.HasOne("TGC.CMS.CMS_Post.Post", "Post")
-                        .WithMany()
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Post");
-                });
-
             modelBuilder.Entity("TGC.CMS.CMS_Post.PostImage", b =>
                 {
                     b.HasOne("TGC.CMS.CMS_Post.Post", "Post")
-                        .WithMany()
+                        .WithMany("PostImages")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -2159,6 +2109,11 @@ namespace TGC.CMS.Migrations
                     b.Navigation("Settings");
 
                     b.Navigation("Tokens");
+                });
+
+            modelBuilder.Entity("TGC.CMS.CMS_Post.Post", b =>
+                {
+                    b.Navigation("PostImages");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,15 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Abp.AutoMapper;
 
 namespace TGC.CMS.CMS_Post.Dtos
 {
+    [AutoMapFrom(typeof(PostImage))]
     public class PostImageDto
     {
-        public IList<IFormFile> Image { get; set; }
+        public string ImageUrl { get; set; }
         public bool IsPrimaryImage { get; set; }
     }
 }

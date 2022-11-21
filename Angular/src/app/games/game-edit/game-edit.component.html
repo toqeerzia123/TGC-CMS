@@ -1,0 +1,99 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createTenantForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'Create Game' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="title">
+        {{ "Title" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="title"
+          id="title"
+          minlength="2"
+          maxlength="64"
+          required
+          [(ngModel)]="post.title"
+          #titleModel="ngModel"
+          #titleEl
+        />
+        <abp-validation-summary
+          [control]="titleModel"
+          [controlEl]="titleEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="date">
+        {{ "Release Date" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="date"
+          id="date"
+          maxlength="128"
+          required
+          [(ngModel)]="post.postDate"
+          #dateModel="ngModel"
+          #dateEl
+        />
+        <abp-validation-summary
+          [control]="dateModel"
+          [controlEl]="dateEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="amount">
+        {{ "Prize" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="amount"
+          id="amount"
+          required
+          [(ngModel)]="post.amount"
+          #amountModel="ngModel"
+          #amountEl
+        />
+        <abp-validation-summary
+          [control]="amountModel"
+          [controlEl]="amountEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="elimination">
+        {{ "Description" | localize }}
+      </label>
+      <div class="col-md-9">
+        <textarea class="form-control" name="elimination" id="elimination" [(ngModel)]="post.elimination" #eliminationModel="ngModel" #eliminationEl>
+
+        </textarea>
+        <abp-validation-summary
+          [control]="eliminationModel"
+          [controlEl]="eliminationEl"
+        ></abp-validation-summary>
+      </div>
+    </div>
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createTenantForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

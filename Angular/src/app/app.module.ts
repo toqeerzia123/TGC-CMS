@@ -40,6 +40,13 @@ import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
 import { TournamentsComponent } from './tournaments/tournaments.component';
 import { GamesComponent } from './games/games.component';
+import { TournamentCreateComponent } from './tournaments/tournament-create/tournament-create.component';
+import { TournamentEditComponent } from './tournaments/tournament-edit/tournament-edit.component';
+import { GameCreateComponent } from './games/game-create/game-create.component';
+import { GameEditComponent } from './games/game-edit/game-edit.component';
+import { AnnouncementsComponent } from './announcements/announcements.component';
+import { AnnouncementCreateComponent } from './announcements/announcement-create/announcement-create.component';
+import { AnnouncementEditComponent } from './announcements/announcement-edit/announcement-edit.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +78,16 @@ import { GamesComponent } from './games/games.component';
     SidebarUserPanelComponent,
     SidebarMenuComponent,
     TournamentsComponent,
-    GamesComponent
+    TournamentCreateComponent,
+    TournamentEditComponent,
+
+    GamesComponent,
+    GameCreateComponent,
+    GameEditComponent,
+    
+    AnnouncementsComponent,
+    AnnouncementCreateComponent,
+    AnnouncementEditComponent
   ],
   imports: [
     CommonModule,

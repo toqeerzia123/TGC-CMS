@@ -25,6 +25,7 @@ namespace TGC.CMS
 
         protected virtual async Task<User> GetCurrentUserAsync()
         {
+            
             var user = await UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());
             if (user == null)
             {

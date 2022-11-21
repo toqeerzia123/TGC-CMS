@@ -1,21 +1,25 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TGC.CMS.CMS_Post.Dtos;
-using TGC.CMS.PostDetailss.Dtos;
 
 namespace TGC.CMS.CMS_Post.MapProfile
 {
-    public class PostMapProfile:Profile
+    public class PostMapProfile : Profile
     {
         public PostMapProfile()
         {
-            CreateMap<CreatePostDto, Post>();
+            CreateMap<CreatePostDto, Post>()
+                .ForMember(opt => opt.PostImages, x => x.Ignore());
+
             CreateMap<PostDto, Post>();
-            CreateMap<PostDetailDto, PostDetail>();
+
+            //CreateMap<Post, PostDto>()
+            //.ForMember(opt => opt.PostImages, x => x.MapFrom(b => b.PostImages.Select(c => new PostImageDto
+            //{
+            //    ImageUrl = postImagesBasePath + c.ImageUrl,
+            //    IsPrimaryImage = c.IsPrimaryImage,
+            //})));
         }
     }
 }

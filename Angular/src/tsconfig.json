@@ -1,4 +1,5 @@
 {
+  
   "compilerOptions": {
     "declaration": false,
     "downlevelIteration": true,
@@ -20,7 +21,7 @@
       "@app/*": [ "./app/*" ],
       "@shared/*": [ "./shared/*" ],
       "@node_modules/*": [ "../node_modules/*" ]
-    }
+    },
   },
   "files": [
     "main.ts",

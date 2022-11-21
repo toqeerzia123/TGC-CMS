@@ -16,7 +16,6 @@ namespace TGC.CMS.EntityFrameworkCore
         }
 
         public DbSet<Post> Posts { get; set; }
-        public DbSet<PostDetail> PostDetails { get; set; }
         public DbSet<PostCategory> PostCategories { get; set; }
         public DbSet<PostImage> PostImages { get; set; }
     }

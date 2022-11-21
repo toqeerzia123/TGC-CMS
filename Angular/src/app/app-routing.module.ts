@@ -9,6 +9,8 @@ import { TenantsComponent } from './tenants/tenants.component';
 import { RolesComponent } from 'app/roles/roles.component';
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
 import { TournamentsComponent } from './tournaments/tournaments.component';
+import { GamesComponent } from './games/games.component';
+import { AnnouncementsComponent } from './announcements/announcements.component';
 
 
 @NgModule({
@@ -22,8 +24,8 @@ import { TournamentsComponent } from './tournaments/tournaments.component';
                     { path: 'users', component: UsersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
                     { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
                     { path: 'tournaments', component: TournamentsComponent, data: { permission: 'Pages.Tournaments' }, canActivate: [AppRouteGuard] },
-                    { path: 'games', component: RolesComponent, data: { permission: 'Pages.Games' }, canActivate: [AppRouteGuard] },
-                    { path: 'announcements', component: RolesComponent, data: { permission: 'Pages.Announcements' }, canActivate: [AppRouteGuard] },
+                    { path: 'games', component: GamesComponent, data: { permission: 'Pages.Games' }, canActivate: [AppRouteGuard] },
+                    { path: 'announcements', component: AnnouncementsComponent, data: { permission: 'Pages.Announcements' }, canActivate: [AppRouteGuard] },
                     { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
                     { path: 'about', component: AboutComponent, canActivate: [AppRouteGuard] },
                     { path: 'update-password', component: ChangePasswordComponent, canActivate: [AppRouteGuard] }

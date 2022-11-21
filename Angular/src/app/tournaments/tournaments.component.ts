@@ -7,11 +7,16 @@ import {
   PagedRequestDto
 } from '@shared/paged-listing-component-base';
 import {
+  PostDto,
+  PostDtoPagedResultDto,
   PostServiceProxy,
 } from '@shared/service-proxies/service-proxies';
+import { TournamentCreateComponent } from './tournament-create/tournament-create.component';
+import { TournamentEditComponent } from './tournament-edit/tournament-edit.component';
 
-class PagedRolesRequestDto extends PagedRequestDto {
+class PagedPostResultRequestDto extends PagedRequestDto {
   keyword: string;
+
 }
 
 @Component({
@@ -19,7 +24,7 @@ class PagedRolesRequestDto extends PagedRequestDto {
   animations: [appModuleAnimation()]
 })
 export class TournamentsComponent extends PagedListingComponentBase<any> {
-  roles: [] = [];
+  tournaments: PostDto [] = [];
   keyword = '';
 
   constructor(
@@ -31,33 +36,20 @@ export class TournamentsComponent extends PagedListingComponentBase<any> {
   }
 
   list(
-    request: PagedRolesRequestDto,
+    request: PagedPostResultRequestDto,
     pageNumber: number,
     finishedCallback: Function
   ): void {
     request.keyword = this.keyword;
-debugger;
-
-this._service
-.getAllPostsByCategory(undefined,undefined,2,undefined,undefined)
-.subscribe(
-  res => {
-
-  },
-  error => {
-
-  }
-)
-
     this._service
-      .getAllPostsByCategory("",true,2,0,1000)
+      .getAll(request.keyword,true,2,request.skipCount,request.maxResultCount)
       .pipe(
         finalize(() => {
           finishedCallback();
         })
       )
-      .subscribe((result: any) => {
-        this.roles = result;
+      .subscribe((result: PostDtoPagedResultDto) => {
+        this.tournaments = result.items;
         this.showPaging(result, pageNumber);
       });
   }
@@ -83,32 +75,32 @@ this._service
   }
 
   createRole(): void {
-    this.showCreateOrEditRoleDialog();
+    this.showCreateOrEditDialog();
   }
 
   editRole(role: any): void {
-    this.showCreateOrEditRoleDialog(role.id);
+    this.showCreateOrEditDialog(role.id);
   }
 
-  showCreateOrEditRoleDialog(id?: number): void {
+  showCreateOrEditDialog(id?: number): void {
     let createOrEditRoleDialog: BsModalRef;
     if (!id) {
-      // createOrEditRoleDialog = this._modalService.show(
-      //   CreateRoleDialogComponent,
-      //   {
-      //     class: 'modal-lg',
-      //   }
-      // );
+      createOrEditRoleDialog = this._modalService.show(
+        TournamentCreateComponent,
+        {
+          class: 'modal-lg',
+        }
+      );
     } else {
-      // createOrEditRoleDialog = this._modalService.show(
-      //   EditRoleDialogComponent,
-      //   {
-      //     class: 'modal-lg',
-      //     initialState: {
-      //       id: id,
-      //     },
-      //   }
-      // );
+      createOrEditRoleDialog = this._modalService.show(
+        TournamentEditComponent,
+        {
+          class: 'modal-lg',
+          initialState: {
+            id: id,
+          },
+        }
+      );
     }
 
     createOrEditRoleDialog.content.onSave.subscribe(() => {
