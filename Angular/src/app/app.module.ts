@@ -47,6 +47,8 @@ import { GameEditComponent } from './games/game-edit/game-edit.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { AnnouncementCreateComponent } from './announcements/announcement-create/announcement-create.component';
 import { AnnouncementEditComponent } from './announcements/announcement-edit/announcement-edit.component';
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 @NgModule({
   declarations: [
@@ -103,6 +105,7 @@ import { AnnouncementEditComponent } from './announcements/announcement-edit/ann
     ServiceProxyModule,
     SharedModule,
     NgxPaginationModule,
+    FileUploadModule 
   ],
   providers: [],
   entryComponents: [
