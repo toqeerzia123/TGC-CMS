@@ -41,78 +41,90 @@ namespace TGC.CMS.CMS_Post
 
         public override async Task<PostDto> CreateAsync([FromForm] CreatePostDto input)
         {
-
-            #region PostDto to Entity Mapping
-
-            var model = ObjectMapper.Map<Post>(input);
-            CheckCreatePermission();
-            model.CreationTime = DateTime.Now;
-            model.IsDeleted = false;
-
-            #endregion
-
-            #region Storing PostImages into directory and Create a localList
-            if (input.PostImages != null && input.PostImages.Count > 0)
+            try
             {
-                string uploads = Path.Combine(_environment.WebRootPath, "PostImages");
-                model.PostImages = input.PostImages.SaveFile(uploads);
+                #region PostDto to Entity Mapping
+
+                var model = ObjectMapper.Map<Post>(input);
+                CheckCreatePermission();
+                model.CreationTime = DateTime.Now;
+                model.IsDeleted = false;
+
+                #endregion
+
+                #region Storing PostImages into directory and Create a localList
+                if (input.PostImages != null && input.PostImages.Count > 0)
+                {
+                    string uploads = Path.Combine(_environment.WebRootPath, "PostImages");
+                    model.PostImages = input.PostImages.SaveFile(uploads);
+                }
+
+                #endregion
+
+                #region SaveFinal Changes to database
+
+                await Repository.InsertAsync(model);
+                _unitOfWorkManager.Current.SaveChanges();
+                return new PostDto() { Id = model.Id, Title = model.Title };
+                #endregion
             }
-
-            #endregion
-
-            #region SaveFinal Changes to database
-
-            await Repository.InsertAsync(model);
-            _unitOfWorkManager.Current.SaveChanges();
-
-            #endregion
-
-            return new PostDto() { Id = model.Id, Title = model.Title };
+            catch (Exception ex)
+            {
+                return new PostDto() { Id = 0, Title = String.Empty };
+            }
         }
         public override async Task<PostDto> UpdateAsync([FromForm] UpdatePostDto input)
         {
-            var post = Repository.GetAllIncluding(x => x.PostImages)
+            try
+            {
+                var post = Repository.GetAllIncluding(x => x.PostImages)
                 .Where(c => c.Id == input.Id).FirstOrDefault();
-            CheckCreatePermission();
+                CheckCreatePermission();
 
-            #region Update PostEntity with Dto
+                #region Update PostEntity with Dto
 
-            post.Title = input.Title;
-            post.Description = input.Description;
-            post.PostDate = input.PostDate;
-            post.CategoryId = input.CategoryId;
-            post.DisplayOrderNo = input.DisplayOrderNo;
-            post.LastModificationTime = DateTime.Now;
-            post.Amount = input.Amount;
-            post.Elimination = input.Elimination;
-            post.Prize = input.Prize;
+                post.Title = input.Title;
+                post.Description = input.Description;
+                post.PostDate = input.PostDate;
+                post.CategoryId = input.CategoryId;
+                post.DisplayOrderNo = input.DisplayOrderNo;
+                post.LastModificationTime = DateTime.Now;
+                post.Amount = input.Amount;
+                post.Elimination = input.Elimination;
+                post.Prize = input.Prize;
 
-            #endregion
+                #endregion
 
-            #region Remove PostImages from database
+                #region Remove PostImages from database
 
-            if (post.PostImages != null && post.PostImages.Count > 0)
-            {
-                foreach (PostImage postImage in post.PostImages)
+                if (post.PostImages != null && post.PostImages.Count > 0)
                 {
-                    await _ImageRepository.DeleteAsync(postImage);
-                    _unitOfWorkManager.Current.SaveChanges();
+                    foreach (PostImage postImage in post.PostImages)
+                    {
+                        await _ImageRepository.DeleteAsync(postImage);
+                        _unitOfWorkManager.Current.SaveChanges();
+                    }
                 }
+
+                #endregion
+
+                #region Store Updated PostImages into directory and Create a localList
+                if (input.PostImages != null && input.PostImages.Count > 0)
+                {
+                    string uploads = Path.Combine(_environment.WebRootPath, "PostImages");
+                    post.PostImages = input.PostImages.SaveFile(uploads);
+                }
+                #endregion
+
+                await Repository.UpdateAsync(post);
+                _unitOfWorkManager.Current.SaveChanges();
+                return new PostDto() { Id = post.Id, Title = post.Title };
             }
-
-            #endregion
-
-            #region Store Updated PostImages into directory and Create a localList
-            if (input.PostImages != null && input.PostImages.Count > 0)
+            catch (Exception ex)
             {
-                string uploads = Path.Combine(_environment.WebRootPath, "PostImages");
-                post.PostImages = input.PostImages.SaveFile(uploads);
+                return new PostDto() { Id =0, Title = ""};
             }
-            #endregion
-
-            await Repository.UpdateAsync(post);
-            _unitOfWorkManager.Current.SaveChanges();
-            return new PostDto() { Id = post.Id, Title = post.Title };
+            
         }
         public override Task<PagedResultDto<PostDto>> GetAllAsync(PagedPostResultRequestDto input)
         {

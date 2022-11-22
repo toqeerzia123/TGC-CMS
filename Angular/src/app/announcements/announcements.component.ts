@@ -35,7 +35,7 @@ export class AnnouncementsComponent extends PagedListingComponentBase<any> {
   ): void {
     request.keyword = this.keyword;
     this._service
-      .getAll(request.keyword,true,4,request.skipCount,request.maxResultCount)
+      .getAll(request.keyword,true,3,request.skipCount,request.maxResultCount)
       .pipe(
         finalize(() => {
           finishedCallback();

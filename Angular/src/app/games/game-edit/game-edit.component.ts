@@ -33,7 +33,7 @@ export class GameEditComponent extends AppComponentBase
   save(): void {
     this.saving = true;
     var date = moment(this.post.postDate);
-    this._service.update(this.post.id,this.post.title,this.post.description,date,this.post.prize,this.post.amount,this.post.elimination,3,1,[]).subscribe(
+    this._service.update(this.post.id,this.post.title,this.post.description,date,this.post.prize,this.post.amount,this.post.elimination,2,1,[]).subscribe(
       () => {
         this.notify.info(this.l('SavedSuccessfully'));
         this.bsModalRef.hide();

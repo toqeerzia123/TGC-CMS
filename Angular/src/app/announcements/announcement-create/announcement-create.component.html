@@ -60,13 +60,53 @@
         {{ "Description" | localize }}
       </label>
       <div class="col-md-9">
-        <textarea class="form-control" name="elimination" id="elimination" [(ngModel)]="post.elimination" #eliminationModel="ngModel" #eliminationEl>
+        <textarea class="form-control" name="elimination" id="elimination" [(ngModel)]="post.description" #eliminationModel="ngModel" #eliminationEl>
 
         </textarea>
         <abp-validation-summary
           [control]="eliminationModel"
           [controlEl]="eliminationEl"
         ></abp-validation-summary>
+      </div>
+    </div>
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="elimination">
+        {{ "Upload Image" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input type="file" (change)="handleFileInput($event)" multiple  />
+      </div>
+    </div>
+
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="elimination">
+        {{ "Images" | localize }}
+      </label>
+      <div class="col-md-9">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered">
+            <thead class="bg-light">
+              <tr>
+                <th width="50%">Name</th>
+                <th>Size</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of files;let i = index">
+                <td><strong>{{ item?.data?.name }}</strong></td>
+                <td nowrap>{{ item?.data?.size/1024/1024 | number:'.2' }} MB</td>
+                
+                <td nowrap>
+                    <button type="button" class="btn btn-danger btn-xs"
+                            (click)="removeFile(i)">
+                        <span class="glyphicon glyphicon-trash"></span> Remove
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

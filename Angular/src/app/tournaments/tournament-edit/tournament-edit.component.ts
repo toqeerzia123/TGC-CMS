@@ -34,7 +34,7 @@ export class TournamentEditComponent extends AppComponentBase
   save(): void {
     this.saving = true;
     var date = moment(this.post.postDate);
-    this._service.update(this.post.id,this.post.title,this.post.description,date,this.post.prize,this.post.amount,this.post.elimination,2,1,[]).subscribe(
+    this._service.update(this.post.id,this.post.title,this.post.description,date,this.post.prize,this.post.amount,this.post.elimination,1,1,[]).subscribe(
       () => {
         this.notify.info(this.l('SavedSuccessfully'));
         this.bsModalRef.hide();
