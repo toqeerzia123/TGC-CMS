@@ -5472,6 +5472,13 @@
   "resolved" "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   "version" "2.6.2"
 
+"ng2-file-upload@^1.4.0":
+  "integrity" "sha512-3J/KPU/tyh/ad6TFeUbrxX+SihUj0iOEt2Zsg4EX7mB3GFiQscXOfcUOxCkBtPWWWaqt3azrYbVGzsYa3/7NzQ=="
+  "resolved" "https://registry.npmjs.org/ng2-file-upload/-/ng2-file-upload-1.4.0.tgz"
+  "version" "1.4.0"
+  dependencies:
+    "tslib" "^1.9.0"
+
 "ngx-bootstrap@^5.6.1":
   "integrity" "sha512-6YHXtdXkGH3w0NQoaUgNYAcrj064Lv5RTO284ha/hvpNTrh55yQz2cVh0VvwBk3MjyY2tdmLH4SuCJDszYdYiw=="
   "resolved" "https://registry.npmjs.org/ngx-bootstrap/-/ngx-bootstrap-5.6.2.tgz"
