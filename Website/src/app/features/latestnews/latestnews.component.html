@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="companyLatest">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="title mb-5">
+                        <h3>THE GAME COMPANY <span>LATEST</span></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <ng-container *ngFor="let item of tournaments; let i=index;">
+                <div class="col-sm-12 col-md-4">
+                    <div class="latestNews">
+                        <div class="d-flex flex-column bd-highlight mb-4">
+                            <div class="p-0 bd-highlight">
+                                <img [src]="item?.image" alt='Image' class="comLatestImg">
+                            </div>
+                            <div class="p-0 bd-highlight">
+                                <div class="card p-4">
+                                    <p class="mb-0">{{item?.title}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </ng-container>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="actionBtns mt-4 mb-4">
+                        <a href="#" class="btn btn-primary">View More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

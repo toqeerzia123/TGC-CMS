@@ -1,0 +1,56 @@
+<div class="upcomingTournaments">
+    <h3 class="text-center mb-5">UPCOMING TOURNAMENTS</h3>
+    <div class="row">
+        <ng-container *ngFor="let item of tournaments; let i=index;">
+            <div class="col-sm-12 col-md-6" *ngIf="i < 2">
+                <div class="d-flex flex-column bd-highlight mb-4">
+                    <div class="p-0 mt-5 bd-highlight">
+                        <div class="gameImg lego" [ngStyle]="{'background-image':'url('+ item.image +')'}">
+                            <p class="p-4">{{item.postDate | date:'d'}} <span>{{item.postDate | date:'MMM'}}</span></p>
+                        </div>
+                    </div>
+                    <div class="p-0 bd-highlight">
+                        <div class="card">
+                            <div class="d-flex justify-content-between bd-highlight">
+                                <div class="p-4 bd-highlight">
+                                    <p class="mb-0 format"><span>{{item?.title}}</span></p>
+                                </div>
+                                <div class="p-4 bd-highlight">
+                                    <p class="mb-0 prize text-end">{{item?.amount}}$ <span>{{item?.prize}}</span></p>
+                                    <em class="text-end">{{item?.elimination}}</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="row">
+        <ng-container *ngFor="let item of tournaments; let i=index;">
+            <div class="col-sm-12 col-md-4" *ngIf="i > 1">
+                <div class="d-flex flex-column bd-highlight mb-4">
+                    <div class="p-0 bd-highlight">
+                        <div class="gameImgSmall game1" [ngStyle]="{'background-image':'url('+ item.image +')'}">
+                            <p class="p-3">17 <span>NOV</span></p>
+                        </div>
+                    </div>
+                    <div class="p-0 bd-highlight">
+                        <div class="card p-3">
+                            <p class="mb-0 prize text-center">{{item?.amount}}$ <span>{{item?.prize}}</span></p>
+                            <p class="mb-0 format text-center"><span>{{item?.title}}</span></p>
+                            <em class="text-center">{{item?.elimination}}</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="actionBtns mt-4 mb-4">
+                <a href="#" class="btn btn-primary">View More</a>
+            </div>
+        </div>
+    </div>
+</div>
