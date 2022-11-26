@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TGC.CMS.SkinConfig
 {
-    public class SkinLabel : FullAuditedEntity<int>
+    public class SocialICon : FullAuditedEntity<int>
     {
 
         public int? SkinId { get; set; }

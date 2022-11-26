@@ -9,7 +9,7 @@ using TGC.CMS.CMS_Post;
 
 namespace TGC.CMS.Slider.Dto
 {
-  [AutoMapFrom(typeof(PostCategory))]
+  [AutoMapFrom(typeof(MainSlider))]
   public class SliderDto : EntityDto<int>
   {
     public string ImagePath { get; set; }

@@ -9,7 +9,7 @@ using TGC.CMS.Slider.Dto;
 
 namespace TGC.CMS.Slider
 {
-  public interface ISliderAppService : IAsyncCrudAppService<SliderDto, int, PagedSliderResultRequestDto, CreateSliderDto, SliderDto>
+  public interface ISliderAppService : IAsyncCrudAppService<SliderDto, int, PagedSliderResultRequestDto, CreateSliderDto, UpdateSliderDto>
   {
   }
 }

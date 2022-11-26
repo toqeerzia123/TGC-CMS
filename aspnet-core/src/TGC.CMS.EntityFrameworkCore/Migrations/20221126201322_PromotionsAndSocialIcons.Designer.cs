@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TGC.CMS.EntityFrameworkCore;
 
@@ -11,9 +12,10 @@ using TGC.CMS.EntityFrameworkCore;
 namespace TGC.CMS.Migrations
 {
     [DbContext(typeof(CMSDbContext))]
-    partial class CMSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221126201322_PromotionsAndSocialIcons")]
+    partial class PromotionsAndSocialIcons
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1709,7 +1711,7 @@ namespace TGC.CMS.Migrations
                     b.ToTable("PostImages");
                 });
 
-            modelBuilder.Entity("TGC.CMS.Invite.InviteFriend", b =>
+            modelBuilder.Entity("TGC.CMS.InviteFriends.InviteFriend", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
