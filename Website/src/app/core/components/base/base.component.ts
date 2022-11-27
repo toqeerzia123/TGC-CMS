@@ -1,20 +1,21 @@
 import { Component, Directive, OnInit } from '@angular/core';
-import { Router, RoutesRecognized } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router, RoutesRecognized } from '@angular/router';
 import { LayoutOptionsModel } from '../../models/layout.model';
 
-@Directive({
-  selector: 'app-base'
-})
-export class BaseComponent implements OnInit {
+
+export class BaseComponent {
 
   layoutOptionsModel:LayoutOptionsModel | undefined
-  constructor(private router: Router) {}
+  constructor(private router1: Router) {
+    this.BuildLayout(router1);
+  }
   
-  ngOnInit() {
+  BuildLayout(router: Router){
     debugger;
-    this.router.events.subscribe((data) => {
-      if (data instanceof RoutesRecognized) {
-       this.layoutOptionsModel = data.state.root.firstChild?.data['layout'];
+    this.router1.events.subscribe((data) => {
+      if (data instanceof ActivatedRouteSnapshot) {
+        debugger;
+       //this.layoutOptionsModel = data.data.root.firstChild?.data['layout'];
       }
     });
   }

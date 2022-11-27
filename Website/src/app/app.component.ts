@@ -12,6 +12,7 @@ export class AppComponent extends BaseComponent {
   title = 'the-game-company';
 
   constructor(private _router:Router) {
+    debugger;
     super(_router);
   }
   

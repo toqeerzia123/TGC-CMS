@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { BaseComponent } from 'src/app/core/components/base/base.component';
 import { LayoutOptionsModel } from 'src/app/core/models/layout.model';
 
@@ -10,8 +10,13 @@ import { LayoutOptionsModel } from 'src/app/core/models/layout.model';
 export class LandingPageComponent extends BaseComponent {
 
   constructor(private _router:Router) { 
-    super(_router);
     debugger;
-    var f = this.layoutOptionsModel;
+    super(_router);
   }
+
+  // ngOnInit(): void {
+  //   debugger;
+  //   this.BuildLayout(this._router);
+  //   var f = this.layoutOptionsModel;
+  // }
 }
