@@ -10,10 +10,18 @@ import { SocialBarComponent } from './core/components/social-bar/social-bar.comp
 import { PurchaseBannerComponent } from './features/purchase-banner/purchase-banner.component';
 import { TournamentsComponent } from './features/tournaments/tournaments.component';
 import { APIService } from './core/services/api.service';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RequestInterceptor } from './core/interceptor/request.Interceptor';
+import { HttpClientModule} from '@angular/common/http';
 import { GamesComponent } from './features/games/games.component';
 import { LatestnewsComponent } from './features/latestnews/latestnews.component';
+import { RegisterComponent } from './account/register/register.component';
+import { VerifyCodeComponent } from './account/verify-code/verify-code.component';
+import { ProfileInfoComponent } from './account/profile-info/profile-info.component';
+import { PricingComponent } from './features/pricing/pricing.component';
+import { WatchusComponent } from './features/watchus/watchus.component';
+import { BlogsComponent } from './features/blogs/blogs.component';
+import { BlogDetailsComponent } from './features/blogs/blog-details/blog-details.component';
+import { LoginComponent } from './account/login/login.component';
+import { LandingPageComponent } from './features/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +34,15 @@ import { LatestnewsComponent } from './features/latestnews/latestnews.component'
     TournamentsComponent,
     GamesComponent,
     LatestnewsComponent,
+    LoginComponent,
+    RegisterComponent,
+    VerifyCodeComponent,
+    ProfileInfoComponent,
+    PricingComponent,
+    WatchusComponent,
+    BlogsComponent,
+    BlogDetailsComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

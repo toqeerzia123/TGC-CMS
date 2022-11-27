@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RoutesRecognized } from '@angular/router';
+import { BaseComponent } from './core/components/base/base.component';
 import { LayoutOptionsModel } from './core/models/layout.model';
 
 @Component({
@@ -7,17 +8,12 @@ import { LayoutOptionsModel } from './core/models/layout.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent extends BaseComponent {
   title = 'the-game-company';
-  layoutOptionsModel:LayoutOptionsModel | undefined
-  constructor(private router: Router) {}
-  
-  ngOnInit() {
-    this.router.events.subscribe((data) => {
-      if (data instanceof RoutesRecognized) {
-       this.layoutOptionsModel = data.state.root.firstChild?.data['layout'];
-      }
-    });
+
+  constructor(private _router:Router) {
+    debugger;
+    super(_router);
   }
   
 }
