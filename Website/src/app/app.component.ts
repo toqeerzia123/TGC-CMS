@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RoutesRecognized } from '@angular/router';
+import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
 import { BaseComponent } from './core/components/base/base.component';
 import { LayoutOptionsModel } from './core/models/layout.model';
 
@@ -8,12 +8,12 @@ import { LayoutOptionsModel } from './core/models/layout.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent extends BaseComponent {
+export class AppComponent implements OnInit {
   title = 'the-game-company';
 
-  constructor(private _router:Router) {
-    debugger;
-    super(_router);
+  constructor() {
+  } 
+  ngOnInit(): void {
   }
   
 }

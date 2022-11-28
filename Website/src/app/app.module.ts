@@ -22,6 +22,7 @@ import { BlogsComponent } from './features/blogs/blogs.component';
 import { BlogDetailsComponent } from './features/blogs/blog-details/blog-details.component';
 import { LoginComponent } from './account/login/login.component';
 import { LandingPageComponent } from './features/landing-page/landing-page.component';
+import { BodyThemeDirective } from './core/directives/body-theme.directive';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LandingPageComponent } from './features/landing-page/landing-page.compo
     WatchusComponent,
     BlogsComponent,
     BlogDetailsComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    BodyThemeDirective
   ],
   imports: [
     BrowserModule,

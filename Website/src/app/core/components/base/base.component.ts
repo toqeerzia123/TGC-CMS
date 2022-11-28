@@ -6,18 +6,14 @@ import { LayoutOptionsModel } from '../../models/layout.model';
 export class BaseComponent {
 
   layoutOptionsModel:LayoutOptionsModel | undefined
-  constructor(private router1: Router) {
-    this.BuildLayout(router1);
+  constructor(private _activatedRoute:ActivatedRoute) {
+    this.BuildLayout(_activatedRoute);
   }
   
-  BuildLayout(router: Router){
-    debugger;
-    this.router1.events.subscribe((data) => {
-      if (data instanceof ActivatedRouteSnapshot) {
-        debugger;
-       //this.layoutOptionsModel = data.data.root.firstChild?.data['layout'];
-      }
-    });
+  BuildLayout(router: ActivatedRoute){
+this._activatedRoute.data.subscribe(res =>{
+  this.layoutOptionsModel = res["layout"];
+});
   }
 
 }

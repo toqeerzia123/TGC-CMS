@@ -14,20 +14,34 @@ export class GamesComponent implements OnInit {
   constructor(private _service:APIService) { }
 
   ngOnInit(): void {
-    this.getallGamess();
+    this._service.getAllCategories().subscribe(
+      res => {
+          var categories = res.result.items as Array<any>;
+          let item = categories.find(f => f.categoryName == 'Games');
+          this.getallGamess(item.id);
+      },
+      err => {
+
+      }
+    );
   }
   
-  getallGamess(){
-    this._service.getGames().subscribe(
+  getallGamess(categId:number){
+    this._service.getPostsByCategory(categId).subscribe(
       res => {
         if(res.success){
-            this.tournaments = res.result;
+            this.tournaments = res.result.items;
         }
       },
       err => {
       }
     )
   }
+
+  loadImage(index:number){
+    let images = this.tournaments[index].postImages;
+    return images?.length > 0 ? images[0].imageUrl : '';
+ }
 
 }
 

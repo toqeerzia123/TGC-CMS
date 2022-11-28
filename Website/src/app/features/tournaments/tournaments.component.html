@@ -5,7 +5,7 @@
             <div class="col-sm-12 col-md-6" *ngIf="i < 2">
                 <div class="d-flex flex-column bd-highlight mb-4">
                     <div class="p-0 mt-5 bd-highlight">
-                        <div class="gameImg lego" [ngStyle]="{'background-image':'url('+ item.image +')'}">
+                        <div class="gameImg lego" [ngStyle]="loadImage(i)">
                             <p class="p-4">{{item.postDate | date:'d'}} <span>{{item.postDate | date:'MMM'}}</span></p>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
             <div class="col-sm-12 col-md-4" *ngIf="i > 1">
                 <div class="d-flex flex-column bd-highlight mb-4">
                     <div class="p-0 bd-highlight">
-                        <div class="gameImgSmall game1" [ngStyle]="{'background-image':'url('+ item.image +')'}">
+                        <div class="gameImgSmall game1" [ngStyle]="loadImage(i)">
                             <p class="p-3">17 <span>NOV</span></p>
                         </div>
                     </div>

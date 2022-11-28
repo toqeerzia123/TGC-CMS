@@ -9,19 +9,18 @@ import { environment } from 'src/environments/environment';
 export class APIService {
   constructor(private http: HttpClient) { }
 
-  // Department
-  getTournaments(): Observable<any> {
-    var url = environment.apiUrl  + '/api/services/app/Post/GetAllPostsByCategory?PostType=2';
+  getPostsByCategory(categId:number): Observable<any> {
+    var url = environment.apiUrl  + '/api/services/app/Post/GetAll?PostType=' + categId;
     return this.http.get<any>(url);
   }
 
-  getGames(): Observable<any> {
-    var url = environment.apiUrl  + '/api/services/app/Post/GetAllPostsByCategory?PostType=3';
+  getPostsDetailsById(id:number): Observable<any> {
+    var url = environment.apiUrl  + '/api/services/app/Post/Get?Id=' + id;
     return this.http.get<any>(url);
   }
 
-  getLatestNews(): Observable<any> {
-    var url = environment.apiUrl  + '/api/services/app/Post/GetAllPostsByCategory?PostType=4';
+  getAllCategories():Observable<any>{
+    var url = environment.apiUrl  + '/api/services/app/PostCategory/GetAll';
     return this.http.get<any>(url);
   }
 }

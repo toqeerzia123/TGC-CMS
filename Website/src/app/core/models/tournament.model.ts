@@ -3,7 +3,7 @@ export class TournamentModel{
     title:string | undefined;
     description:string | undefined;
     postDate:string | undefined;
-    image:string | undefined;
+    postImages:any[] =[];
     amount:number | undefined;
     elimination:string | undefined;
     prize:string | undefined

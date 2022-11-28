@@ -4,6 +4,7 @@ import { LoginComponent } from './account/login/login.component';
 import { ProfileInfoComponent } from './account/profile-info/profile-info.component';
 import { RegisterComponent } from './account/register/register.component';
 import { VerifyCodeComponent } from './account/verify-code/verify-code.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { LayoutModel } from './core/models/layout.model';
 import { BlogDetailsComponent } from './features/blogs/blog-details/blog-details.component';
 import { BlogsComponent } from './features/blogs/blogs.component';
@@ -24,49 +25,55 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component:LandingPageComponent,
-    data:{layout : layout.buildFullLayout()},
-    
+    data:{layout : layout.buildFullLayout(),body_class:"homePg"}
   },
   {
     path: 'watchus',
     pathMatch: 'full',
     component:WatchusComponent,
-    data:{layout : layout.buildFullLayout()}
+    data:{layout : layout.buildFullLayout(),body_class:"watchUsPg innerPg"}
   },
   {
     path: 'blogs',
     pathMatch: 'full',
-    component:BlogsComponent
+    component:BlogsComponent,
+    data:{body_class : "blogPg innerPg"}
   },
   {
     path: 'blog-details',
-    pathMatch: 'full',
-    component:BlogDetailsComponent
+    component:BlogDetailsComponent,
+    data:{body_class:"blogDetailsPg innerPg"},
+
   },
   {
     path: 'pricing',
     pathMatch: 'full',
-    component:PricingComponent
+    component:PricingComponent,
+    data:{body_class:"pricingPg innerPg"}
   },
   {
     path: 'login',
     pathMatch: 'full',
-    component:LoginComponent
+    component:LoginComponent,
+    data:{body_class:"LoginPg innerPg"}
   },
   {
     path: 'register',
     pathMatch: 'full',
-    component:RegisterComponent
+    component:RegisterComponent,
+    data:{body_class:"signUpPg innerPg"}
   },
   {
     path: 'profile-info',
     pathMatch: 'full',
-    component:ProfileInfoComponent
+    component:ProfileInfoComponent,
+    data:{body_class:"profileInfoPg innerPg"}
   },
   {
     path: 'verify-code',
     pathMatch: 'full',
-    component:VerifyCodeComponent
+    component:VerifyCodeComponent,
+    data:{body_class:"verifyCodePg innerPg"}
   }
 ];
 
