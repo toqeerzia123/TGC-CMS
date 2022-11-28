@@ -88,7 +88,7 @@ namespace TGC.CMS.Users
             var emailBody = "Email Verification Code Is :" + VerificationCode.ToString() + " Expire in 5 Mints";
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse("toqeerzia123@outlook.com"));
-            email.To.Add(MailboxAddress.Parse("Toqeerzia123@gmail.com"));
+            email.To.Add(MailboxAddress.Parse(input.UserName));
             email.Subject = "Email Verification Code ";
             email.Body = new TextPart(TextFormat.Html) { Text = emailBody };
             using var smtp = new SmtpClient();
@@ -277,7 +277,7 @@ namespace TGC.CMS.Users
             var emailBody = "Email Verification Code Is :" + VerificationCode.ToString() + " Expire in 5 Mints";
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse("toqeerzia123@outlook.com"));
-            email.To.Add(MailboxAddress.Parse("Toqeerzia123@gmail.com"));
+            email.To.Add(MailboxAddress.Parse(currentUser.EmailAddress));
             email.Subject = "Email Verification Code ";
             email.Body = new TextPart(TextFormat.Html) { Text = emailBody };
             using var smtp = new SmtpClient();
@@ -335,7 +335,7 @@ namespace TGC.CMS.Users
             var emailBody = "Email Verification Code Is :" + VerificationCode.ToString() + " Expire in 5 Mints";
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse("toqeerzia123@outlook.com"));
-            email.To.Add(MailboxAddress.Parse("Toqeerzia123@gmail.com"));
+            email.To.Add(MailboxAddress.Parse(input.UserName));
             email.Subject = "Email Verification Code ";
             email.Body = new TextPart(TextFormat.Html) { Text = emailBody };
             using var smtp = new SmtpClient();
