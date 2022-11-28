@@ -14,7 +14,7 @@ namespace TGC.CMS.Users
         Task ChangeLanguage(ChangeUserLanguageDto input);
 
         Task<bool> ChangePassword(ChangePasswordDto input);
-        Task<bool> EmailVerificationCode(CodeVerificationDto dto);
+        Task<bool> EmailCodeVerification(CodeVerificationDto dto);
         Task<bool> ReSendEmailVerificationCode();
         Task<UserDto> CreateTargetUser(CreatetargetUserDto input);
     }

@@ -186,10 +186,17 @@ namespace TGC.CMS.Controllers
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
         {
             var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
+            if (loginResult.User.IsEmailConfirmed==false)
+            {
+         
+             throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(AbpLoginResultType.UserEmailIsNotConfirmed, usernameOrEmailAddress, tenancyName);
+
+            }
+
 
             switch (loginResult.Result)
             {
-                case AbpLoginResultType.Success:
+                 case AbpLoginResultType.Success:
                     return loginResult;
                 default:
                     throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress, tenancyName);

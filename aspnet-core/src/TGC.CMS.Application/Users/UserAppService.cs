@@ -74,7 +74,8 @@ namespace TGC.CMS.Users
             user.TenantId = AbpSession.TenantId;
             user.IsEmailConfirmed = false;
             user.AccountId = await CreateAccountId(input.UserName);
-            var VerificationCode = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString();
+            Random objRandom = new Random();
+            var VerificationCode = objRandom.Next(10000, 99999).ToString();
             user.EmailConfirmationCode = VerificationCode;
             user.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
             await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
@@ -241,7 +242,7 @@ namespace TGC.CMS.Users
             return true;
         }
 
-        public async Task<bool> EmailVerificationCode(CodeVerificationDto dto)
+        public async Task<bool> EmailCodeVerification(CodeVerificationDto dto)
         {
             var currentUser = await _userManager.GetUserByIdAsync(_abpSession.GetUserId());
             if (currentUser.IsEmailConfirmed == true)
@@ -271,7 +272,8 @@ namespace TGC.CMS.Users
         public async Task<bool> ReSendEmailVerificationCode()
         {
             var currentUser = await _userManager.GetUserByIdAsync(_abpSession.GetUserId());
-            var VerificationCode = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString();
+            Random objRandom = new Random();
+            var VerificationCode = objRandom.Next(10000, 99999).ToString();
             var emailBody = "Email Verification Code Is :" + VerificationCode.ToString() + " Expire in 5 Mints";
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse("toqeerzia123@outlook.com"));
@@ -320,6 +322,7 @@ namespace TGC.CMS.Users
             user.AccountId = await CreateAccountId(input.UserName);
             var VerificationCode = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString();
             user.EmailConfirmationCode = VerificationCode;
+            user.EmailAddress = input.UserName;
             user.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
             user.Name=input.UserName;
             user.Surname = input.UserName;
