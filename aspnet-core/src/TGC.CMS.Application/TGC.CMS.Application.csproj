@@ -12,6 +12,9 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="3.4.3" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\TGC.CMS.Core\TGC.CMS.Core.csproj" />
     <ProjectReference Include="..\TGC.CMS.EntityFrameworkCore\TGC.CMS.EntityFrameworkCore.csproj" />
   </ItemGroup>

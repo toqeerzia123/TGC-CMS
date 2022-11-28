@@ -8,6 +8,7 @@ using TGC.CMS.SkinConfig;
 using TGC.CMS.Slider;
 using TGC.CMS.PromotionalText;
 using TGC.CMS.Invite;
+using TGC.CMS.Packages;
 
 namespace TGC.CMS.EntityFrameworkCore
 {
@@ -23,11 +24,12 @@ namespace TGC.CMS.EntityFrameworkCore
         public DbSet<PostCategory> PostCategories { get; set; }
         public DbSet<PostImage> PostImages { get; set; }
         public DbSet<MainSlider> MainSliders { get; set; }
+        public DbSet<Package> Packages { get; set; }
 
-    // Dashboard
+        // Dashboard
 
-    //CMS
-    public DbSet<InviteFriend> InviteFriends { get; set; }
+        //CMS
+        public DbSet<InviteFriend> InviteFriends { get; set; }
     public DbSet<Promotion> Promotions { get; set; }
     public DbSet<SocialICon> SocialICons { get; set; }
 

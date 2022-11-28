@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using Abp.Auditing;
 using Abp.Authorization.Users;
@@ -35,7 +36,13 @@ namespace TGC.CMS.Users.Dto
         [StringLength(AbpUserBase.MaxPlainPasswordLength)]
         [DisableAuditing]
         public string Password { get; set; }
-
+        public string Country { get; set; }
+        public string First_Name { get; set; }
+        public string Last_Name { get; set; }
+        public string About { get; set; }
+        public DateTime? DOB { get; set; }
+        public string TimeZone { get; set; }
+        public string Gender { get; set; }
         public void Normalize()
         {
             if (RoleNames == null)

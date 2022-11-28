@@ -8,6 +8,7 @@ namespace TGC.CMS.Users.Dto
         public UserMapProfile()
         {
             CreateMap<UserDto, User>();
+            CreateMap<CreatetargetUserDto, User>();
             CreateMap<UserDto, User>()
                 .ForMember(x => x.Roles, opt => opt.Ignore())
                 .ForMember(x => x.CreationTime, opt => opt.Ignore());
