@@ -37,7 +37,7 @@ export class GamesComponent extends PagedListingComponentBase<any> {
   ): void {
     request.keyword = this.keyword;
     this._service
-      .getAll(request.keyword,true,3,request.skipCount,request.maxResultCount)
+      .getAll(request.keyword,true,2,request.skipCount,request.maxResultCount)
       .pipe(
         finalize(() => {
           finishedCallback();

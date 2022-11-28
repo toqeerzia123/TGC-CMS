@@ -1,0 +1,245 @@
+<ng-container>
+    <app-navbar></app-navbar>
+</ng-container>
+<hr class="pageSeprator m-0">
+<section class="content" bodyTheme>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="blogImg bigImage mt-5" [ngStyle]="loadImage(blog1)">
+                    <div class="info shadowBlack">
+                        <a [routerLink]="['/blog-details']" [queryParams]="{ p: blog1?.id}">
+                            <h5>{{blog1?.title}}</h5>
+                        </a>
+                        <p class="mt-2 mb-0">{{blog1?.postDate | date:'dd MMM yyyy'}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="blogImg game1 small mt-5" [ngStyle]="loadImage(blog2)">
+                            <div class="info shadowBlack">
+                                <a [routerLink]="['/blog-details']" [queryParams]="{ p: blog2?.id}">
+                                    <h5>{{blog2?.title}}</h5>
+                                </a>
+                                <p class="mt-2 mb-0">{{blog2?.postDate | date:'dd MMM yyyy'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="blogImg game2 small mt-5" [ngStyle]="loadImage(blog3)">
+                            <div class="info shadowBlack">
+                                <a [routerLink]="['/blog-details']" [queryParams]="{ p: blog3?.id}">
+                                    <h5>{{blog3?.title}}</h5>
+                                </a>
+                                <p class="mt-2 mb-0">{{blog3?.postDate | date:'dd MMM yyyy'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="blogImg game3 small mt-4" [ngStyle]="loadImage(blog4)">
+                            <div class="info shadowBlack">
+                                <a [routerLink]="['/blog-details']" [queryParams]="{ p: blog4?.id}">
+                                    <h5>{{blog4?.title}}</h5>
+                                </a>
+                                <p class="mt-2 mb-0">{{blog4?.postDate | date:'dd MMM yyyy'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="blogImg small game4 mt-4" [ngStyle]="loadImage(blog5)">
+                            <div class="info shadowBlack">
+                                <a [routerLink]="['/blog-details']" [queryParams]="{ p: blog5?.id}">
+                                    <h5>{{blog5?.title}}</h5>
+                                </a>
+                                <p class="mt-2 mb-0">{{blog5?.postDate | date:'dd MMM yyyy'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="followgamesaibar p-4 mt-5 mb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="d-flex justify-content-between">
+                        <a href="#" class="btn white"><i class="fab fa-twitter"></i>Follow Gaming.AI</a>
+                        <h5 class="mt-3">Follow Gaming .Ai Yalla For Updates On Exclusive Tournaments And Biggest Prizes</h5>
+                        <img src="../../../assets/images/ico-gamepad.png" alt="Image" class="gamepadIco">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="latestArticles">
+            <div class="row">
+                <h5 class="mt-4 mb-4">Latest Articles</h5>
+                <div class="col-sm-12 col-md-4" *ngFor="let item of articles; let i=index;">
+                    <div class="blogImg smalllatest mt-2 game3 mb-3" [ngStyle]="loadImage(item)">
+                        <div class="info shadowBlack">
+                            <a [routerLink]="['/blog-details']" [queryParams]="{ p: item?.id}">
+                                <h5>{{item?.title}}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="latestNews">
+            <div class="row">
+                <h5 class="mt-4 mb-4">Latest News</h5>
+                <div class="col-sm-12 col-md-4">
+                    <div class="blogImg newsbig mb-3" [ngStyle]="loadImage(news1)">
+                        <div class="info shadowBlack">
+                            <a [routerLink]="['/blog-details']" [queryParams]="{ p: news1?.id}">
+                                <h5>{{news1?.title}}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="blogImg mb-4">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <img [src]="loadNewsImage(news2)" alt="Image" class="newsImg">
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="infoRight">
+                                            <a [routerLink]="['/blog-details']" [queryParams]="{ p: news2?.id}">
+                                                <h5>{{news2?.title}}</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="blogImg mb-4">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <img [src]="loadNewsImage(news3)" alt="Image" class="newsImg">
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="infoRight">
+                                            <a [routerLink]="['/blog-details']" [queryParams]="{ p: news3?.id}">
+                                                <h5>{{news3?.title}}</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="blogImg mb-4">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <img [src]="loadNewsImage(news4)"  alt="Image" class="newsImg">
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="infoRight">
+                                            <a [routerLink]="['/blog-details']" [queryParams]="{ p: news4?.id}">
+                                                <h5>{{news4?.title}}</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="blogImg mb-4">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <img [src]="loadNewsImage(news5)"  alt="Image" class="newsImg">
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="infoRight">
+                                            <a [routerLink]="['/blog-details']" [queryParams]="{ p: news5?.id}">
+                                                <h5>{{news5?.title}}</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="footerInner p-4">
+        <div class="bgImg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="footer">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="footerLogoCont">
+                                        <img src="../../../assets/images/logo-footer.png" alt="Logo" class="logoFooter">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <div class="FooterNav pt-5 mt-4">
+                                        <h5>Games</h5>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">dota 2</a></li>
+                                            <li><a href="#">ASSASSIN CREED</a></li>
+                                            <li><a href="#">WATCH DOGS</a></li>
+                                            <li><a href="#">TOMB RAIDER</a></li>
+                                            <li><a href="#">call of duty wii</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <div class="FooterNav pt-5 mt-4">
+                                        <h5>Navigation</h5>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">watch</a></li>
+                                            <li><a href="#">team finder</a></li>
+                                            <li><a href="#">articles</a></li>
+                                            <li><a href="#">about us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-2">
+                                    <div class="FooterNav pt-5 mt-4">
+                                        <h5>support</h5>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Q/A</a></li>
+                                            <li><a href="#">WORK WITH US</a></li>
+                                            <li><a href="#">PRIVACY POLICY</a></li>
+                                            <li><a href="#">USER GUIDE</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="socialBar">
+                            <div class="d-flex justify-content-between">
+                                <h5>thegamecompany 2022</h5>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
