@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TGC.CMS.FriendInvite.Dtos;
 using TGC.CMS.InviteFriend.Dtos;
 using TGC.CMS.PromotionalText;
 using TGC.CMS.Promotions.Dtos;
@@ -14,8 +15,8 @@ namespace TGC.CMS.InviteFriend.MapperProfile
   {
     public InviteFriendMapperProfile()
     {
-      //CreateMap<InviteFriendDto, InviteFriend>();
-      //CreateMap<CreateInviteFriendDto, InviteFriend>();
+      CreateMap<InviteFriendDto, TGC.CMS.Invite.InviteFriend>();
+      CreateMap<CreateInviteFriendDto, TGC.CMS.Invite.InviteFriend>();
     }
   }
 }

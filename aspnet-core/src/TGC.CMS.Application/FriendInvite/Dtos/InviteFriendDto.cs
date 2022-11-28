@@ -4,11 +4,11 @@ using Abp.AutoMapper;
 
 namespace TGC.CMS.FriendInvite.Dtos
 {
-  //[AutoMapFrom(typeof(InviteFriend))]
-  //public class InviteFriendDto : EntityDto<int>
-  //{
-  //  public string Title { get; set; }
-  //  public string Description { get; set; }
-  //  public string ImagePath { get; set; }
-  //}
+    [AutoMapFrom(typeof(TGC.CMS.Invite.InviteFriend))]
+    public class InviteFriendDto : EntityDto<int>
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string ImagePath { get; set; }
+    }
 }
