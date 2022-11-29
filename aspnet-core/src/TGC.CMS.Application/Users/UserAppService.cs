@@ -73,11 +73,11 @@ namespace TGC.CMS.Users
             var user = ObjectMapper.Map<User>(input);
             user.TenantId = AbpSession.TenantId;
             user.IsEmailConfirmed = false;
-            user.AccountId = await CreateAccountId(input.UserName);
+            //user.AccountId = await CreateAccountId(input.UserName);
             Random objRandom = new Random();
             var VerificationCode = objRandom.Next(10000, 99999).ToString();
             user.EmailConfirmationCode = VerificationCode;
-            user.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
+            //user.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
             await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
             CheckErrors(await _userManager.CreateAsync(user, input.Password));
             if (input.RoleNames != null)
@@ -257,11 +257,11 @@ namespace TGC.CMS.Users
 
 
             }
-            if (DateTime.Now >= currentUser.EmailCodeExpiry)
-            {
-                throw new UserFriendlyException("Verification Code Is  Expired");
+            //if (DateTime.Now >= currentUser.EmailCodeExpiry)
+            //{
+            //    throw new UserFriendlyException("Verification Code Is  Expired");
 
-            }
+            //}
             await Repository.UpdateAsync(currentUser.Id, async (entity) =>
             {
                 entity.IsEmailConfirmed = true;
@@ -290,7 +290,7 @@ namespace TGC.CMS.Users
             {
                 entity.IsEmailConfirmed = false;
                 entity.EmailConfirmationCode = VerificationCode;
-                entity.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
+                //entity.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
             });
             return true;
 
@@ -299,7 +299,8 @@ namespace TGC.CMS.Users
         public async Task<string> CreateAccountId(string name)
         {
             var AccountNo = "";
-            var AlreadyUserAccount = Repository.GetAll().ToList().OrderByDescending(x => x.Id).FirstOrDefault().AccountId;
+            var AlreadyUserAccount = string.Empty;
+                //Repository.GetAll().ToList().OrderByDescending(x => x.Id).FirstOrDefault().AccountId;
             if (!string.IsNullOrEmpty(AlreadyUserAccount))
             {
                 var newid = AlreadyUserAccount.Split('-');
@@ -319,11 +320,11 @@ namespace TGC.CMS.Users
             var user = ObjectMapper.Map<User>(input);
             user.TenantId = AbpSession.TenantId;
             user.IsEmailConfirmed = false;
-            user.AccountId = await CreateAccountId(input.UserName);
+            //user.AccountId = await CreateAccountId(input.UserName);
             var VerificationCode = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString();
             user.EmailConfirmationCode = VerificationCode;
             user.EmailAddress = input.UserName;
-            user.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
+            //user.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
             user.Name=input.UserName;
             user.Surname = input.UserName;
             user.IsActive = true;

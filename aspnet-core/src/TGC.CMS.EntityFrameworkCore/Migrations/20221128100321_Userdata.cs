@@ -9,68 +9,6 @@ namespace TGC.CMS.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "About",
-                table: "AbpUsers",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "AccountId",
-                table: "AbpUsers",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Country",
-                table: "AbpUsers",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "EmailCodeExpiry",
-                table: "AbpUsers",
-                type: "datetime2",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "EmailConfirmationCode",
-                table: "AbpUsers",
-                type: "nvarchar(328)",
-                maxLength: 328,
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "FullName",
-                table: "AbpUsers",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Gender",
-                table: "AbpUsers",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<bool>(
-                name: "IsEmailConfirmed",
-                table: "AbpUsers",
-                type: "bit",
-                nullable: false,
-                defaultValue: false);
-
-     
-            migrationBuilder.AddColumn<string>(
-                name: "TimeZone",
-                table: "AbpUsers",
-                type: "nvarchar(max)",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "UserLevel",
-                table: "AbpUsers",
-                type: "nvarchar(max)",
-                nullable: true);
 
             migrationBuilder.CreateTable(
                 name: "Packages",
@@ -100,50 +38,6 @@ namespace TGC.CMS.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Packages");
-
-            migrationBuilder.DropColumn(
-                name: "About",
-                table: "AbpUsers");
-
-            migrationBuilder.DropColumn(
-                name: "AccountId",
-                table: "AbpUsers");
-
-            migrationBuilder.DropColumn(
-                name: "Country",
-                table: "AbpUsers");
-
-            migrationBuilder.DropColumn(
-                name: "EmailCodeExpiry",
-                table: "AbpUsers");
-
-            migrationBuilder.DropColumn(
-                name: "EmailConfirmationCode",
-                table: "AbpUsers");
-
-            migrationBuilder.DropColumn(
-                name: "FullName",
-                table: "AbpUsers");
-
-            migrationBuilder.DropColumn(
-                name: "Gender",
-                table: "AbpUsers");
-
-            migrationBuilder.DropColumn(
-                name: "IsEmailConfirmed",
-                table: "AbpUsers");
-
-            migrationBuilder.DropColumn(
-                name: "Name",
-                table: "AbpUsers");
-
-            migrationBuilder.DropColumn(
-                name: "TimeZone",
-                table: "AbpUsers");
-
-            migrationBuilder.DropColumn(
-                name: "UserLevel",
-                table: "AbpUsers");
         }
     }
 }

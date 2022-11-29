@@ -1449,14 +1449,8 @@ namespace TGC.CMS.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<string>("About")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
-
-                    b.Property<string>("AccountId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AuthenticationSource")
                         .HasMaxLength(64)
@@ -1467,17 +1461,11 @@ namespace TGC.CMS.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DOB")
-                        .HasColumnType("datetime2");
 
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
@@ -1489,19 +1477,6 @@ namespace TGC.CMS.Migrations
                         .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<DateTime?>("EmailCodeExpiry")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("EmailConfirmationCode")
-                        .HasMaxLength(328)
-                        .HasColumnType("nvarchar(328)");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -1569,17 +1544,6 @@ namespace TGC.CMS.Migrations
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
-
-                    b.Property<string>("TimeZone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserLevel")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 

@@ -12,8 +12,8 @@ using TGC.CMS.EntityFrameworkCore;
 namespace TGC.CMS.Migrations
 {
     [DbContext(typeof(CMSDbContext))]
-    [Migration("20221128102754_DOB")]
-    partial class DOB
+    [Migration("20221129040706_Abp_Custom_Seeder_1.1")]
+    partial class Abp_Custom_Seeder_11
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1449,14 +1449,8 @@ namespace TGC.CMS.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<string>("About")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
-
-                    b.Property<string>("AccountId")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AuthenticationSource")
                         .HasMaxLength(64)
@@ -1467,17 +1461,11 @@ namespace TGC.CMS.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DOB")
-                        .HasColumnType("datetime2");
 
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
@@ -1490,26 +1478,10 @@ namespace TGC.CMS.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<DateTime?>("EmailCodeExpiry")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("EmailConfirmationCode")
-                        .HasMaxLength(328)
-                        .HasColumnType("nvarchar(328)");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsEmailConfirmed")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsLockoutEnabled")
@@ -1569,12 +1541,6 @@ namespace TGC.CMS.Migrations
 
                     b.Property<int?>("TenantId")
                         .HasColumnType("int");
-
-                    b.Property<string>("TimeZone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserLevel")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
                         .IsRequired()
@@ -1691,6 +1657,50 @@ namespace TGC.CMS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PostCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryName = "Tournaments",
+                            CreationTime = new DateTime(2022, 11, 28, 20, 7, 6, 490, DateTimeKind.Local).AddTicks(4275),
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryName = "Games",
+                            CreationTime = new DateTime(2022, 11, 28, 20, 7, 6, 490, DateTimeKind.Local).AddTicks(4300),
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryName = "Announcements",
+                            CreationTime = new DateTime(2022, 11, 28, 20, 7, 6, 490, DateTimeKind.Local).AddTicks(4309),
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryName = "Blogs",
+                            CreationTime = new DateTime(2022, 11, 28, 20, 7, 6, 490, DateTimeKind.Local).AddTicks(4319),
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryName = "WatchUs",
+                            CreationTime = new DateTime(2022, 11, 28, 20, 7, 6, 490, DateTimeKind.Local).AddTicks(4328),
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryName = "Articles",
+                            CreationTime = new DateTime(2022, 11, 28, 20, 7, 6, 490, DateTimeKind.Local).AddTicks(4347),
+                            IsDeleted = false
+                        });
                 });
 
             modelBuilder.Entity("TGC.CMS.CMS_Post.PostImage", b =>
