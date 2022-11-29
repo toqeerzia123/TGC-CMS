@@ -1,0 +1,44 @@
+<section class="content" bodyTheme>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="innerLogoArea">
+                    <img src="../../../assets/images/logo.png" alt="Logo" class="innerLogo">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="greyBox">
+                    <div class="head p-4">
+                        <h3 class="mb-0">Select Package</h3>
+                    </div>
+                    <div class="greyBoxContent">
+                        <div class="alert alert-primary" role="alert">
+                            <i class="fal fa-info-circle"></i>Our Packages
+                        </div>
+                        <div class="row g-0">
+                            <div class="col-sm-12 col-md-4" *ngFor="let item of packages; let i=index;">
+                                <div class="package one">
+                                    <ul class="list-group">
+                                        <li class="list-group-item active" aria-current="true">Package #{{i + 1}}</li>
+                                        <li class="list-group-item">{{item.unitPrice}}$</li>
+                                        <li class="list-group-item">{{item.noOfTokens}} Tokens</li>
+                                       <li class="list-group-item save" >Save<span>{{item.discount}} <sup>%</sup></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="actionBtns mt-5 pt-3">
+                            <a href="#" class="btn white">Select Package</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
