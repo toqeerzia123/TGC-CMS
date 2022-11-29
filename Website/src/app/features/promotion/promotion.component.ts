@@ -2,27 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/core/services/api.service';
 
 @Component({
-  selector: 'app-pricing',
-  templateUrl: './pricing.component.html'
+  selector: 'app-promotion',
+  templateUrl: './promotion.component.html'
 })
-export class PricingComponent implements OnInit {
-  packages:any[]=[];
+export class PromotionComponent implements OnInit {
+
+  promotion:any;
   constructor(private _service:APIService) { }
 
   ngOnInit(): void {
-    this.getallPackages();
+    this.getPromotionData();
   }
 
-  getallPackages(){
-    this._service.getAllPackages().subscribe(
+  getPromotionData(){
+    this._service.getPromotionData().subscribe(
       res => {
         if(res.success){
-            this.packages = res.result.items;
+            this.promotion = res.result.items[0];
         }
       },
       err => {
       }
     )
   }
-
 }

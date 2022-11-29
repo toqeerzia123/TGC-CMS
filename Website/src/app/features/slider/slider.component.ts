@@ -2,22 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/core/services/api.service';
 
 @Component({
-  selector: 'app-pricing',
-  templateUrl: './pricing.component.html'
+  selector: 'app-slider',
+  templateUrl: './slider.component.html'
 })
-export class PricingComponent implements OnInit {
-  packages:any[]=[];
+export class SliderComponent implements OnInit {
+  sliders:any[]=[];
   constructor(private _service:APIService) { }
 
   ngOnInit(): void {
-    this.getallPackages();
+    this.getSliderData();
   }
 
-  getallPackages(){
-    this._service.getAllPackages().subscribe(
+  getSliderData(){
+    this._service.getSliderData().subscribe(
       res => {
         if(res.success){
-            this.packages = res.result.items;
+            this.sliders = res.result.items;
         }
       },
       err => {

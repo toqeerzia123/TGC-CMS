@@ -23,6 +23,8 @@ import { BlogDetailsComponent } from './features/blogs/blog-details/blog-details
 import { LoginComponent } from './account/login/login.component';
 import { LandingPageComponent } from './features/landing-page/landing-page.component';
 import { BodyThemeDirective } from './core/directives/body-theme.directive';
+import { SliderComponent } from './features/slider/slider.component';
+import { PromotionComponent } from './features/promotion/promotion.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { BodyThemeDirective } from './core/directives/body-theme.directive';
     BlogsComponent,
     BlogDetailsComponent,
     LandingPageComponent,
-    BodyThemeDirective
+    BodyThemeDirective,
+    SliderComponent,
+    PromotionComponent
   ],
   imports: [
     BrowserModule,

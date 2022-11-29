@@ -23,4 +23,19 @@ export class APIService {
     var url = environment.apiUrl  + '/api/services/app/PostCategory/GetAll';
     return this.http.get<any>(url);
   }
+
+  getAllPackages():Observable<any>{
+    var url = environment.apiUrl  + '/api/services/app/Package/GetAll';
+    return this.http.get<any>(url);
+  }
+
+  getSliderData():Observable<any>{
+    var url = environment.apiUrl  + '/api/services/app/Slider/GetAll';
+    return this.http.get<any>(url);
+  }
+
+  getPromotionData():Observable<any>{
+    var url = environment.apiUrl  + '/api/services/app/Promotion/GetAll';
+    return this.http.get<any>(url);
+  }
 }
