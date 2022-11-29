@@ -1,0 +1,184 @@
+<ng-container *ngIf="layoutOptionsModel">
+    
+    <app-navbar *ngIf="layoutOptionsModel.Navbar"></app-navbar>
+    <app-header *ngIf="layoutOptionsModel.Header"></app-header>
+</ng-container>
+
+<section class="content" bodyTheme>
+    <div class="topContent">
+        <app-promotion></app-promotion>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <tournaments></tournaments>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <app-invite-friend></app-invite-friend>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="favGame mt-5">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-8">
+                            <div class="txtBlock">
+                                <h3>YOUR FAVOURITE GAME IN<br>FAVOURITE BROWSER
+                                </h3>
+                                <p>no more hardware upgrades no more<br>
+                                    downloads on your device
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <img src="assets/images/img-gamepad.png" alt="Image" class="gamePadImg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="topGames">
+                    <games-list></games-list>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="howthisWorks mt-5 mb-5">
+                                <h3 class="text-center mb-5">how this works</h3>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="feature mt-4">
+                                            <h4>YOUR DEVICE - OUR POWER</h4>
+                                            <img src="assets/images/img-howitworks-1.png" alt="Image" class="featureImg">
+                                            <p>Enjoye AAA games form any
+                                                device and let our
+                                                powerful remote servers
+                                                do the rest</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="feature mt-4">
+                                            <h4>DIRCET ACCESS</h4>
+                                            <img src="assets/images/img-howitworks-2.png" alt="Image" class="featureImg">
+                                            <p>Do not waste your time
+                                                downloading huge games just
+                                                click and play with a
+                                                huge library of games</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="feature mt-4">
+                                            <h4>CROSS-PLATFORM</h4>
+                                            <img src="assets/images/img-howitworks-3.png" alt="Image" class="featureImg">
+                                            <p>PC, TAB, MAC, LAPTOP everything
+                                                works like a charm
+                                                just get the app
+                                                and play in the browser</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <div class="featureBox">
+                                <img src="assets/images/ico-metaverse.png" alt="Image" class="featureIco">
+                                <h2>METAVERSE</h2>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                            <div class="featureBox">
+                                <img src="assets/images/ico-fantasy.png" alt="Image" class="featureIco">
+                                <h2>fantasy
+                                    league</h2>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                            <div class="featureBox">
+                                <img src="assets/images/ico-merchandise.png" alt="Image" class="featureIco">
+                                <h2>buy
+                                    merchandise</h2>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                            <div class="featureBox">
+                                <img src="assets/images/ico-discord.png" alt="Image" class="featureIco">
+                                <h2>Discord</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <latest-news></latest-news>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="footer">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="footerLogoCont">
+                                            <img src="assets/images/logo-footer.png" alt="Logo" class="logoFooter">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+                                        <div class="FooterNav pt-5 mt-4">
+                                            <h5>Games</h5>
+                                            <ul class="list-unstyled">
+                                                <li><a href="#">dota 2</a></li>
+                                                <li><a href="#">ASSASSIN CREED</a></li>
+                                                <li><a href="#">WATCH DOGS</a></li>
+                                                <li><a href="#">TOMB RAIDER</a></li>
+                                                <li><a href="#">call of duty wii</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+                                        <div class="FooterNav pt-5 mt-4">
+                                            <h5>Navigation</h5>
+                                            <ul class="list-unstyled">
+                                                <li><a href="#">watch</a></li>
+                                                <li><a href="#">team finder</a></li>
+                                                <li><a href="#">articles</a></li>
+                                                <li><a href="#">about us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-2">
+                                        <div class="FooterNav pt-5 mt-4">
+                                            <h5>support</h5>
+                                            <ul class="list-unstyled">
+                                                <li><a href="#">Q/A</a></li>
+                                                <li><a href="#">WORK WITH US</a></li>
+                                                <li><a href="#">PRIVACY POLICY</a></li>
+                                                <li><a href="#">USER GUIDE</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="socialBar">
+                                <div class="d-flex justify-content-between">
+                                    <h5>thegamecompany 2022</h5>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li class="list-inline-item"><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
