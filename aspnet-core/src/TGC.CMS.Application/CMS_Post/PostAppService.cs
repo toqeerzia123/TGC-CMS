@@ -55,7 +55,7 @@ namespace TGC.CMS.CMS_Post
                 #region Storing PostImages into directory and Create a localList
                 if (input.PostImages != null && input.PostImages.Count > 0)
                 {
-                    string uploads = Path.Combine(_environment.WebRootPath, "PostImages");
+                    string uploads = Path.Combine(_environment.WebRootPath, "postimages");
                     model.PostImages = input.PostImages.SaveFile(uploads);
                 }
 
@@ -111,7 +111,7 @@ namespace TGC.CMS.CMS_Post
                 #region Store Updated PostImages into directory and Create a localList
                 if (input.PostImages != null && input.PostImages.Count > 0)
                 {
-                    string uploads = Path.Combine(_environment.WebRootPath, "PostImages");
+                    string uploads = Path.Combine(_environment.WebRootPath, "postimages");
                     post.PostImages = input.PostImages.SaveFile(uploads);
                 }
                 #endregion

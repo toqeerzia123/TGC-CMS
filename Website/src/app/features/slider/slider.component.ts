@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/core/services/api.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-slider',
@@ -7,7 +8,10 @@ import { APIService } from 'src/app/core/services/api.service';
 })
 export class SliderComponent implements OnInit {
   sliders:any[]=[];
-  constructor(private _service:APIService) { }
+  baseUrl : string | undefined;
+  constructor(private _service:APIService) {
+    this.baseUrl = environment.apiUrl;
+   }
 
   ngOnInit(): void {
     this.getSliderData();
@@ -16,8 +20,12 @@ export class SliderComponent implements OnInit {
   getSliderData(){
     this._service.getSliderData().subscribe(
       res => {
+        debugger;
         if(res.success){
             this.sliders = res.result.items;
+            this.sliders.forEach(elem => {
+              elem.imagePath = this.baseUrl + '/sliderimages/' + elem.imagePath
+            });
         }
       },
       err => {

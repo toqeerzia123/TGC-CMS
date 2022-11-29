@@ -47,7 +47,7 @@ namespace TGC.CMS.Slider
       var slider = await Repository.GetAllIncluding(x => x.Id == input.Id).FirstOrDefaultAsync();
       if (input.Image != null && input.Image.Length > 0)
       {
-        string uploads = Path.Combine(_environment.WebRootPath, "Content\\SliderImages");
+        string uploads = Path.Combine(_environment.WebRootPath, "sliderimages");
 
         var Filename = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString() + "_" + input.Image.FileName;
         var filePath = Path.Combine(uploads, Filename);
@@ -72,7 +72,7 @@ namespace TGC.CMS.Slider
 
         if (input.Image != null && input.Image.Length > 0)
         {
-          string uploads = Path.Combine(_environment.WebRootPath, "Content\\SliderImages");
+          string uploads = Path.Combine(_environment.WebRootPath, "sliderimages");
 
         var Filename = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString() + "_" + input.Image.FileName;
         var filePath = Path.Combine(uploads, Filename);

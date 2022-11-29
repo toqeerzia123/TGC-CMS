@@ -25,6 +25,7 @@ import { LandingPageComponent } from './features/landing-page/landing-page.compo
 import { BodyThemeDirective } from './core/directives/body-theme.directive';
 import { SliderComponent } from './features/slider/slider.component';
 import { PromotionComponent } from './features/promotion/promotion.component';
+import { InviteFriendComponent } from './features/invite-friend/invite-friend.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { PromotionComponent } from './features/promotion/promotion.component';
     LandingPageComponent,
     BodyThemeDirective,
     SliderComponent,
-    PromotionComponent
+    PromotionComponent,
+    InviteFriendComponent
   ],
   imports: [
     BrowserModule,

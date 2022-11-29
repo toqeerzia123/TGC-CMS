@@ -38,4 +38,8 @@ export class APIService {
     var url = environment.apiUrl  + '/api/services/app/Promotion/GetAll';
     return this.http.get<any>(url);
   }
+  getInviteData():Observable<any>{
+    var url = environment.apiUrl  + '/api/services/app/InviteFriendService/GetAll';
+    return this.http.get<any>(url);
+  }
 }

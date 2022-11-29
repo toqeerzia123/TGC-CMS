@@ -30,7 +30,7 @@ namespace TGC.CMS.InviteFriend
             var data = await Repository.GetAllIncluding(x => x.Id == input.Id).FirstOrDefaultAsync();
             if (input.Image != null && input.Image.Length > 0)
             {
-                string uploads = Path.Combine(_environment.WebRootPath, "Content\\InviteFriendImages");
+                string uploads = Path.Combine(_environment.WebRootPath, "invitefriendimages");
 
                 var Filename = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString() + "_" + input.Image.FileName;
                 var filePath = Path.Combine(uploads, Filename);
@@ -55,7 +55,7 @@ namespace TGC.CMS.InviteFriend
 
             if (input.Image != null && input.Image.Length > 0)
             {
-                string uploads = Path.Combine(_environment.WebRootPath, "Content\\InviteFriendImages");
+                string uploads = Path.Combine(_environment.WebRootPath, "invitefriendimages");
 
                 var Filename = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString() + "_" + input.Image.FileName;
                 var filePath = Path.Combine(uploads, Filename);
