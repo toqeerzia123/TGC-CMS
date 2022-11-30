@@ -17,47 +17,47 @@
                         <div class="alert alert-primary" role="alert">
                             <i class="fal fa-info-circle"></i>Let us know a little about yourself
                         </div>
-                        <form>
+                        <form [formGroup]="form" (ngSubmit)="onSubmit()">
                             <div class="mb-4 row">
                                 <label for="staticEmail" class="col-sm-3 col-form-label">Username</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputPassword" placeholder="e.g John007">
+                                    <input type="text" formControlName="userName" class="form-control" id="inputPassword" placeholder="e.g John007">
                                 </div>
                             </div>
                             <div class="mb-4 row">
                                 <label for="inputPassword" class="col-sm-3 col-form-label">Date of Birth</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputPassword" placeholder="02-12-1991">
+                                    <input type="text" formControlName="dob" class="form-control" id="inputPassword" placeholder="02-12-1991">
                                 </div>
                             </div>
                             <div class="mb-4 row">
                                 <label for="inputPassword" class="col-sm-3 col-form-label">Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputPassword" placeholder="Name">
+                                    <input type="text"  formControlName="fullName" class="form-control" id="inputPassword" placeholder="Name">
                                 </div>
                             </div>
                             <div class="mb-4 row">
                                 <label for="inputPassword" class="col-sm-3 col-form-label">About</label>
                                 <div class="col-sm-9">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Tell us more about yourself"></textarea>
+                                    <textarea class="form-control" formControlName="about" id="exampleFormControlTextarea1" rows="3" placeholder="Tell us more about yourself"></textarea>
                                 </div>
                             </div>
                             <div class="mb-4 row">
                                 <label for="inputPassword" class="col-sm-3 col-form-label">Gender</label>
                                 <div class="col-sm-9">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" aria-label="Default select example" formControlName="gender">
                                         <option selected>Select</option>
-                                        <option value="1">Male</option>
-                                        <option value="2">Female</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="mb-4 row">
                                 <label for="inputPassword" class="col-sm-3 col-form-label">Time Zone </label>
                                 <div class="col-sm-9">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" aria-label="Default select example" formControlName="timeZone">
                                         <option selected>Select</option>
-                                        <option value="1">+05:00 (GMT +5:00)  Karachi, Tashkent</option>
+                                        <option value="+05:00 (GMT +5:00)  Karachi, Tashkent">+05:00 (GMT +5:00)  Karachi, Tashkent</option>
                                     </select>
                                 </div>
                             </div>

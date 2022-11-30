@@ -9,5 +9,6 @@ namespace TGC.CMS.Users.Dto
     public class CodeVerificationDto
     {
         public string VerificationCode { get; set; }
+        public string UserName { get; set; }
     }
 }

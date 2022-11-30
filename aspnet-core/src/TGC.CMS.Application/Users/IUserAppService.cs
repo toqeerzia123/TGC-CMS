@@ -17,5 +17,6 @@ namespace TGC.CMS.Users
         Task<bool> EmailCodeVerification(CodeVerificationDto dto);
         Task<bool> ReSendEmailVerificationCode();
         Task<UserDto> CreateTargetUser(CreatetargetUserDto input);
+
     }
 }

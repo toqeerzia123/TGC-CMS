@@ -183,15 +183,18 @@ namespace TGC.CMS.Controllers
             return _tenantCache.GetOrNull(AbpSession.TenantId.Value)?.TenancyName;
         }
 
-        private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
-        {
+        private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)        {
             var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
-            if (loginResult.User.IsEmailConfirmed==false)
+          if(loginResult.User!=null)
             {
-         
-             throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(AbpLoginResultType.UserEmailIsNotConfirmed, usernameOrEmailAddress, tenancyName);
+                if (loginResult.User.IsEmailConfirmed == false)
+                {
 
+                    throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(AbpLoginResultType.UserEmailIsNotConfirmed, usernameOrEmailAddress, tenancyName);
+
+                }
             }
+       
 
 
             switch (loginResult.Result)
