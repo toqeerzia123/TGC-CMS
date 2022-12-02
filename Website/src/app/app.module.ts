@@ -26,6 +26,8 @@ import { BodyThemeDirective } from './core/directives/body-theme.directive';
 import { SliderComponent } from './features/slider/slider.component';
 import { PromotionComponent } from './features/promotion/promotion.component';
 import { InviteFriendComponent } from './features/invite-friend/invite-friend.component';
+import { ContentPagesComponent } from './features/content-pages/content-pages.component';
+import { ArticlesComponent } from './features/articles/articles.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { InviteFriendComponent } from './features/invite-friend/invite-friend.co
     BodyThemeDirective,
     SliderComponent,
     PromotionComponent,
-    InviteFriendComponent
+    InviteFriendComponent,
+    ContentPagesComponent,
+    ArticlesComponent
   ],
   imports: [
     BrowserModule,

@@ -21,6 +21,7 @@ body {
 }
 
 body.innerPg {background-image: url(../images/gamepad-bg.jpg);background-repeat: repeat-x;background-size: cover;}
+body.innerPg2 {background-image: url(../images/gamepad-bg.jpg);background-repeat: repeat-x;background-size: cover;}
 
 nav.mainNav a.nav-link {font-family: 'Bebas Neue';font-weight: bold;font-style: normal;font-size: 1.4rem;color: #fefefe !important;}
 nav.mainNav a.nav-link:hover {opacity: .75;}
@@ -69,6 +70,11 @@ background-image:url(../images/icoPrev.png);
 .topContent .joyRight {position: absolute;top: 0px;right: 0px;z-index: 7;}
 body.homePg .content {background-image: url(../images/img-bodyBG.jpg);background-repeat: repeat;background-size: cover;background-position: top center;}
 body.innerPg .content {background-image: url(../images/gamepad-bg.png);background-repeat: no-repeat;background-size: 100%;background-position: top center;}
+body.innerPg2 .content {background-image: url(../images/gamepad-bg2.png);background-repeat: no-repeat;background-size: 100%;background-position: top center;}
+body.innerPg2 .content .gameBg {background-image: url(../images/gamepad-bg2.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: top center;}
 body.innerPg .mainNav {/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#00163e+0,fe0000+100 */
     background: #00163e;
     /* Old browsers */
@@ -80,6 +86,26 @@ body.innerPg .mainNav {/* Permalink - use to edit and share this gradient: https
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00163e', endColorstr='#fe0000', GradientType=1);
     /* IE6-9 */}
+.secNav {/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#00163e+0,fe0000+100 */
+    background: #00163e;
+    /* Old browsers */
+    background: -moz-linear-gradient(left, #00163e 0%, #fe0000 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #00163e 0%, #fe0000 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #00163e 0%, #fe0000 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00163e', endColorstr='#fe0000', GradientType=1);
+    /* IE6-9 */}
+.secNav a, .secNav .dropdown a {    font-family: 'Proxima Nova Rg';
+    font-weight: normal;
+    font-style: normal;font-size: 1.125rem;color:#D1D1D1;opacity: .67;padding: 15px 25px;border-bottom: 2px solid transparent;}
+.secNav a:hover, .secNav a.active {opacity: 1;color: #fff;border-bottom: 2px solid #fff;}
+.secNav .dropdown a {background-color: transparent;color: #fff;opacity: 1;}
+.secNav .dropdown a .fa-cog {margin-right: 10px;}
+.secNav .dropdown a:hover {border-bottom-color: transparent;color: #fff;}
+.secNav .dropdown ul li a:hover {background-color: #1e2126;}
+
 .upcomingTournaments {margin-top: 13rem;position: relative;z-index: 99;}
 .upcomingTournaments h3 {font-size: 2.6rem;color: #fff;}
 .langSel a.nav-link {position: absolute;
@@ -232,7 +258,7 @@ img.comLatestImg {width: 100%;}
 .footer .FooterNav h5 {    font-family: 'Bebas Neue';
     font-weight: bold;
     font-style: normal;color: #fff;font-size: 4.2rem;}
-.footer .FooterNav ul li a {color: #fff;font-size: 2.8rem;    font-family: 'Bebas Neue';font-weight: 300;font-style: normal;text-decoration: none;}
+.footer .FooterNav ul li a {color: #fff;font-size: 2.6rem;    font-family: 'Bebas Neue';font-weight: 300;font-style: normal;text-decoration: none;}
 .footer .FooterNav ul li a:hover {opacity: .75;}
 .socialBar {margin-top: 7rem;}
 .socialBar ul li a .fab {font-size: 1.4rem;}
@@ -401,6 +427,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe0402', end
 .contentShort h6 {font-size: 1.4rem;margin-bottom: 1rem;}
 .headerInner {text-align: center;padding-top: 7rem;min-height: 305px;}
 .watchUsPg .headerInner {background-image: url(../images/watchus-bg.jpg);background-position: center center;background-repeat: no-repeat;background-size: cover;}
+.dashboardPg .headerInner {background-image: url(../images/dashboard-bg.jpg);background-position: center center;background-repeat: no-repeat;background-size: cover;}
+.leaderboardPg .headerInner {background-image: url(../images/leaderboard-bg.jpg);background-position: center center;background-repeat: no-repeat;background-size: cover;}
+.contentPg .headerInner {background-image: url(../images/contentpages-bg.jpg);background-position: center center;background-repeat: no-repeat;background-size: cover;}
+.metaversePg .headerInner {background-image: url(../images/metaverse-bg.jpg);background-position: center center;background-repeat: no-repeat;background-size: cover;}
 .headerInner h5 {font-size: 4rem;}
 .watchBox {background-color: #070C21;text-align: center;}
 .watchBox .contentArea p {background-color: #653DA8;-webkit-border-radius: 50%;
@@ -431,3 +461,104 @@ body.blogPg .blogImg.game3 {background-image: url(../images/img-blog-header4.jpg
 body.blogPg .blogImg.game4 {background-image: url(../images/img-blog-header5.jpg);}
 body.blogPg .blogImg.game5 {background-image: url(../images/img-blog-header6.jpg);}
 body.blogPg .blogImg.newsbig {width: 100%;height: 291px;background-position: top center;background-size: cover;background-image: url(../images/img-blog-news-big.jpg);}
+.profileCard {background-color: #162541;border: 2px solid #3EAAD5;text-align: center;min-height: 490px;}
+.profileCard.rankTwo, .profileCard.rankOne, .profileCard.rankThree {min-height: 420px;}
+.profileCard.package {border-color: #4231FD;}
+.profileCard .pic, .grid .pic {background: rgb(254,4,2);
+background: -moz-linear-gradient(left,  rgba(254,4,2,1) 0%, rgba(66,49,253,1) 100%);
+background: -webkit-linear-gradient(left,  rgba(254,4,2,1) 0%,rgba(66,49,253,1) 100%);
+background: linear-gradient(to right,  rgba(254,4,2,1) 0%,rgba(66,49,253,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe0402', endColorstr='#4231fd',GradientType=1 );-webkit-border-radius: 50%;border-radius: 50%;width: 125px;height: 125px;margin: 0 auto;padding-top: 2.1rem;position: relative;}
+.profileCard .pic .fa-user {font-size: 3rem;}
+.profileCard .pic a.edit {background-color: #29406A;-webkit-border-radius: 50%;
+border-radius: 50%;color: #fff;-webkit-box-shadow: 2px 2px 2px 2px rgba(0,0,0,.02);
+box-shadow: 2px 2px 2px 2px rgba(0,0,0,.02);position: absolute;right: 0px;top: 0px;padding: 10px 12px;}
+.profileCard h5 {font-size: 1.875rem;}
+.profileCard p {color: #8591A5;font-size: 1rem;    font-family: 'Proxima Nova Rg';font-weight: normal;font-style: normal;}
+.sectionSep {background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 19%, rgba(255,255,255,1) 82%, rgba(255,255,255,1) 83%, rgba(255,255,255,0) 100%);
+background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 19%,rgba(255,255,255,1) 82%,rgba(255,255,255,1) 83%,rgba(255,255,255,0) 100%);
+background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 19%,rgba(255,255,255,1) 82%,rgba(255,255,255,1) 83%,rgba(255,255,255,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 );height: 4px !important;margin: 0px;}
+.profileCard .bottomContent {text-align: left;padding: 2rem 3rem;}
+.profileCard.rankTwo .bottomContent, .profileCard.rankOne .bottomContent, .profileCard.rankThree .bottomContent {text-align: left;padding: 0rem 3rem 2rem 3rem;}
+.btn.purple {background: rgb(254,4,2);
+background: -moz-linear-gradient(left,  rgba(254,4,2,1) 0%, rgba(66,49,253,1) 100%);
+background: -webkit-linear-gradient(left,  rgba(254,4,2,1) 0%,rgba(66,49,253,1) 100%);
+background: linear-gradient(to right,  rgba(254,4,2,1) 0%,rgba(66,49,253,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe0402', endColorstr='#4231fd',GradientType=1 );color: #fff;width: 100%;display: block;    font-family: 'AktivGrotesk';
+    font-weight: 300;
+    font-style: normal;color: #fff;margin-bottom: 35px;}
+.profileCard.package {}
+.profileCard.package h5 {font-size: 2.625rem;}
+.profileCard.package h6 {font-size: 2.25rem;font-family: 'AktivGrotesk';font-weight: 300;font-style: normal;}
+.btn.purple span {    font-family: 'AktivGrotesk';
+    font-weight: bold;
+    font-style: normal;font-size: 2rem;margin:0 1rem;}
+.bottomContent h6 {font-size: 1rem !important;    font-family: 'Proxima Nova Rg' !important;font-weight: normal !important;font-style: normal !important;}
+.recentGames {margin-top: 4rem !important;}
+.recentTournamenets {text-align: left;margin-top: 4rem !important;}
+table {width: 100%;}
+.table-striped thead {background: rgb(11,21,59);
+background: -moz-linear-gradient(left,  rgba(11,21,59,1) 0%, rgba(0,22,62,1) 16%, rgba(254,0,0,1) 100%);
+background: -webkit-linear-gradient(left,  rgba(11,21,59,1) 0%,rgba(0,22,62,1) 16%,rgba(254,0,0,1) 100%);
+background: linear-gradient(to right,  rgba(11,21,59,1) 0%,rgba(0,22,62,1) 16%,rgba(254,0,0,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0b153b', endColorstr='#fe0000',GradientType=1 );font-size: 1.5rem;color: #fff;font-family: 'Bebas Neue Book';font-weight: normal;font-style: normal;}
+.table-striped thead tr th {padding: .75rem;border-bottom: none;}
+.table tr td {font-size: 1.5rem;color: #fff;font-family: 'Bebas Neue Book';font-weight: normal;font-style: normal;padding: .75rem;border-bottom: 2px solid #0a1332; background-color: rgba(255, 255, 255, 0.05);vertical-align: middle;}
+.table tr:nth-child(odd) td {background-color: rgba(255, 255, 255, 0.1);}
+.rankTwo .contentArea .fa-chess-king {font-size: 1.5rem;color: #fff;}
+.profileCard.rankTwo .pic {width: 75px;height: 75px;padding-top: 1.5rem;}
+.profileCard.rankTwo .pic .fa-user {font-size: 1.875rem;}
+.profileCard.rankTwo .pic span {background-image: url(../images/badge-white.png);background-repeat: no-repeat;background-position: center center;width: 22px;height: 23px;color:#162541;position: absolute;top: 0px;right: 0px;display: inline-block;font-size: .75rem;    font-family: 'Proxima Nova Rg';
+    font-weight: normal;
+    font-style: normal;font-weight: bold;padding-top: 4px;}
+.rankTwo .bottomContent p {    font-family: 'Proxima Nova Rg';
+    font-weight: normal;
+    font-style: normal;font-size: 1.2rem;position: relative;
+    top: 8px;}
+.rankTwo .bottomContent img.leaderboardSep {margin: 0px 20px;}
+.rankTwo .bottomContent p.won {color: #16BB48;}
+.rankTwo .bottomContent p.loss {color: #FE0402;}
+
+
+.rankOne .contentArea .fa-chess-king {font-size: 2.5rem;color: #FFE352;}
+.profileCard.rankOne .pic {width: 125px;height: 125px;padding-top: 1.5rem;}
+.profileCard.rankOne .pic .fa-user {font-size: 3.5rem;}
+.profileCard.rankOne .pic span {background-image: url(../images/badge-yellow.png);background-repeat: no-repeat;background-position: center center;width: 41px;height: 42px;color:#162541;position: absolute;top: 0px;right: 0px;display: inline-block;font-size: 1.5rem;    font-family: 'Proxima Nova Rg';
+    font-weight: normal;
+    font-style: normal;font-weight: bold;padding-top: 4px;}
+.rankOne .bottomContent p {    font-family: 'Proxima Nova Rg';
+    font-weight: normal;
+    font-style: normal;font-size: 1.2rem;position: relative;
+    top: 8px;}
+.rankOne .bottomContent img.leaderboardSep {margin: 0px 20px;}
+.rankOne .bottomContent p.won {color: #16BB48;}
+.rankOne .bottomContent p.loss {color: #FE0402;}
+.rankOne {border-color: #FFE352;}
+
+.rankTwo, .rankThree {margin-top: 8rem !important;}
+
+
+.rankThree .contentArea .fa-chess-king {font-size: 1.5rem;color: #F3AC63;}
+.profileCard.rankThree .pic {width: 75px;height: 75px;padding-top: 1.5rem;}
+.profileCard.rankThree .pic .fa-user {font-size: 1.875rem;}
+.profileCard.rankThree .pic span {background-image: url(../images/badge-rankThree.png);background-repeat: no-repeat;background-position: center center;width: 22px;height: 23px;color:#162541;position: absolute;top: 0px;right: 0px;display: inline-block;font-size: .75rem;    font-family: 'Proxima Nova Rg';
+    font-weight: normal;
+    font-style: normal;font-weight: bold;padding-top: 4px;}
+.rankThree .bottomContent p {    font-family: 'Proxima Nova Rg';
+    font-weight: normal;
+    font-style: normal;font-size: 1.2rem;position: relative;
+    top: 8px;}
+.rankThree .bottomContent img.leaderboardSep {margin: 0px 20px;}
+.rankThree .bottomContent p.won {color: #16BB48;}
+.rankThree .bottomContent p.loss {color: #FE0402;}
+.grid .pic {width: 55px;height: 55px;text-align: center;padding-top: 10px;margin-right: 20px;}
+.table.userPic .name {padding-top: 11px;}
+.table.userPic tr td.green {color: #16BB48;}
+.table.userPic tr td.red {color: #FE0402;}
+.metaverse .txtBlock {padding-top: 0px;}
+.metaverse h3 {font-size: 1.875rem !important;font-family: 'Bebas Neue' !important;
+    font-weight: normal !important;
+    font-style: normal !important;}
+.metaverse .txtBlock p {padding-right: 12rem;}
+.contentShort p {font-size: 1.2rem;}
