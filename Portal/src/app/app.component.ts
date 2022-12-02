@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
+import { NotifierOptions } from 'angular-notifier';
 import { BaseComponent } from './core/components/base/base.component';
 import { LayoutOptionsModel } from './core/models/layout.model';
 
@@ -10,8 +11,9 @@ import { LayoutOptionsModel } from './core/models/layout.model';
 })
 export class AppComponent implements OnInit {
   title = 'the-game-company';
-
+  
   constructor() {
+    
   } 
   ngOnInit(): void {
   }

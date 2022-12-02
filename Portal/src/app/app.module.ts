@@ -30,9 +30,50 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import { NotifierModule } from 'angular-notifier';
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { JwtModule } from '@auth0/angular-jwt';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
 
+const customNotifierOptions: NotifierOptions = {
+  position: {
+		horizontal: {
+			position: 'right',
+			distance: 12
+		},
+		vertical: {
+			position: 'top',
+			distance: 12,
+			gap: 10
+		}
+	},
+  theme: 'material',
+  behaviour: {
+    autoHide: 5000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +97,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     BodyThemeDirective,
     SliderComponent,
     PromotionComponent,
+    DashboardComponent,
     InviteFriendComponent
   ],
   imports: [
@@ -63,7 +105,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NotifierModule,
+    NotifierModule.withConfig(customNotifierOptions),
     AppRoutingModule,
     HttpClientModule,
     JwtModule.forRoot({

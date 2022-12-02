@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   submitted = false;
   error = '';
   successmsg = false;
-	private notifier: NotifierService;
   // set the currenr year
   year: number = new Date().getFullYear();
   usersignin:Signin=new  Signin() ;
@@ -34,10 +33,10 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     debugger;
-    this.notifierService.notify('success', 'You are awesome! I mean it!',);
+   
           this._service.login(this.signinform.value).subscribe(          
             data => {
-              this.notifierService.notify('success', 'You are awesome! I mean it!', 'THAT_NOTIFICATION_ID');
+              this.notifierService.notify('success', 'You are awesome! I mean it!');
               localStorage.setItem("token",data.result.accessToken)
               this.router.navigate(['/dashboard']);
               
@@ -46,9 +45,10 @@ export class LoginComponent implements OnInit {
                       debugger;
               this.error = error ? error : '';
               alert(error.error.error.details )
+              this.notifierService.notify('error','error.error.error.details');
               if(error.error.error.details=="Your email address is not confirmed. You can not login.")
               {
-             
+                this.notifierService.notify('warning', 'You are awesome! I mean it!');
                 this.router.navigate(['/verify-code']);
               }
 

@@ -38,7 +38,7 @@ const routes: Routes = [
     path: 'dashboard',
     pathMatch: 'full',
     component:DashboardComponent,
-    data:{layout : layout.buildFullLayout(),body_class:"watchUsPg innerPg"}
+    data:{layout : layout.buildFullLayout(),body_class:"dashboardPg innerPg"}
   },
   {
     path: 'blogs',

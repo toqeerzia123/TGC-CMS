@@ -1,3 +1,308 @@
-<p>
-  dashboard works!
-</p>
+<ng-container>
+  <app-navbar></app-navbar>
+</ng-container>
+
+    <hr class="pageSeprator m-0">
+    <div class="headerInner" bodyTheme>
+        <h5>FAROOQ - Profile Info</h5>
+    </div>
+    <div class="secNav">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <a href="#" class="active">Profile</a>
+                <a href="#">Results</a>
+                <a href="#">Teams</a>
+                <a href="#">Tournaments</a>
+                <a href="#">Awards</a>
+                <a href="#">Transaction History</a>
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fal fa-cog"></i>Settings
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">My Games</a></li>
+                        <li><a class="dropdown-item" href="#">My Tournaments</a></li>
+                        <li><a class="dropdown-item" href="#">More Options</a></li>
+                        <li><a class="dropdown-item" href="#">More Options</a></li>
+                        <li><a class="dropdown-item" href="#">More Options</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <div class="profileCard mt-5 pt-5">
+                        <div class="contentArea p-3">
+                            <div class="pic mb-4"><i class="fas fa-user"></i><a href="#" class="edit"><i class="far fa-edit"></i></a></div>
+                            <h5 class="mb-3">Farooq</h5>
+                            <p>5000 Tokens</p>
+                        </div>
+                        <hr class="sectionSep">
+                        <div class="bottomContent">
+                            <h6>About</h6>
+                            <p>I am new in the gaming field and
+                                I love to play COD</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="profileCard package mt-5 pt-5">
+                        <div class="contentArea p-3">
+                            <h5 class="mb-4">My PAckage</h5>
+                            <h6 class="mb-4">5 $</h6>
+                            <a href="#" class="btn purple">Save<span>5 <sup>%</sup></span></a>
+                        </div>
+                        <hr class="sectionSep">
+                        <div class="bottomContent">
+                            <h6>Tokens</h6>
+                            <p>2000 Tokens</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="topGames recentGames">
+                <h5>Recent Games</h5>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="topGame">
+                            <div class="d-flex flex-column bd-highlight mb-4">
+                                <div class="p-0 bd-highlight">
+                                    <img src="assets/images/img-topgame-division.jpg" alt="Image" class="topGameImg">
+                                </div>
+                                <div class="p-0 bd-highlight">
+                                    <div class="card p-4">
+                                        <h3 class="mb-1">THE DIVISION</h3>
+                                        <p class="mb-0">Purchase</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="topGame">
+                            <div class="d-flex flex-column bd-highlight mb-4">
+                                <div class="p-0 bd-highlight">
+                                    <img src="assets/images/img-topgame-codii.jpg" alt="Image" class="topGameImg">
+                                </div>
+                                <div class="p-0 bd-highlight">
+                                    <div class="card p-4">
+                                        <h3 class="mb-1">cOD Wii</h3>
+                                        <p class="mb-0">Purchase</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="upcomingTournaments recentTournamenets">
+                <h5 class="mb-2">Recent Tournamenets</h5>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="d-flex flex-column bd-highlight mb-4">
+                            <div class="p-0 bd-highlight">
+                                <div class="gameImgSmall game1">
+                                    <p class="p-3">17 <span>NOV</span></p>
+                                </div>
+                            </div>
+                            <div class="p-0 bd-highlight">
+                                <div class="card p-3">
+                                    <p class="mb-0 prize text-center">1000$ <span>prize</span></p>
+                                    <p class="mb-0 format text-center">1v1<span>FORMAT</span></p>
+                                    <em class="text-center">Single elimination</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="d-flex flex-column bd-highlight mb-4">
+                            <div class="p-0 bd-highlight">
+                                <div class="gameImgSmall game2">
+                                    <p class="p-3">28 <span>NOV</span></p>
+                                </div>
+                            </div>
+                            <div class="p-0 bd-highlight">
+                                <div class="card p-3">
+                                    <p class="mb-0 prize text-center">1000$ <span>prize</span></p>
+                                    <p class="mb-0 format text-center">1v1<span>FORMAT</span></p>
+                                    <em class="text-center">Single elimination</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="d-flex flex-column bd-highlight mb-4">
+                            <div class="p-0 bd-highlight">
+                                <div class="gameImgSmall game3">
+                                    <p class="p-3">5 <span>Dec</span></p>
+                                </div>
+                            </div>
+                            <div class="p-0 bd-highlight">
+                                <div class="card p-3">
+                                    <p class="mb-0 prize text-center">1000$ <span>prize</span></p>
+                                    <p class="mb-0 format text-center">1v1<span>FORMAT</span></p>
+                                    <em class="text-center">Double elimination</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gridCont mt-5">
+                <h5 class="mb-2">Recent Activity</h5>
+                <div class="grid">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">DATE</th>
+                                <th scope="col">Game</th>
+                                <th scope="col">Tournament</th>
+                                <th scope="col">Prize</th>
+                                <th scope="col">Tokens</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>November 7, 2022</td>
+                                <td>The Division</td>
+                                <td>1V1 Single Elimination</td>
+                                <td>$1000</td>
+                                <td>9000 Tokens</td>
+                            </tr>
+                            <tr>
+                                <td>November 7, 2022</td>
+                                <td>The Division</td>
+                                <td>1V1 Single Elimination</td>
+                                <td>$1000</td>
+                                <td>9000 Tokens</td>
+                            </tr>
+                            <tr>
+                                <td>November 7, 2022</td>
+                                <td>The Division</td>
+                                <td>1V1 Single Elimination</td>
+                                <td>$1000</td>
+                                <td>9000 Tokens</td>
+                            </tr>
+                            <tr>
+                                <td>November 7, 2022</td>
+                                <td>The Division</td>
+                                <td>1V1 Single Elimination</td>
+                                <td>$1000</td>
+                                <td>9000 Tokens</td>
+                            </tr>
+                            <tr>
+                                <td>November 7, 2022</td>
+                                <td>The Division</td>
+                                <td>1V1 Single Elimination</td>
+                                <td>$1000</td>
+                                <td>9000 Tokens</td>
+                            </tr>
+                            <tr>
+                                <td>November 7, 2022</td>
+                                <td>The Division</td>
+                                <td>1V1 Single Elimination</td>
+                                <td>$1000</td>
+                                <td>9000 Tokens</td>
+                            </tr>
+                            <tr>
+                                <td>November 7, 2022</td>
+                                <td>The Division</td>
+                                <td>1V1 Single Elimination</td>
+                                <td>$1000</td>
+                                <td>9000 Tokens</td>
+                            </tr>
+                            <tr>
+                                <td>November 7, 2022</td>
+                                <td>The Division</td>
+                                <td>1V1 Single Elimination</td>
+                                <td>$1000</td>
+                                <td>9000 Tokens</td>
+                            </tr>
+                            <tr>
+                                <td>November 7, 2022</td>
+                                <td>The Division</td>
+                                <td>1V1 Single Elimination</td>
+                                <td>$1000</td>
+                                <td>9000 Tokens</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <section class="footerInner p-4">
+            <div class="bgImg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="footer">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="footerLogoCont">
+                                            <img src="assets/images/logo-footer.png" alt="Logo" class="logoFooter">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+                                        <div class="FooterNav pt-5 mt-4">
+                                            <h5>Games</h5>
+                                            <ul class="list-unstyled">
+                                                <li><a href="#">dota 2</a></li>
+                                                <li><a href="#">ASSASSIN CREED</a></li>
+                                                <li><a href="#">WATCH DOGS</a></li>
+                                                <li><a href="#">TOMB RAIDER</a></li>
+                                                <li><a href="#">call of duty wii</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+                                        <div class="FooterNav pt-5 mt-4">
+                                            <h5>Navigation</h5>
+                                            <ul class="list-unstyled">
+                                                <li><a href="#">watch</a></li>
+                                                <li><a href="#">team finder</a></li>
+                                                <li><a href="#">articles</a></li>
+                                                <li><a href="#">about us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-2">
+                                        <div class="FooterNav pt-5 mt-4">
+                                            <h5>support</h5>
+                                            <ul class="list-unstyled">
+                                                <li><a href="#">Q/A</a></li>
+                                                <li><a href="#">WORK WITH US</a></li>
+                                                <li><a href="#">PRIVACY POLICY</a></li>
+                                                <li><a href="#">USER GUIDE</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="socialBar">
+                                <div class="d-flex justify-content-between">
+                                    <h5>thegamecompany 2022</h5>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li class="list-inline-item"><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
