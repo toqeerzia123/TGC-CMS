@@ -1,5 +1,101 @@
 
-        <div class="companyLatest">
+       <ng-container *ngIf="isViewAll">
+        <app-navbar></app-navbar>
+        <hr class="pageSeprator m-0">
+        <div class="headerInner" bodyTheme>
+            <h5>Announcements</h5>
+        </div>
+    
+        <section class="content">
+            <div class="container">
+                <div class="latestNews contentShort mt-5">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4" *ngFor="let item of tournaments; let i=index;">
+                            <div class="blogImg newsbig mb-3" [ngStyle]="loadImage2(item)">
+                                <div class="info shadowBlack">
+                                    <a [routerLink]="['/blog-details']" [queryParams]="{ p: item?.id}">
+                                        <h5>{{item?.title}}</h5>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="footerInner p-4">
+                <div class="bgImg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="footer">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-4">
+                                            <div class="footerLogoCont">
+                                                <img src="assets/images/logo-footer.png" alt="Logo" class="logoFooter">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-3">
+                                            <div class="FooterNav pt-5 mt-4">
+                                                <h5>Games</h5>
+                                                <ul class="list-unstyled">
+                                                    <li><a href="#">dota 2</a></li>
+                                                    <li><a href="#">ASSASSIN CREED</a></li>
+                                                    <li><a href="#">WATCH DOGS</a></li>
+                                                    <li><a href="#">TOMB RAIDER</a></li>
+                                                    <li><a href="#">call of duty wii</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-3">
+                                            <div class="FooterNav pt-5 mt-4">
+                                                <h5>Navigation</h5>
+                                                <ul class="list-unstyled">
+                                                    <li><a href="#">watch</a></li>
+                                                    <li><a href="#">team finder</a></li>
+                                                    <li><a href="#">articles</a></li>
+                                                    <li><a href="#">about us</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-2">
+                                            <div class="FooterNav pt-5 mt-4">
+                                                <h5>support</h5>
+                                                <ul class="list-unstyled">
+                                                    <li><a href="#">Q/A</a></li>
+                                                    <li><a href="#">WORK WITH US</a></li>
+                                                    <li><a href="#">PRIVACY POLICY</a></li>
+                                                    <li><a href="#">USER GUIDE</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="socialBar">
+                                    <div class="d-flex justify-content-between">
+                                        <h5>thegamecompany 2022</h5>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li class="list-inline-item"><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    
+    </ng-container>
+       
+    <ng-container *ngIf="!isViewAll">
+        <div class="companyLatest" *ngIf="!isViewAll">
             <div class="row">
                 <div class="col-sm-12 col-md-12">
                     <div class="title mb-5">
@@ -28,8 +124,9 @@
             <div class="row">
                 <div class="col-sm-12 col-md-12">
                     <div class="actionBtns mt-4 mb-4">
-                        <a href="#" class="btn btn-primary">View More</a>
+                        <a [routerLink]="['/latest-news']" class="btn btn-primary">View More</a>
                     </div>
                 </div>
             </div>
         </div>
+    </ng-container>

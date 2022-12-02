@@ -1,0 +1,101 @@
+<ng-container>
+    <app-navbar></app-navbar>
+</ng-container>
+
+<hr class="pageSeprator m-0">
+<div class="headerInner" bodyTheme>
+    <h5>Game Dev</h5>
+</div>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <ng-container *ngFor="let item of data; let i=index;">
+                <div class="col-sm-12 col-md-4">
+                    <div class="d-flex flex-column bd-highlight mb-4">
+                        <div class="p-0 bd-highlight">
+                            <div class="gameImgSmall game1" [ngStyle]="loadImage(i)">
+                                <p class="p-3">17 <span>NOV</span></p>
+                            </div>
+                        </div>
+                        <div class="p-0 bd-highlight">
+                            <div class="card p-3">
+                                <p class="mb-0 prize text-center">{{item?.amount}}$ <span>{{item?.prize}}</span></p>
+                                <p class="mb-0 format text-center"><span>{{item?.title}}</span></p>
+                                <em class="text-center">{{item?.elimination}}</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>  
+        </div>
+    </div>
+    <section class="footerInner p-4">
+        <div class="bgImg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="footer">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="footerLogoCont">
+                                        <img src="assets/images/logo-footer.png" alt="Logo" class="logoFooter">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <div class="FooterNav pt-5 mt-4">
+                                        <h5>Games</h5>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">dota 2</a></li>
+                                            <li><a href="#">ASSASSIN CREED</a></li>
+                                            <li><a href="#">WATCH DOGS</a></li>
+                                            <li><a href="#">TOMB RAIDER</a></li>
+                                            <li><a href="#">call of duty wii</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <div class="FooterNav pt-5 mt-4">
+                                        <h5>Navigation</h5>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">watch</a></li>
+                                            <li><a href="#">team finder</a></li>
+                                            <li><a href="#">articles</a></li>
+                                            <li><a href="#">about us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-2">
+                                    <div class="FooterNav pt-5 mt-4">
+                                        <h5>support</h5>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Q/A</a></li>
+                                            <li><a href="#">WORK WITH US</a></li>
+                                            <li><a href="#">PRIVACY POLICY</a></li>
+                                            <li><a href="#">USER GUIDE</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="socialBar">
+                            <div class="d-flex justify-content-between">
+                                <h5>thegamecompany 2022</h5>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

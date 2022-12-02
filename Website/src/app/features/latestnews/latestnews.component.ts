@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TournamentModel } from 'src/app/core/models/tournament.model';
 import { APIService } from 'src/app/core/services/api.service';
 
@@ -9,15 +10,26 @@ import { APIService } from 'src/app/core/services/api.service';
 export class LatestnewsComponent implements OnInit {
 
   tournaments: TournamentModel[] = new Array();
+  isViewAll : boolean = false;
+  constructor(private _service:APIService, private _route : ActivatedRoute) {
 
-  constructor(private _service:APIService) { }
+   }
 
   ngOnInit(): void {
+  
+    this._route.data.subscribe(
+      res =>{
+        if(res["viewall"] == true){
+          this.isViewAll = true;
+        }
+      }
+  );
+
     this._service.getAllCategories().subscribe(
       res => {
           var categories = res.result.items as Array<any>;
           let item = categories.find(f => f.categoryName == 'Announcements');
-          this.getLatestNews(item.id);
+          this.getallAnnouncements(item.id);
       },
       err => {
 
@@ -25,7 +37,7 @@ export class LatestnewsComponent implements OnInit {
     );
   }
   
-  getLatestNews(categId:number){
+  getallAnnouncements(categId:number){
     this._service.getPostsByCategory(categId).subscribe(
       res => {
         if(res.success){
@@ -36,9 +48,18 @@ export class LatestnewsComponent implements OnInit {
       }
     )
   }
+
+
   loadImage(index:number){
     let images = this.tournaments[index].postImages;
     return images?.length > 0 ? images[0].imageUrl : '';
  }
+
+ loadImage2(item:any){
+  let images = item?.postImages;
+  return images?.length > 0 ? {'background-image':'url('+ images[0].imageUrl +')'} : {'background-image':'url()'};
+}
+
+
 
 }

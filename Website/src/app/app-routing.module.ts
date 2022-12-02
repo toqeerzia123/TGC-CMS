@@ -6,9 +6,13 @@ import { RegisterComponent } from './account/register/register.component';
 import { VerifyCodeComponent } from './account/verify-code/verify-code.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { LayoutModel } from './core/models/layout.model';
+import { ArticlesComponent } from './features/articles/articles.component';
 import { BlogDetailsComponent } from './features/blogs/blog-details/blog-details.component';
 import { BlogsComponent } from './features/blogs/blogs.component';
+import { ContentPagesComponent } from './features/content-pages/content-pages.component';
+import { GamesComponent } from './features/games/games.component';
 import { LandingPageComponent } from './features/landing-page/landing-page.component';
+import { LatestnewsComponent } from './features/latestnews/latestnews.component';
 import { PricingComponent } from './features/pricing/pricing.component';
 import { TournamentsComponent } from './features/tournaments/tournaments.component';
 import { WatchusComponent } from './features/watchus/watchus.component';
@@ -74,6 +78,30 @@ const routes: Routes = [
     pathMatch: 'full',
     component:VerifyCodeComponent,
     data:{body_class:"verifyCodePg innerPg"}
+  },
+  {
+    path: 'tournaments',
+    pathMatch: 'full',
+    component:TournamentsComponent,
+    data:{body_class:"homePg contentPg innerPg",viewall:true}
+  },
+  {
+    path: 'latest-news',
+    pathMatch: 'full',
+    component:LatestnewsComponent,
+    data:{body_class:"blogPg contentPg innerPg",viewall:true}
+  },
+  {
+    path: 'games',
+    pathMatch: 'full',
+    component:GamesComponent,
+    data:{body_class:"homePg contentPg innerPg",viewall:true}
+  },
+  {
+    path: 'articles',
+    pathMatch: 'full',
+    component:ArticlesComponent,
+    data:{body_class:"blogPg contentPg innerPg",viewall:true}
   }
 ];
 

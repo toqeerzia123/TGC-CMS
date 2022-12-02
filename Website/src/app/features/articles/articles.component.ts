@@ -4,19 +4,18 @@ import { TournamentModel } from 'src/app/core/models/tournament.model';
 import { APIService } from 'src/app/core/services/api.service';
 
 @Component({
-  selector: 'tournaments',
-  templateUrl: './tournaments.component.html'
+  selector: 'app-articles',
+  templateUrl: './articles.component.html'
 })
-export class TournamentsComponent implements OnInit {
+export class ArticlesComponent implements OnInit {
 
-  tournaments: TournamentModel[] = new Array();
+  articles: TournamentModel[] = new Array();
   isViewAll : boolean = false;
 
-  constructor(private _service:APIService, private _route : ActivatedRoute) {
-    
-   }
+  constructor(private _service:APIService, private _route:ActivatedRoute) { }
 
   ngOnInit(): void {
+
     this._route.data.subscribe(
       res =>{
         if(res["viewall"] == true){
@@ -28,8 +27,8 @@ export class TournamentsComponent implements OnInit {
     this._service.getAllCategories().subscribe(
       res => {
           var categories = res.result.items as Array<any>;
-          let item = categories.find(f => f.categoryName == 'Tournaments');
-          this.getallTournaments(item.id);
+          let item = categories.find(f => f.categoryName == 'Articles');
+          this.getAllArticles(item.id);
       },
       err => {
 
@@ -37,11 +36,11 @@ export class TournamentsComponent implements OnInit {
     );
   }
   
-  getallTournaments(categId : number){
+  getAllArticles(categId:number){
     this._service.getPostsByCategory(categId).subscribe(
       res => {
         if(res.success){
-            this.tournaments = res.result.items;
+            this.articles = res.result.items;
         }
       },
       err => {
@@ -49,9 +48,10 @@ export class TournamentsComponent implements OnInit {
     )
   }
 
-  loadImage(index:number){
-     let images = this.tournaments[index].postImages;
-     return images?.length > 0 ? {'background-image':'url('+ images[0].imageUrl +')'} : {'background-image':'url(../../../assets/images/default-image.jpg)'};
-  }
+  loadImage(item:any){
+    let images = item?.postImages;
+    return images?.length > 0 ? {'background-image':'url('+ images[0].imageUrl +')'} : {'background-image':'url()'};
+ }
+ 
 
 }
