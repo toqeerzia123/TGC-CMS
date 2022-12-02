@@ -73,11 +73,11 @@ namespace TGC.CMS.Users
             var user = ObjectMapper.Map<User>(input);
             user.TenantId = AbpSession.TenantId;
             user.IsEmailConfirmed = false;
-            //user.AccountId = await CreateAccountId(input.UserName);
+            user.AccountId = await CreateAccountId(input.UserName);
             Random objRandom = new Random();
             var VerificationCode = objRandom.Next(10000, 99999).ToString();
             user.EmailConfirmationCode = VerificationCode;
-            //user.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
+            user.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
             await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
             CheckErrors(await _userManager.CreateAsync(user, input.Password));
             if (input.RoleNames != null)
@@ -103,7 +103,13 @@ namespace TGC.CMS.Users
         {
             CheckUpdatePermission();
             var user = await _userManager.GetUserByIdAsync(input.Id);
-            MapToEntity(input, user);
+          //  MapToEntity(input, user);
+            user.TimeZone = input.TimeZone;
+            user.About=input.About;
+            user.FullName = input.FullName;
+            user.DOB=input.DOB;
+            user.UserName=input.UserName;
+            user.Gender = input.Gender;
             CheckErrors(await _userManager.UpdateAsync(user));
             if (input.RoleNames != null)
             {
@@ -241,15 +247,17 @@ namespace TGC.CMS.Users
             }
             return true;
         }
-
+        [AllowAnonymous]
         public async Task<bool> EmailCodeVerification(CodeVerificationDto dto)
         {
-            var currentUser = await _userManager.GetUserByIdAsync(_abpSession.GetUserId());
-            if (currentUser.IsEmailConfirmed == true)
+
+            var currentUser = await Repository.GetAll().Where(x => x.UserName == dto.UserName).FirstOrDefaultAsync();
+    
+            if (currentUser.IsEmailConfirmed == true&&currentUser.EmailAddress==dto.UserName)
             {
                 throw new UserFriendlyException("Already verified");
             }
-            if (dto.VerificationCode != currentUser.EmailConfirmationCode)
+            if (dto.VerificationCode != currentUser.EmailConfirmationCode &&  currentUser.EmailAddress == dto.UserName)
             {
                 throw new UserFriendlyException("Verification Code Is Not Match");
 
@@ -313,22 +321,32 @@ namespace TGC.CMS.Users
 
             return AccountNo;
         }
-        [AllowAnonymous]
+        [AllowAnonymous] 
         public async Task<UserDto> CreateTargetUser(CreatetargetUserDto input)
         {
             CheckCreatePermission();
             var user = ObjectMapper.Map<User>(input);
             user.TenantId = AbpSession.TenantId;
             user.IsEmailConfirmed = false;
-            //user.AccountId = await CreateAccountId(input.UserName);
-            var VerificationCode = DateTime.Now.ToString("yyyyMMddHHmmssfff").ToString();
-            user.EmailConfirmationCode = VerificationCode;
+          //  user.AccountId = await CreateAccountId(input.UserName);
+            Random objRandom = new Random();
+            var VerificationCode = objRandom.Next(10000, 99999).ToString();
             user.EmailAddress = input.UserName;
-            //user.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
+            user.EmailConfirmationCode = VerificationCode;
+            //  user.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
             user.Name=input.UserName;
             user.Surname = input.UserName;
             user.IsActive = true;
-            CheckErrors(await _userManager.CreateAsync(user, input.Password));
+            try
+            {
+                CheckErrors(await _userManager.CreateAsync(user, input.Password));
+            }
+            catch (Exception ex)
+            {
+                var dd = ex.Message;
+                throw;
+            }
+         
             var Roles = new List<string>();
             Roles.Add("User");
             await _userManager.SetRolesAsync(user, Roles.ToArray());
@@ -347,6 +365,8 @@ namespace TGC.CMS.Users
             smtp.Disconnect(true);
             return MapToEntityDto(user);
         }
+
+
     }
 }
 

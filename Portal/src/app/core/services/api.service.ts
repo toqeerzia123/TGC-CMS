@@ -42,4 +42,43 @@ export class APIService {
     var url = environment.apiUrl  + '/api/services/app/InviteFriendService/GetAll';
     return this.http.get<any>(url);
   }
+  login(form:any){
+  
+    return this.http.post<any>(environment.apiUrl+'/api/TokenAuth/Authenticate',form)
+  }
+  registor(form:any){
+    debugger;
+    return this.http.post<any>(environment.apiUrl+'/api/services/app/User/CreateTargetUser',form)
+  }
+  codeVerification(code:any){
+    debugger;
+    return this.http.post<any>(environment.apiUrl+'/api/services/app/User/EmailCodeVerification',code)
+  }
+  resendVerificationCode(form:any){
+    debugger;
+    return this.http.post<any>(environment.apiUrl+'/api/services/app/User/ReSendEmailVerificationCode',form)
+  }
+
+  getUserById(id:any){
+    var headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+       'Authorization': "Bearer "+localStorage.getItem('token')
+    });
+    const httpOptions = {
+      headers: headers_object
+    };
+    
+    return this.http.get<any>(environment.apiUrl+'/api/services/app/User/Get?id='+id,httpOptions)
+  }
+  updateUserProfile(data:any){
+    var headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+       'Authorization': "Bearer "+localStorage.getItem('token')
+    });
+    const httpOptions = {
+      headers: headers_object
+    };
+    
+    return this.http.put<any>(environment.apiUrl+'/api/services/app/User/Update',data,httpOptions)
+  }
 }

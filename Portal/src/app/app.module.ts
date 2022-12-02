@@ -26,6 +26,12 @@ import { BodyThemeDirective } from './core/directives/body-theme.directive';
 import { SliderComponent } from './features/slider/slider.component';
 import { PromotionComponent } from './features/promotion/promotion.component';
 import { InviteFriendComponent } from './features/invite-friend/invite-friend.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { NotifierModule } from 'angular-notifier';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -54,8 +60,20 @@ import { InviteFriendComponent } from './features/invite-friend/invite-friend.co
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NotifierModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+       // tokenGetter: tokenGetter,
+        allowedDomains: ["example.com"],
+        disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
+     
   ],
   providers: [APIService,
   //   {

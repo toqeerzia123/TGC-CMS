@@ -8,6 +8,7 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { LayoutModel } from './core/models/layout.model';
 import { BlogDetailsComponent } from './features/blogs/blog-details/blog-details.component';
 import { BlogsComponent } from './features/blogs/blogs.component';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { LandingPageComponent } from './features/landing-page/landing-page.component';
 import { PricingComponent } from './features/pricing/pricing.component';
 import { TournamentsComponent } from './features/tournaments/tournaments.component';
@@ -21,16 +22,22 @@ var layout = new LayoutModel();
 // layout.setSocialbar();
 
 const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    component:LandingPageComponent,
-    data:{layout : layout.buildFullLayout(),body_class:"homePg"}
-  },
+  // {
+  //   path: '',
+  //   pathMatch: 'full',
+  //   component:LandingPageComponent,
+  //   data:{layout : layout.buildFullLayout(),body_class:"homePg"}
+  // },
   {
     path: 'watchus',
     pathMatch: 'full',
     component:WatchusComponent,
+    data:{layout : layout.buildFullLayout(),body_class:"watchUsPg innerPg"}
+  },
+  {
+    path: 'dashboard',
+    pathMatch: 'full',
+    component:DashboardComponent,
     data:{layout : layout.buildFullLayout(),body_class:"watchUsPg innerPg"}
   },
   {
@@ -52,7 +59,7 @@ const routes: Routes = [
     data:{body_class:"pricingPg innerPg"}
   },
   {
-    path: 'login',
+    path: '',
     pathMatch: 'full',
     component:LoginComponent,
     data:{body_class:"LoginPg innerPg"}

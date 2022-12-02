@@ -10,21 +10,16 @@ namespace TGC.CMS.Users.Dto
     [AutoMapFrom(typeof(User))]
     public class UserDto : EntityDto<long>
     {
-        [Required]
-        [StringLength(AbpUserBase.MaxUserNameLength)]
+ 
         public string UserName { get; set; }
 
-        [Required]
-        [StringLength(AbpUserBase.MaxNameLength)]
+   
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(AbpUserBase.MaxSurnameLength)]
+
         public string Surname { get; set; }
 
-        [Required]
-        [EmailAddress]
-        [StringLength(AbpUserBase.MaxEmailAddressLength)]
+      
         public string EmailAddress { get; set; }
 
         public bool IsActive { get; set; }
@@ -34,6 +29,15 @@ namespace TGC.CMS.Users.Dto
         public DateTime? LastLoginTime { get; set; }
 
         public DateTime CreationTime { get; set; }
+
+        public string Country { get; set; }
+
+        public string About { get; set; }
+        public DateTime? DOB { get; set; }
+        public string TimeZone { get; set; }
+        public string Gender { get; set; }
+  
+        public DateTime? EmailCodeExpiry { get; set; }
 
         public string[] RoleNames { get; set; }
     }

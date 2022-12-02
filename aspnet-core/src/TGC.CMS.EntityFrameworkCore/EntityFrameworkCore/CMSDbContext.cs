@@ -72,6 +72,7 @@ namespace TGC.CMS.EntityFrameworkCore
         public DbSet<PostImage> PostImages { get; set; }
         public DbSet<MainSlider> MainSliders { get; set; }
         public DbSet<Package> Packages { get; set; }
+        public DbSet<UserPackage> UserPackages { get; set; }
 
         // Dashboard
 
