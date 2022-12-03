@@ -10,6 +10,7 @@ import { ArticlesComponent } from './features/articles/articles.component';
 import { BlogDetailsComponent } from './features/blogs/blog-details/blog-details.component';
 import { BlogsComponent } from './features/blogs/blogs.component';
 import { ContentPagesComponent } from './features/content-pages/content-pages.component';
+import { FaqsComponent } from './features/faqs/faqs.component';
 import { GamesComponent } from './features/games/games.component';
 import { LandingPageComponent } from './features/landing-page/landing-page.component';
 import { LatestnewsComponent } from './features/latestnews/latestnews.component';
@@ -101,6 +102,12 @@ const routes: Routes = [
     path: 'articles',
     pathMatch: 'full',
     component:ArticlesComponent,
+    data:{body_class:"blogPg contentPg innerPg",viewall:true}
+  },
+  {
+    path: 'faqs',
+    pathMatch: 'full',
+    component:FaqsComponent,
     data:{body_class:"blogPg contentPg innerPg",viewall:true}
   }
 ];

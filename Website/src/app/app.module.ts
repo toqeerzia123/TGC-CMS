@@ -28,6 +28,7 @@ import { PromotionComponent } from './features/promotion/promotion.component';
 import { InviteFriendComponent } from './features/invite-friend/invite-friend.component';
 import { ContentPagesComponent } from './features/content-pages/content-pages.component';
 import { ArticlesComponent } from './features/articles/articles.component';
+import { FaqsComponent } from './features/faqs/faqs.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ArticlesComponent } from './features/articles/articles.component';
     PromotionComponent,
     InviteFriendComponent,
     ContentPagesComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    FaqsComponent
   ],
   imports: [
     BrowserModule,

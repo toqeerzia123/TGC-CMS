@@ -8,11 +8,10 @@ import { APIService } from 'src/app/core/services/api.service';
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html'
 })
-export class LandingPageComponent extends BaseComponent implements OnInit {
+export class LandingPageComponent implements OnInit {
 
 
-  constructor(private _router:ActivatedRoute) { 
-    super(_router)
+  constructor() {
   }
   ngOnInit(): void {
     

@@ -1,11 +1,8 @@
 <div class="socialBar">
     <div class="d-flex justify-content-between">
-        <h5>thegamecompany 2022</h5>
+        <h5>thegamecompany {{currentDate | date:'yyyy'}}</h5>
         <ul class="list-inline">
-            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fab fa-tiktok"></i></a></li>
+            <li *ngFor="let item of socialLinks; let i=index;" class="list-inline-item"><a><i class="{{item?.caption}}"></i></a></li>
         </ul>
     </div>
 </div>
