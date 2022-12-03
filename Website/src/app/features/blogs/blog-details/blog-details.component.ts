@@ -13,10 +13,8 @@ export class BlogDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute,private _service:APIService) { }
 
   ngOnInit(): void {
-    debugger;
     this.route.queryParams
     .subscribe(params => {
-      debugger;
       this.getPostDetailsById(parseInt(params["p"]));
     }
   );

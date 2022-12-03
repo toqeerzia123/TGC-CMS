@@ -20,7 +20,6 @@ export class SliderComponent implements OnInit {
   getSliderData(){
     this._service.getSliderData().subscribe(
       res => {
-        debugger;
         if(res.success){
             this.sliders = res.result.items;
             this.sliders.forEach(elem => {

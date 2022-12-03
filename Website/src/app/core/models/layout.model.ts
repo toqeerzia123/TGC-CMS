@@ -18,28 +18,24 @@ export class LayoutModel{
     }
 
     setNavbar(){
-        debugger;
         this.layoutOptionsModel = new LayoutOptionsModel(
             Layout[Layout.Navbar],"","","");
     }
 
     
     setHeader(){
-        debugger;
         this.layoutOptionsModel = new LayoutOptionsModel("",
             Layout[Layout.Header],"","");
     }
 
     
     setFooter(){
-        debugger;
         this.layoutOptionsModel = new LayoutOptionsModel("","",
             Layout[Layout.Footer],"");
     }
 
     
     setSocialbar(){
-        debugger;
         this.layoutOptionsModel = new LayoutOptionsModel("","","",
             Layout[Layout.Socialbar]);
     }

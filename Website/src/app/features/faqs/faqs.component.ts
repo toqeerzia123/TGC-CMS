@@ -20,7 +20,6 @@ export class FaqsComponent implements OnInit {
   getFaqs(){
     this._service.getFaqs().subscribe(
       res => {
-        debugger;
             this.faqs = res;
       },
       err => {

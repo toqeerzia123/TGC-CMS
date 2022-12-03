@@ -11,7 +11,6 @@ export class ContentPagesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    debugger;
   }
 
   loadImage(index:number){
