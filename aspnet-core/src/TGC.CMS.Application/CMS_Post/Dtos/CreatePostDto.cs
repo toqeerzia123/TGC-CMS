@@ -24,5 +24,6 @@ namespace TGC.CMS.CMS_Post.Dtos
     public class UpdatePostDto : CreatePostDto, IEntityDto<int>
     {
         public int Id { get; set; }
+        public List<int> RemovedFiles { get; set; }
     }
 }

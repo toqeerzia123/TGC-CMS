@@ -5,6 +5,7 @@ using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
 using Abp.Extensions;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -99,7 +100,9 @@ namespace TGC.CMS.CMS_Post
 
                 if (post.PostImages != null && post.PostImages.Count > 0)
                 {
-                    foreach (PostImage postImage in post.PostImages)
+                    IEnumerable<PostImage> allImages = post.PostImages.Where(d => input.RemovedFiles.Contains(d.Id));
+                    
+                    foreach (PostImage postImage in allImages)
                     {
                         await _ImageRepository.DeleteAsync(postImage);
                         _unitOfWorkManager.Current.SaveChanges();
@@ -122,9 +125,9 @@ namespace TGC.CMS.CMS_Post
             }
             catch (Exception ex)
             {
-                return new PostDto() { Id =0, Title = ""};
+                return new PostDto() { Id = 0, Title = "" };
             }
-            
+
         }
         public override Task<PagedResultDto<PostDto>> GetAllAsync(PagedPostResultRequestDto input)
         {

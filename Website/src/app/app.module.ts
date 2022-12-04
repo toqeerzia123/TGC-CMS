@@ -29,6 +29,13 @@ import { InviteFriendComponent } from './features/invite-friend/invite-friend.co
 import { ContentPagesComponent } from './features/content-pages/content-pages.component';
 import { ArticlesComponent } from './features/articles/articles.component';
 import { FaqsComponent } from './features/faqs/faqs.component';
+import { GameDevComponent } from './features/game-dev/game-dev.component';
+import { MetaverseComponent } from './features/metaverse/metaverse.component';
+import { ContactSupportComponent } from './features/contact-support/contact-support.component';
+import { SocialLinkPageComponent } from './features/social-link-page/social-link-page.component';
+import { VideoStreamComponent } from './features/video-stream/video-stream.component';
+import { TokenomicsComponent } from './features/tokenomics/tokenomics.component';
+import { LegalComponent } from './features/legal/legal.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +63,14 @@ import { FaqsComponent } from './features/faqs/faqs.component';
     InviteFriendComponent,
     ContentPagesComponent,
     ArticlesComponent,
-    FaqsComponent
+    FaqsComponent,
+    GameDevComponent,
+    MetaverseComponent,
+    ContactSupportComponent,
+    SocialLinkPageComponent,
+    VideoStreamComponent,
+    TokenomicsComponent,
+    LegalComponent
   ],
   imports: [
     BrowserModule,

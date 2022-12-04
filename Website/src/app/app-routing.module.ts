@@ -9,13 +9,20 @@ import { LayoutModel } from './core/models/layout.model';
 import { ArticlesComponent } from './features/articles/articles.component';
 import { BlogDetailsComponent } from './features/blogs/blog-details/blog-details.component';
 import { BlogsComponent } from './features/blogs/blogs.component';
+import { ContactSupportComponent } from './features/contact-support/contact-support.component';
 import { ContentPagesComponent } from './features/content-pages/content-pages.component';
 import { FaqsComponent } from './features/faqs/faqs.component';
+import { GameDevComponent } from './features/game-dev/game-dev.component';
 import { GamesComponent } from './features/games/games.component';
 import { LandingPageComponent } from './features/landing-page/landing-page.component';
 import { LatestnewsComponent } from './features/latestnews/latestnews.component';
+import { LegalComponent } from './features/legal/legal.component';
+import { MetaverseComponent } from './features/metaverse/metaverse.component';
 import { PricingComponent } from './features/pricing/pricing.component';
+import { SocialLinkPageComponent } from './features/social-link-page/social-link-page.component';
+import { TokenomicsComponent } from './features/tokenomics/tokenomics.component';
 import { TournamentsComponent } from './features/tournaments/tournaments.component';
+import { VideoStreamComponent } from './features/video-stream/video-stream.component';
 import { WatchusComponent } from './features/watchus/watchus.component';
 
 
@@ -109,6 +116,48 @@ const routes: Routes = [
     pathMatch: 'full',
     component:FaqsComponent,
     data:{body_class:"blogPg contentPg innerPg",viewall:true}
+  },
+  {
+    path: 'game-dev',
+    pathMatch: 'full',
+    component:GameDevComponent,
+    data:{body_class:"metaversePg innerPg"}
+  },
+  {
+    path: 'metaverse',
+    pathMatch: 'full',
+    component:MetaverseComponent,
+    data:{body_class:"metaversePg innerPg"}
+  },
+  {
+    path: 'contact-support',
+    pathMatch: 'full',
+    component:ContactSupportComponent,
+    data:{body_class:"metaversePg innerPg"}
+  },
+  {
+    path: 'social-links',
+    pathMatch: 'full',
+    component:SocialLinkPageComponent,
+    data:{body_class:"metaversePg innerPg"}
+  },
+  {
+    path: 'video-stream',
+    pathMatch: 'full',
+    component:VideoStreamComponent,
+    data:{body_class:"metaversePg innerPg"}
+  },
+  {
+    path: 'tokenomics',
+    pathMatch: 'full',
+    component:TokenomicsComponent,
+    data:{body_class:"metaversePg innerPg"}
+  },
+  {
+    path: 'legal',
+    pathMatch: 'full',
+    component:LegalComponent,
+    data:{body_class:"metaversePg innerPg"}
   }
 ];
 
