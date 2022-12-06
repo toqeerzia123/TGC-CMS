@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TournamentModel } from 'src/app/core/models/tournament.model';
 import { APIService } from 'src/app/core/services/api.service';
 
@@ -12,7 +12,7 @@ export class TournamentsComponent implements OnInit {
   tournaments: TournamentModel[] = new Array();
   isViewAll : boolean = false;
 
-  constructor(private _service:APIService, private _route : ActivatedRoute) {
+  constructor(private _service:APIService, private _route : ActivatedRoute, private _routerService:Router) {
     
    }
 
@@ -54,4 +54,34 @@ export class TournamentsComponent implements OnInit {
      return images?.length > 0 ? {'background-image':'url('+ images[0].imageUrl +')'} : {'background-image':'url(../../../assets/images/default-image.jpg)'};
   }
 
+  // getTitlePortion(index:number,potionIndex:number):string{
+  //   let title = this.tournaments[index].title;
+  //   if(title ==undefined || title == ""){
+  //     return "";
+  //   }
+  //   let portion =title?.split(' ');
+  //   return portion[0];
+  // }
+
+  getTitlePortion(index:number):any{
+    let firstPostion : string = "";
+    let nextPortion : string = "";
+    this.tournaments[index].title?.split(' ').forEach((ele,ind) => {
+        if(ind > 0){
+          nextPortion = nextPortion + ele;
+        }else{
+          firstPostion = ele;
+        }
+    });
+    let result = {
+      firstPostion : firstPostion,
+      nextPortion : nextPortion
+    }
+    return result;
+  }
+
+  navigate(id:number | undefined){
+    var url = "/blog-details?p=" + id;
+    this._routerService.navigateByUrl(url);
+  }
 }

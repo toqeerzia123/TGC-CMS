@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="generator" content="">
+    <title>TheGameCompany | Homepage</title>
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="assets/css/custom.css" rel="stylesheet">
+</head>
+
+<body class="pricingPg innerPg">
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="innerLogoArea">
+                        <img src="assets/images/logo.png" alt="Logo" class="innerLogo">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="greyBox">
+                        <div class="head p-4">
+                            <h3 class="mb-0">Select Package</h3>
+                        </div>
+                        <div class="greyBoxContent">
+                            <div class="alert alert-primary" role="alert">
+                                <i class="fa-light fa-circle-info"></i>Our Packages
+                            </div>
+                            <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="package one">
+                                            <ul class="list-group">
+                                                <li class="list-group-item active" aria-current="true">Package #1</li>
+                                                <li class="list-group-item">1$</li>
+                                                <li class="list-group-item">1000 Tokens</li>
+                                                <li class="list-group-item save">Save<span>0.2 <sup>%</sup></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="package two selected">
+                                            <ul class="list-group">
+                                                <li class="list-group-item active" aria-current="true">Package #2</li>
+                                                <li class="list-group-item">5 $</li>
+                                                <li class="list-group-item">2000 Tokens</li>
+                                                <li class="list-group-item save">Save<span>5 <sup>%</sup></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="package three">
+                                            <ul class="list-group">
+                                                <li class="list-group-item active" aria-current="true">Package #3</li>
+                                                <li class="list-group-item">10 $</li>
+                                                <li class="list-group-item">5000 Tokens</li>
+                                                <li class="list-group-item save">Save<span>10 <sup>%</sup></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="package four">
+                                            <ul class="list-group">
+                                                <li class="list-group-item active" aria-current="true">Package #4</li>
+                                                <li class="list-group-item">15 $</li>
+                                                <li class="list-group-item">8000 Tokens</li>
+                                                <li class="list-group-item save">Save<span>15 <sup>%</sup></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="package five">
+                                            <ul class="list-group">
+                                                <li class="list-group-item active" aria-current="true">Package #5</li>
+                                                <li class="list-group-item">20 $</li>
+                                                <li class="list-group-item">1000 Tokens</li>
+                                                <li class="list-group-item save">Save<span>20 <sup>%</sup></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="actionBtns mt-5 pt-3">
+                                        <a href="#" class="btn white">Select Package</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+    var multipleCardCarousel = document.querySelector(
+        "#carouselExampleControls"
+    );
+    if (window.matchMedia("(min-width: 768px)").matches) {
+        var carousel = new bootstrap.Carousel(multipleCardCarousel, {
+            interval: false,
+        });
+        var carouselWidth = $(".carousel-inner")[0].scrollWidth;
+        var cardWidth = $(".carousel-item").width();
+        var scrollPosition = 0;
+        $("#carouselExampleControls .carousel-control-next").on("click", function() {
+            if (scrollPosition < carouselWidth - cardWidth * 4) {
+                scrollPosition += cardWidth;
+                $("#carouselExampleControls .carousel-inner").animate({
+                        scrollLeft: scrollPosition
+                    },
+                    600
+                );
+            }
+        });
+        $("#carouselExampleControls .carousel-control-prev").on("click", function() {
+            if (scrollPosition > 0) {
+                scrollPosition -= cardWidth;
+                $("#carouselExampleControls .carousel-inner").animate({
+                        scrollLeft: scrollPosition
+                    },
+                    600
+                );
+            }
+        });
+    } else {
+        $(multipleCardCarousel).addClass("slide");
+    }
+</script>
+
+</html>

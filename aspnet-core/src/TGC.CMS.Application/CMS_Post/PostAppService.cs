@@ -100,9 +100,9 @@ namespace TGC.CMS.CMS_Post
 
                 if (post.PostImages != null && post.PostImages.Count > 0)
                 {
-                    IEnumerable<PostImage> allImages = post.PostImages.Where(d => input.RemovedFiles.Contains(d.Id));
+                    //IEnumerable<PostImage> allImages = post.PostImages.Where(d => input.RemovedFiles.Contains(d.Id));
                     
-                    foreach (PostImage postImage in allImages)
+                    foreach (PostImage postImage in post.PostImages)
                     {
                         await _ImageRepository.DeleteAsync(postImage);
                         _unitOfWorkManager.Current.SaveChanges();

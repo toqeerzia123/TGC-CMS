@@ -12,6 +12,8 @@ import { TournamentsComponent } from './tournaments/tournaments.component';
 import { GamesComponent } from './games/games.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { BlogsComponent } from './blogs/blogs.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { SlidersComponent } from './sliders/sliders.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { BlogsComponent } from './blogs/blogs.component';
                     { path: 'announcements', component: AnnouncementsComponent, data: { permission: 'Pages.Announcements' }, canActivate: [AppRouteGuard] },
                     
                     { path: 'blogs', component: BlogsComponent, data: { permission: '' } },
+                    { path: 'articles', component: ArticlesComponent, data: { permission: '' } },
+                    { path: 'slider', component: SlidersComponent, data: { permission: '' } },
                     
                     { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
                     { path: 'about', component: AboutComponent, canActivate: [AppRouteGuard] },

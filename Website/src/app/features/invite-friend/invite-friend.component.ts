@@ -22,7 +22,7 @@ export class InviteFriendComponent implements OnInit {
     this._service.getInviteData().subscribe(
       res => {
         if(res.success){
-            this.inviteFriend = res.result.items[1];
+            this.inviteFriend = res.result.items[0];
             this.inviteFriend.imagePath = this.baseUrl + "/invitefriendimages/" + this.inviteFriend.imagePath;
         }
       },
