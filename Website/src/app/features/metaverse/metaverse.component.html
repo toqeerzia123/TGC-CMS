@@ -10,7 +10,7 @@
             <div class="col-sm-12 col-md-12">
                 <div class="contentShort mt-5">
                     <h5>{{model?.title}}</h5>
-                    <p>{{model?.descriptionOne}}</p>
+                    <p [innerHtml]="model?.descriptionOne"></p>
                     <div class="favGame metaverse mt-5">
                         <div class="row">
                             <div class="col-sm-12 col-md-8">
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="mt-5 mb-5">{{model?.descriptionTwo}}</p>
+                    <p class="mt-5 mb-5" [innerHtml]="model?.descriptionTwo"></p>
                 </div>
             </div>
         </div>

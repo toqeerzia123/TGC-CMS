@@ -562,3 +562,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0b153b', end
     font-style: normal !important;}
 .metaverse .txtBlock p {padding-right: 12rem;}
 .contentShort p {font-size: 1.2rem;}
+.toomicsPg .headerInner {background-image: url(../images/toomics-bg.jpg);background-position: center center;background-repeat: no-repeat;background-size: cover;}
+.toomicsPg2 .headerInner {background-image: url(../images/toomics-bg2.jpg);background-position: center center;background-repeat: no-repeat;background-size: cover;}
+.tournamentsPg .headerInner {background-image: url(../images/tournaments-bg.jpg);background-position: center center;background-repeat: no-repeat;background-size: cover;}
+.metaversePg2 .headerInner {background-image: url(../images/metaverse-bg2.jpg);background-position: center center;background-repeat: no-repeat;background-size: cover;}
+.gamedevPg .headerInner {background-image: url(../images/gamedev-bg.jpg);background-position: center center;background-repeat: no-repeat;background-size: cover;}

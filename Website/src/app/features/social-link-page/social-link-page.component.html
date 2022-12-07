@@ -6,32 +6,11 @@
 
 <section class="content">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                <div class="contentShort mt-5">
-                    <h5>{{model?.title}}</h5>
-                    <p>{{model?.descriptionOne}}</p>
-                    <div class="favGame metaverse mt-5">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-8">
-                                <div class="txtBlock">
-                                    <h3>Metaverse is soaring to new<br>
-                                        heights with each passing day.
-                                    </h3>
-                                    <p>Although Metaverse is for everyone
-                                        and different industries are adopting it,
-                                        the gaming industry adopted Metaverse
-                                        earlier than others to unlock its full benefits.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-4">
-                                <img src="../../../assets/images/img-gamepad.png" alt="Image" class="gamePadImg">
-                            </div>
-                        </div>
-                    </div>
-                    <p class="mt-5 mb-5">{{model?.descriptionTwo}}</p>
-                </div>
+        <div class="socialBar mt-5">
+            <div class="d-flex justify-content-between">
+                <ul class="list-inline" style="padding-left: 100px;">
+                    <li style="margin: 50px;" *ngFor="let item of model; let i=index;" class="list-inline-item"><a style="width: 200px;height: 200px;padding-top:47px;"><i style="font-size: 6.4rem;" class="{{item?.caption}}"></i></a></li>
+                </ul>
             </div>
         </div>
     </div>

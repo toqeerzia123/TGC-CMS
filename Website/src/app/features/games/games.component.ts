@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TournamentModel } from 'src/app/core/models/tournament.model';
 import { APIService } from 'src/app/core/services/api.service';
 
@@ -13,7 +13,7 @@ export class GamesComponent implements OnInit {
   tournaments: TournamentModel[] = new Array();
   isViewAll : boolean = false;
 
-  constructor(private _service:APIService, private _route:ActivatedRoute) { }
+  constructor(private _service:APIService, private _route:ActivatedRoute,private _routerService:Router) { }
 
   ngOnInit(): void {
 
@@ -58,5 +58,11 @@ export class GamesComponent implements OnInit {
   let images = item?.postImages;
   return images?.length > 0 ? {'background-image':'url('+ images[0].imageUrl +')'} : {'background-image':'url()'};
 }
+
+navigate(id:number | undefined){
+  var url = "/blog-details?p=" + id;
+  this._routerService.navigateByUrl(url);
+}
+
 }
 

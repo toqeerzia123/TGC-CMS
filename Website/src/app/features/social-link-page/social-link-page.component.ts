@@ -7,7 +7,7 @@ import { APIService } from 'src/app/core/services/api.service';
 })
 export class SocialLinkPageComponent implements OnInit {
 
-  model : any;
+  model : any[]=[];
   constructor(private _service:APIService) { }
 
   ngOnInit(): void {
@@ -15,7 +15,7 @@ export class SocialLinkPageComponent implements OnInit {
   }
 
   getPageData(){
-    this._service.getSocialMediaLinkPageData().subscribe(
+    this._service.getSocialLinks().subscribe(
       res => {
         this.model = res;
       },

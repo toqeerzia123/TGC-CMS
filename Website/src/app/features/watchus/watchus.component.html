@@ -7,21 +7,41 @@
     </div>
     <section class="content">
         <div class="container">
-            <div class="row" *ngFor="let item of articles; let i=index;">
+            <div class="row">
                 <div class="col-sm-12 col-md-4">
                     <div class="watchBox mt-5 pt-5">
                         <div class="contentArea">
                             <p class="twitchIco mb-3"><i class="fab fa-twitch"></i></p>
-                            <h5 class="mb-5">{{item?.title}}</h5>
+                            <h5 class="mb-5">Live on Twitch</h5>
                         </div>
                         <div class="bottomContent pt-3">
-                        <a href="#" class="followLink p-4">{{item?.description}}</a>
+                        <a href="#" class="followLink p-4">Follow Gaming.AI</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-8">
-                    <div class="vdoPlay game1 mt-5" [ngStyle]="loadImage(item)">
-                    <a href="#"><i class="fas fa-play"></i></a>
+                    <div class="vdoPlay game1 mt-5" id="twitch-embed" style="background-image: none;padding-top:0;">
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <div class="watchBox mt-5 pt-5">
+                        <div class="contentArea youtube">
+                            <p class="twitchIco mb-3"><i class="fab fa-youtube"></i></p>
+                            <h5 class="mb-5">Live on Youtube</h5>
+                        </div>
+                        <div class="bottomContent pt-3">
+                        <a href="#" class="followLink p-4">Subscribe Gaming.AI</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    <div class="vdoPlay game2 mt-5" style="background-image: none;padding-top:0;">
+                        <iframe width="736" height="352" src="https://www.youtube.com/embed/uTH40yia7v0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <!-- <a href="#"><i class="fas fa-play"></i></a> -->
                     </div>
                 </div>
             </div>
@@ -43,3 +63,4 @@
             </div>
         </section>
     </section>
+    

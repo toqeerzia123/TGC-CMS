@@ -36,6 +36,10 @@ import { SocialLinkPageComponent } from './features/social-link-page/social-link
 import { VideoStreamComponent } from './features/video-stream/video-stream.component';
 import { TokenomicsComponent } from './features/tokenomics/tokenomics.component';
 import { LegalComponent } from './features/legal/legal.component';
+import { TermsOfServicesComponent } from './features/terms-of-services/terms-of-services.component';
+import { PrivacyPolicyComponent } from './features/privacy-policy/privacy-policy.component';
+import { LeaderBoardComponent } from './features/leader-board/leader-board.component';
+import { TestComponent } from './features/test/test.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +74,11 @@ import { LegalComponent } from './features/legal/legal.component';
     SocialLinkPageComponent,
     VideoStreamComponent,
     TokenomicsComponent,
-    LegalComponent
+    LegalComponent,
+    TermsOfServicesComponent,
+    PrivacyPolicyComponent,
+    LeaderBoardComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

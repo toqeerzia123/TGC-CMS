@@ -4,9 +4,12 @@ import { BaseComponent } from 'src/app/core/components/base/base.component';
 import { TournamentModel } from 'src/app/core/models/tournament.model';
 import { APIService } from 'src/app/core/services/api.service';
 
+declare function loadTwitch():any
+
 @Component({
   selector: 'app-watchus',
-  templateUrl: './watchus.component.html'
+  templateUrl: './watchus.component.html',
+  styleUrls: ['./watchus.component.css']
 })
 export class WatchusComponent extends BaseComponent {
   
@@ -15,16 +18,17 @@ export class WatchusComponent extends BaseComponent {
   constructor(private _oute:ActivatedRoute,private _service:APIService) {super(_oute) }
 
   ngOnInit(): void {
-    this._service.getAllCategories().subscribe(
-      res => {
-          var categories = res.result.items as Array<any>;
-          let watch = categories.find(f => f.categoryName == 'WatchUs');
-          this.getallWatchUs(watch?.id);
-      },
-      err => {
+    loadTwitch();
+    // this._service.getAllCategories().subscribe(
+    //   res => {
+    //       var categories = res.result.items as Array<any>;
+    //       let watch = categories.find(f => f.categoryName == 'WatchUs');
+    //       this.getallWatchUs(watch?.id);
+    //   },
+    //   err => {
 
-      }
-    );
+    //   }
+    // );
   }
   
   getallWatchUs(categId:number){
