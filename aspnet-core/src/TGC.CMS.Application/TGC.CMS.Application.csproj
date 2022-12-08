@@ -18,4 +18,7 @@
     <ProjectReference Include="..\TGC.CMS.Core\TGC.CMS.Core.csproj" />
     <ProjectReference Include="..\TGC.CMS.EntityFrameworkCore\TGC.CMS.EntityFrameworkCore.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserPackages\MapperProlie\" />
+  </ItemGroup>
 </Project>

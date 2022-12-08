@@ -6,6 +6,7 @@ export class Userprofile {
     about:string;
     dob:Date;
     timeZone:string;
-    gender:string   
+    gender:string ;
+    tokens:string; 
 }
 

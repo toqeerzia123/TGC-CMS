@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
    
           this._service.login(this.signinform.value).subscribe(          
             data => {
-              this.notifierService.notify('success', 'You are awesome! I mean it!');
+              this.notifierService.notify('success', 'Successfully LogInn');
               localStorage.setItem("token",data.result.accessToken)
               this.router.navigate(['/dashboard']);
               
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
               this.notifierService.notify('error','error.error.error.details');
               if(error.error.error.details=="Your email address is not confirmed. You can not login.")
               {
-                this.notifierService.notify('warning', 'You are awesome! I mean it!');
+                this.notifierService.notify('warn', 'Your email address is not confirmed. You can not login');
                 this.router.navigate(['/verify-code']);
               }
 

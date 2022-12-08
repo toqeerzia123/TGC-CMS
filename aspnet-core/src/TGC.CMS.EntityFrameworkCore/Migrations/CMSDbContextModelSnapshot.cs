@@ -539,8 +539,6 @@ namespace TGC.CMS.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
                     b.HasIndex("TenantId", "UserId");
 
                     b.ToTable("AbpUserTokens");
@@ -1571,6 +1569,9 @@ namespace TGC.CMS.Migrations
                     b.Property<string>("TimeZone")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Tokens")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserLevel")
                         .HasColumnType("nvarchar(max)");
 
@@ -1695,42 +1696,42 @@ namespace TGC.CMS.Migrations
                         {
                             Id = 1,
                             CategoryName = "Tournaments",
-                            CreationTime = new DateTime(2022, 12, 1, 2, 11, 6, 713, DateTimeKind.Local).AddTicks(5280),
+                            CreationTime = new DateTime(2022, 12, 6, 15, 59, 25, 773, DateTimeKind.Local).AddTicks(514),
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 2,
                             CategoryName = "Games",
-                            CreationTime = new DateTime(2022, 12, 1, 2, 11, 6, 713, DateTimeKind.Local).AddTicks(5308),
+                            CreationTime = new DateTime(2022, 12, 6, 15, 59, 25, 773, DateTimeKind.Local).AddTicks(540),
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 3,
                             CategoryName = "Announcements",
-                            CreationTime = new DateTime(2022, 12, 1, 2, 11, 6, 713, DateTimeKind.Local).AddTicks(5319),
+                            CreationTime = new DateTime(2022, 12, 6, 15, 59, 25, 773, DateTimeKind.Local).AddTicks(551),
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 4,
                             CategoryName = "Blogs",
-                            CreationTime = new DateTime(2022, 12, 1, 2, 11, 6, 713, DateTimeKind.Local).AddTicks(5331),
+                            CreationTime = new DateTime(2022, 12, 6, 15, 59, 25, 773, DateTimeKind.Local).AddTicks(560),
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 5,
                             CategoryName = "WatchUs",
-                            CreationTime = new DateTime(2022, 12, 1, 2, 11, 6, 713, DateTimeKind.Local).AddTicks(5341),
+                            CreationTime = new DateTime(2022, 12, 6, 15, 59, 25, 773, DateTimeKind.Local).AddTicks(570),
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 6,
                             CategoryName = "Articles",
-                            CreationTime = new DateTime(2022, 12, 1, 2, 11, 6, 713, DateTimeKind.Local).AddTicks(5401),
+                            CreationTime = new DateTime(2022, 12, 6, 15, 59, 25, 773, DateTimeKind.Local).AddTicks(592),
                             IsDeleted = false
                         });
                 });
@@ -1974,7 +1975,7 @@ namespace TGC.CMS.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserPackages");
+                    b.ToTable("UsersPackage");
                 });
 
             modelBuilder.Entity("TGC.CMS.PromotionalText.Promotion", b =>
@@ -2354,15 +2355,6 @@ namespace TGC.CMS.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Abp.Authorization.Users.UserToken", b =>
-                {
-                    b.HasOne("TGC.CMS.Authorization.Users.User", null)
-                        .WithMany("Tokens")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Abp.Configuration.Setting", b =>
                 {
                     b.HasOne("TGC.CMS.Authorization.Users.User", null)
@@ -2618,8 +2610,6 @@ namespace TGC.CMS.Migrations
                     b.Navigation("Roles");
 
                     b.Navigation("Settings");
-
-                    b.Navigation("Tokens");
                 });
 
             modelBuilder.Entity("TGC.CMS.CMS_Post.Post", b =>

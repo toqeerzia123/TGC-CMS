@@ -23,6 +23,7 @@ namespace TGC.CMS.Authorization.Users
        public DateTime? DOB { get; set; }
        public string TimeZone { get; set; }
        public string Gender { get; set; }
+       public string Tokens { get; set; }
        public DateTime? EmailCodeExpiry { get; set; }
         public static User CreateTenantAdminUser(int tenantId, string emailAddress)
         {

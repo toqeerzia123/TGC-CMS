@@ -81,4 +81,26 @@ export class APIService {
     
     return this.http.put<any>(environment.apiUrl+'/api/services/app/User/Update',data,httpOptions)
   }
+  UserpackagesCreate(data:any){
+    var headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+       'Authorization': "Bearer "+localStorage.getItem('token')
+    });
+    const httpOptions = {
+      headers: headers_object
+    };
+    
+    return this.http.post<any>(environment.apiUrl+'/api/services/app/UserPackage/Create',data,httpOptions)
+  }
+  GetUserPackage(id:any){
+    var headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+       'Authorization': "Bearer "+localStorage.getItem('token')
+    });
+    const httpOptions = {
+      headers: headers_object
+    };
+    
+    return this.http.get<any>(environment.apiUrl+'/api/services/app/UserPackage/getUserPackages?input='+id,httpOptions)
+  }
 }

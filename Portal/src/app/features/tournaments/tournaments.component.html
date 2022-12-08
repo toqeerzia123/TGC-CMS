@@ -1,56 +1,222 @@
-<div class="upcomingTournaments">
-    <h3 class="text-center mb-5">UPCOMING TOURNAMENTS</h3>
-    <div class="row">
-        <ng-container *ngFor="let item of tournaments; let i=index;">
-            <div class="col-sm-12 col-md-6" *ngIf="i < 2">
-                <div class="d-flex flex-column bd-highlight mb-4">
-                    <div class="p-0 mt-5 bd-highlight">
-                        <div class="gameImg lego" [ngStyle]="loadImage(i)">
-                            <p class="p-4">{{item.postDate | date:'d'}} <span>{{item.postDate | date:'MMM'}}</span></p>
+<app-dashboardheader></app-dashboardheader>
+<section class="content">
+    <div class="container">
+       
+        <div class="upcomingTournaments recentTournamenets">
+            <h5 class="mb-2"> Tournamenets</h5>
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <div class="d-flex flex-column bd-highlight mb-4">
+                        <div class="p-0 bd-highlight">
+                            <div class="gameImgSmall game1">
+                                <p class="p-3">17 <span>NOV</span></p>
+                            </div>
+                        </div>
+                        <div class="p-0 bd-highlight">
+                            <div class="card p-3">
+                                <p class="mb-0 prize text-center">1000$ <span>prize</span></p>
+                                <p class="mb-0 format text-center">1v1<span>FORMAT</span></p>
+                                <a href="#" class="btn purple" [routerLink]="['/remote']" target="_blank" >Play Now</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-0 bd-highlight">
-                        <div class="card">
-                            <div class="d-flex justify-content-between bd-highlight">
-                                <div class="p-4 bd-highlight">
-                                    <p class="mb-0 format"><span>{{item?.title}}</span></p>
-                                </div>
-                                <div class="p-4 bd-highlight">
-                                    <p class="mb-0 prize text-end">{{item?.amount}}$ <span>{{item?.prize}}</span></p>
-                                    <em class="text-end">{{item?.elimination}}</em>
-                                </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="d-flex flex-column bd-highlight mb-4">
+                        <div class="p-0 bd-highlight">
+                            <div class="gameImgSmall game2">
+                                <p class="p-3">28 <span>NOV</span></p>
+                            </div>
+                        </div>
+                        <div class="p-0 bd-highlight">
+                            <div class="card p-3">
+                                <p class="mb-0 prize text-center">1000$ <span>prize</span></p>
+                                <p class="mb-0 format text-center">1v1<span>FORMAT</span></p>
+                                <a href="#" class="btn purple" [routerLink]="['/remote']" target="_blank" >Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="d-flex flex-column bd-highlight mb-4">
+                        <div class="p-0 bd-highlight">
+                            <div class="gameImgSmall game3">
+                                <p class="p-3">5 <span>Dec</span></p>
+                            </div>
+                        </div>
+                        <div class="p-0 bd-highlight">
+                            <div class="card p-3">
+                                <p class="mb-0 prize text-center">1000$ <span>prize</span></p>
+                                <p class="mb-0 format text-center">1v1<span>FORMAT</span></p>
+                                <a href="#" class="btn purple" [routerLink]="['/remote']" target="_blank" >Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="d-flex flex-column bd-highlight mb-4">
+                        <div class="p-0 bd-highlight">
+                            <div class="gameImgSmall game3">
+                                <p class="p-3">5 <span>Dec</span></p>
+                            </div>
+                        </div>
+                        <div class="p-0 bd-highlight">
+                            <div class="card p-3">
+                                <p class="mb-0 prize text-center">1000$ <span>prize</span></p>
+                                <p class="mb-0 format text-center">1v1<span>FORMAT</span></p>
+                                <a href="#" class="btn purple" [routerLink]="['/remote']" target="_blank" >Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="d-flex flex-column bd-highlight mb-4">
+                        <div class="p-0 bd-highlight">
+                            <div class="gameImgSmall game3">
+                                <p class="p-3">5 <span>Dec</span></p>
+                            </div>
+                        </div>
+                        <div class="p-0 bd-highlight">
+                            <div class="card p-3">
+                                <p class="mb-0 prize text-center">1000$ <span>prize</span></p>
+                                <p class="mb-0 format text-center">1v1<span>FORMAT</span></p>
+                                <a href="#" class="btn purple" [routerLink]="['/remote']" target="_blank" >Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="d-flex flex-column bd-highlight mb-4">
+                        <div class="p-0 bd-highlight">
+                            <div class="gameImgSmall game3">
+                                <p class="p-3">5 <span>Dec</span></p>
+                            </div>
+                        </div>
+                        <div class="p-0 bd-highlight">
+                            <div class="card p-3">
+                                <p class="mb-0 prize text-center">1000$ <span>prize</span></p>
+                                <p class="mb-0 format text-center">1v1<span>FORMAT</span></p>
+                                <a href="#" class="btn purple" [routerLink]="['/remote']" target="_blank" >Play Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="d-flex flex-column bd-highlight mb-4">
+                        <div class="p-0 bd-highlight">
+                            <div class="gameImgSmall game3">
+                                <p class="p-3">5 <span>Dec</span></p>
+                            </div>
+                        </div>
+                        <div class="p-0 bd-highlight">
+                            <div class="card p-3">
+                                <p class="mb-0 prize text-center">1000$ <span>prize</span></p>
+                                <p class="mb-0 format text-center">1v1<span>FORMAT</span></p>
+                                <a href="#" class="btn purple" [routerLink]="['/remote']" target="_blank" >Play Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </ng-container>
+        </div>
+    
     </div>
-    <div class="row">
-        <ng-container *ngFor="let item of tournaments; let i=index;">
-            <div class="col-sm-12 col-md-4" *ngIf="i > 1">
-                <div class="d-flex flex-column bd-highlight mb-4">
-                    <div class="p-0 bd-highlight">
-                        <div class="gameImgSmall game1" [ngStyle]="loadImage(i)">
-                            <p class="p-3">17 <span>NOV</span></p>
+    <!-- <div class="container">
+        
+     
+        <div class="upcomingTournaments recentTournamenets">
+            <h5 class="mb-2"> Tournamenets</h5>
+            <div class="row">
+                <ng-container *ngFor="let item of tournaments; let i=index;">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="d-flex flex-column bd-highlight mb-4">
+                            <div class="p-0 bd-highlight">
+                                <div class="gameImgSmall game1" [ngStyle]="loadImage(i)">
+                                    <p class="p-3">17 <span>NOV</span></p>
+                                </div>
+                            </div>
+                            <div class="p-0 bd-highlight">
+                                <div class="card p-3">
+                                    <p class="mb-0 prize text-center">{{item?.amount}}$ <span>{{item?.prize}}</span></p>
+                                    <p class="mb-0 format text-center"><span>{{item?.title}}</span></p>
+                                    <em class="text-center">{{item?.elimination}}</em>
+                                </div>
+                            </div>
+                            <a href="#" class="btn purple" [routerLink]="['/remote']" target="_blank" >Play Now</a>
                         </div>
                     </div>
-                    <div class="p-0 bd-highlight">
-                        <div class="card p-3">
-                            <p class="mb-0 prize text-center">{{item?.amount}}$ <span>{{item?.prize}}</span></p>
-                            <p class="mb-0 format text-center"><span>{{item?.title}}</span></p>
-                            <em class="text-center">{{item?.elimination}}</em>
+                </ng-container>
+                
+            </div>
+        </div>
+        
+    </div> -->
+    <section class="footerInner p-4">
+        <div class="bgImg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="footer">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="footerLogoCont">
+                                        <img src="assets/images/logo-footer.png" alt="Logo" class="logoFooter">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <div class="FooterNav pt-5 mt-4">
+                                        <h5>Games</h5>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">dota 2</a></li>
+                                            <li><a href="#">ASSASSIN CREED</a></li>
+                                            <li><a href="#">WATCH DOGS</a></li>
+                                            <li><a href="#">TOMB RAIDER</a></li>
+                                            <li><a href="#">call of duty wii</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <div class="FooterNav pt-5 mt-4">
+                                        <h5>Navigation</h5>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">watch</a></li>
+                                            <li><a href="#">team finder</a></li>
+                                            <li><a href="#">articles</a></li>
+                                            <li><a href="#">about us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-2">
+                                    <div class="FooterNav pt-5 mt-4">
+                                        <h5>support</h5>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">Q/A</a></li>
+                                            <li><a href="#">WORK WITH US</a></li>
+                                            <li><a href="#">PRIVACY POLICY</a></li>
+                                            <li><a href="#">USER GUIDE</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="socialBar">
+                            <div class="d-flex justify-content-between">
+                                <h5>thegamecompany 2022</h5>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </ng-container>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-12">
-            <div class="actionBtns mt-4 mb-4">
-                <a href="#" class="btn btn-primary">View More</a>
-            </div>
         </div>
-    </div>
-</div>
+    </section>
+</section>

@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\Content\InviteFriendImages\" />
+    <Folder Include="wwwroot\Content\InviteFriendImages\" />
+    <Folder Include="wwwroot\Content\SliderImages\" />
+    <Folder Include="wwwroot\Content\PostImages\" />
     <Folder Include="wwwroot\Content\SliderImages\" />
     <Folder Include="wwwroot\Content\PostImages\" />
   </ItemGroup>

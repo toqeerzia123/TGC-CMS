@@ -328,12 +328,12 @@ namespace TGC.CMS.Users
             var user = ObjectMapper.Map<User>(input);
             user.TenantId = AbpSession.TenantId;
             user.IsEmailConfirmed = false;
-          //  user.AccountId = await CreateAccountId(input.UserName);
+           user.AccountId = await CreateAccountId(input.UserName);
             Random objRandom = new Random();
             var VerificationCode = objRandom.Next(10000, 99999).ToString();
             user.EmailAddress = input.UserName;
             user.EmailConfirmationCode = VerificationCode;
-            //  user.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
+           user.EmailCodeExpiry = DateTime.Now.AddMinutes(5);
             user.Name=input.UserName;
             user.Surname = input.UserName;
             user.IsActive = true;

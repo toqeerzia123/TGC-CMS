@@ -1,0 +1,54 @@
+
+    <div class="headerInner" bodyTheme>
+      <h5>{{model.fullName}} - Profile Info</h5>
+  </div>
+  <div class="secNav" *ngIf="role=='User'">
+      <div class="container">
+          <div class="d-flex justify-content-center">
+              <a href="#"[routerLink]="['/dashboard']"class="active">Profile</a>
+              <a href="#"  href="#"[routerLink]="['/games']">Games</a>
+              <a href="#" href="#"[routerLink]="['/tournaments']">Tournaments</a>
+              <a href="#"  [routerLink]="['/results']" >Results</a>
+              <a href="#" [routerLink]="['/teams']">Teams</a>             
+              <a href="#" [routerLink]="['/awards']">Awards</a>
+              <a href="#" [routerLink]="['/transactions']">Transaction History</a>
+              <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fal fa-cog"></i>{{model.fullName}} 
+                  </a>
+
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">My Games</a></li>
+                      <li><a class="dropdown-item" href="#">My Tournaments</a></li>
+                      <li><a class="dropdown-item" href="#"[routerLink]="['/profile-info']">My Account</a></li>
+                      <li><a class="dropdown-item" href="#"(click)="Logout()">Signout</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="secNav" *ngIf="role!='User'">
+      <div class="container">
+          <div class="d-flex justify-content-center">
+            <a href="#"[routerLink]="['/dashboard']"class="active">Profile</a>
+            <a href="#"  href="#"[routerLink]="['/games']">Games</a>
+            <a href="#" href="#"[routerLink]="['/tournaments']">Tournaments</a>
+            <a href="#"  [routerLink]="['/results']" >Results</a>
+            <a href="#" [routerLink]="['/teams']">Teams</a>             
+            <a href="#" [routerLink]="['/awards']">Awards</a>
+            <a href="#" [routerLink]="['/transactions']">Transaction History</a>
+              <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fal fa-cog"></i>{{model.fullName}} 
+                  </a>
+
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">Manage Games</a></li>
+                      <li><a class="dropdown-item" href="#">Manage Tournaments</a></li>
+                      <li><a class="dropdown-item" href="#"[routerLink]="['/profile-info']">My Account</a></li>
+                      <li><a class="dropdown-item" href="#"(click)="Logout()">Signout</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>

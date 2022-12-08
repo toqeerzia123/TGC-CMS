@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { Signin } from 'src/app/core/models/signin';
 import { APIService } from 'src/app/core/services/api.service';
 
@@ -21,7 +22,8 @@ export class RegisterComponent  implements OnInit, AfterViewInit{
   constructor(private formBuilder: FormBuilder, 
     private route: ActivatedRoute,
     private _service:APIService,
-    private router: Router) { }
+    private router: Router,
+    private notifierService: NotifierService) { }
 
   ngOnInit() {
     document.body.setAttribute('class', 'authentication-bg');
@@ -45,6 +47,7 @@ export class RegisterComponent  implements OnInit, AfterViewInit{
 
         if(data.success==true)
         {
+          this.notifierService.notify('success', 'Successfully Registered');
         localStorage.setItem("Email",data.result.emailAddress)
         localStorage.setItem("Password",this.signupForm.value.password)
       }

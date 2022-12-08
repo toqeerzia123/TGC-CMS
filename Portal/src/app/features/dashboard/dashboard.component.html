@@ -1,36 +1,7 @@
-<ng-container>
-  <app-navbar></app-navbar>
-</ng-container>
 
-    <hr class="pageSeprator m-0">
-    <div class="headerInner" bodyTheme>
-        <h5>FAROOQ - Profile Info</h5>
-    </div>
-    <div class="secNav">
-        <div class="container">
-            <div class="d-flex justify-content-center">
-                <a href="#" class="active">Profile</a>
-                <a href="#">Results</a>
-                <a href="#">Teams</a>
-                <a href="#">Tournaments</a>
-                <a href="#">Awards</a>
-                <a href="#">Transaction History</a>
-                <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fal fa-cog"></i>Settings
-                    </a>
 
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">My Games</a></li>
-                        <li><a class="dropdown-item" href="#">My Tournaments</a></li>
-                        <li><a class="dropdown-item" href="#">More Options</a></li>
-                        <li><a class="dropdown-item" href="#">More Options</a></li>
-                        <li><a class="dropdown-item" href="#">More Options</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+ 
+  <app-dashboardheader></app-dashboardheader>
     <section class="content">
         <div class="container">
             <div class="row">
@@ -38,28 +9,31 @@
                     <div class="profileCard mt-5 pt-5">
                         <div class="contentArea p-3">
                             <div class="pic mb-4"><i class="fas fa-user"></i><a href="#" class="edit"><i class="far fa-edit"></i></a></div>
-                            <h5 class="mb-3">Farooq</h5>
-                            <p>5000 Tokens</p>
+                            <h5 class="mb-3">{{model.fullName}}</h5>
+                            <p>{{model.tokens}} Tokens</p>
                         </div>
                         <hr class="sectionSep">
                         <div class="bottomContent">
                             <h6>About</h6>
-                            <p>I am new in the gaming field and
-                                I love to play COD</p>
+                            <p>{{model.about}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-4">
+                <div class="col-sm-12 col-md-4" *ngIf="role =='User'">
                     <div class="profileCard package mt-5 pt-5">
                         <div class="contentArea p-3">
                             <h5 class="mb-4">My PAckage</h5>
-                            <h6 class="mb-4">5 $</h6>
-                            <a href="#" class="btn purple">Save<span>5 <sup>%</sup></span></a>
+                            <h6 class="mb-4">{{Userpackage.totalPrice
+
+                            }} $</h6>
+                            <a href="#" class="btn purple">Save<span>{{Userpackage.discount
+                            }} <sup>%</sup></span></a>
                         </div>
                         <hr class="sectionSep">
                         <div class="bottomContent">
                             <h6>Tokens</h6>
-                            <p>2000 Tokens</p>
+                            <p>{{Userpackage.noOfTokens
+                            }}  Tokens</p>
                         </div>
                     </div>
                 </div>
@@ -68,7 +42,7 @@
         </div>
         <div class="container">
             <div class="topGames recentGames">
-                <h5>Recent Games</h5>
+                <h5>Play Games</h5>
                 <div class="row">
                     <div class="col-sm-12 col-md-4">
                         <div class="topGame">
@@ -79,7 +53,7 @@
                                 <div class="p-0 bd-highlight">
                                     <div class="card p-4">
                                         <h3 class="mb-1">THE DIVISION</h3>
-                                        <p class="mb-0">Purchase</p>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +68,42 @@
                                 <div class="p-0 bd-highlight">
                                     <div class="card p-4">
                                         <h3 class="mb-1">cOD Wii</h3>
-                                        <p class="mb-0">Purchase</p>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="topGames recentGames">
+                <h5>Recent Games</h5>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                        <div class="topGame">
+                            <div class="d-flex flex-column bd-highlight mb-4">
+                                <div class="p-0 bd-highlight">
+                                    <img src="assets/images/img-topgame-division.jpg" alt="Image" class="topGameImg">
+                                </div>
+                                <div class="p-0 bd-highlight">
+                                    <div class="card p-4">
+                                        <h3 class="mb-1">THE DIVISION</h3>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="topGame">
+                            <div class="d-flex flex-column bd-highlight mb-4">
+                                <div class="p-0 bd-highlight">
+                                    <img src="assets/images/img-topgame-codii.jpg" alt="Image" class="topGameImg">
+                                </div>
+                                <div class="p-0 bd-highlight">
+                                    <div class="card p-4">
+                                        <h3 class="mb-1">cOD Wii</h3>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -153,6 +162,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
             <div class="gridCont mt-5">

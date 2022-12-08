@@ -33,6 +33,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { DashboardheaderComponent } from './features/dashboardheader/dashboardheader.component';
+import { ResultsComponent } from './features/Results/Results.component';
+import { TeamsComponent } from './features/teams/teams.component';
+import { AwardsComponent } from './features/awards/awards.component';
+import { TransactionHistoryComponent } from './features/TransactionHistory/TransactionHistory.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -98,7 +103,12 @@ const customNotifierOptions: NotifierOptions = {
     SliderComponent,
     PromotionComponent,
     DashboardComponent,
-    InviteFriendComponent
+    InviteFriendComponent,
+    DashboardheaderComponent,
+    ResultsComponent,
+    TeamsComponent,
+    AwardsComponent,
+    TransactionHistoryComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { APIService } from 'src/app/core/services/api.service';
 
 @Component({
@@ -14,7 +15,9 @@ digit4:string;
 digit5:string;
   constructor(  private route: ActivatedRoute,
     private _service:APIService,
-    private router: Router) { }
+    private router: Router,
+    private notifierService: NotifierService
+    ) { }
 
   ngOnInit( ): void {
   }
@@ -31,7 +34,7 @@ digit5:string;
           var obj={"userNameOrEmailAddress":localStorage.getItem("Email") ,"password":localStorage.getItem("Password")}
           this._service.login(obj).subscribe(          
             data => {
-              debugger;
+              this.notifierService.notify('success', 'Code Verified');
             localStorage.setItem("token",data.result.accessToken)
             this.router.navigate(['/profile-info']);
               

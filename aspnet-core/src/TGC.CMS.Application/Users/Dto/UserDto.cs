@@ -40,5 +40,6 @@ namespace TGC.CMS.Users.Dto
         public DateTime? EmailCodeExpiry { get; set; }
 
         public string[] RoleNames { get; set; }
+        public string Tokens { get; set; }
     }
 }
