@@ -37,6 +37,7 @@ import { DashboardheaderComponent } from './features/dashboardheader/dashboardhe
 import { ResultsComponent } from './features/Results/Results.component';
 import { TeamsComponent } from './features/teams/teams.component';
 import { AwardsComponent } from './features/awards/awards.component';
+import { RemoteconnectionComponent } from './features/remoteconnection/remoteconnection.component';
 import { TransactionHistoryComponent } from './features/TransactionHistory/TransactionHistory.component';
 
 const customNotifierOptions: NotifierOptions = {
@@ -108,7 +109,9 @@ const customNotifierOptions: NotifierOptions = {
     ResultsComponent,
     TeamsComponent,
     AwardsComponent,
-    TransactionHistoryComponent
+    TransactionHistoryComponent,
+    RemoteconnectionComponent
+    
   ],
   imports: [
     BrowserModule,
