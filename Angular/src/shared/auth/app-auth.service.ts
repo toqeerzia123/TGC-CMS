@@ -89,9 +89,10 @@ export class AppAuthService {
             tokenExpireDate,
             abp.appPath
         );
-
+debugger;
         let initialUrl = UrlHelper.initialUrl;
         if (initialUrl.indexOf('/login') > 0) {
+            
             initialUrl = AppConsts.appBaseUrl;
         }
 

@@ -43,6 +43,63 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
 
     getMenuItems(): MenuItem[] {
         return [
+
+            new MenuItem(this.l('Website Content'), '', 'fas fa-theater-masks', '', [
+                new MenuItem(
+                    'Favourite Games',
+                    '/app/favourite-games',
+                    'far fa-circle',
+                    'Pages.FavouriteGames'
+                ),
+                new MenuItem(
+                    'How This works',
+                    '/app/how-this-works',
+                    'far fa-circle',
+                    'Pages.Howthisworks'
+                ),
+                new MenuItem(
+                    'Advertisement 1',
+                    '/app/adv-1',
+                    'far fa-circle',
+                    'Pages.Ad1'
+                ),
+                new MenuItem(
+                    'Advertisement 2',
+                    '/app/adv-2',
+                    'far fa-circle',
+                    'Pages.Ad2'
+                ),
+            ]),
+
+            new MenuItem(this.l('Portal Management'), '', 'fas fa-theater-masks', '', [
+                new MenuItem(
+                    'Favourite Games',
+                    '/app/favourite-games',
+                    'far fa-circle',
+                    'Pages.FavouriteGames'
+                ),
+                new MenuItem(
+                    'How This works',
+                    '/app/how-this-works',
+                    'far fa-circle',
+                    'Pages.Howthisworks'
+                ),
+                new MenuItem(
+                    'Advertisement 1',
+                    '/app/adv-1',
+                    'far fa-circle',
+                    'Pages.Ad1'
+                ),
+                new MenuItem(
+                    'Advertisement 2',
+                    '/app/adv-2',
+                    'far fa-circle',
+                    'Pages.Ad2'
+                ),
+            ]),
+
+            new MenuItem(this.l('Settings'), '', 'fas fa-theater-masks', '', [
+            ]),
             // new MenuItem(this.l('About'), '/app/about', 'fas fa-info-circle'),
             // new MenuItem(this.l('HomePage'), '/app/home', 'fas fa-home'),
             // new MenuItem(
@@ -123,24 +180,24 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
                 'fas fa-theater-masks',
                 'Pages.InviteFriend'
             ),
-            new MenuItem(
-                this.l('Navigations'),
-                '/app/navigations',
-                'fas fa-theater-masks',
-                'Pages.Navigations'
-            ),
-            new MenuItem(
-                this.l('Support Links'),
-                '/app/support-links',
-                'fas fa-theater-masks',
-                'Pages.Support'
-            ),
-            new MenuItem(
-                this.l('Social Links'),
-                '/app/social-links',
-                'fas fa-theater-masks',
-                'Pages.Social'
-            ),
+            // new MenuItem(
+            //     this.l('Navigations'),
+            //     '/app/navigations',
+            //     'fas fa-theater-masks',
+            //     'Pages.Navigations'
+            // ),
+            // new MenuItem(
+            //     this.l('Support Links'),
+            //     '/app/support-links',
+            //     'fas fa-theater-masks',
+            //     'Pages.Support'
+            // ),
+            // new MenuItem(
+            //     this.l('Social Links'),
+            //     '/app/social-links',
+            //     'fas fa-theater-masks',
+            //     'Pages.Social'
+            // ),
             new MenuItem(this.l('Site Banners'), '', 'fas fa-theater-masks', '', [
                 new MenuItem(
                     'Favourite Games',
