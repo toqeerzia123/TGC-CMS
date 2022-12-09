@@ -46,56 +46,86 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
 
             new MenuItem(this.l('Website Content'), '', 'fas fa-theater-masks', '', [
                 new MenuItem(
-                    'Favourite Games',
-                    '/app/favourite-games',
-                    'far fa-circle',
-                    'Pages.FavouriteGames'
+                    this.l('Tournaments'),
+                    '/app/tournaments',
+                    'fas fa-theater-masks',
+                    'Pages.Tournaments'
                 ),
                 new MenuItem(
-                    'How This works',
-                    '/app/how-this-works',
-                    'far fa-circle',
-                    'Pages.Howthisworks'
+                    this.l('Games'),
+                    '/app/games',
+                    'fas fa-theater-masks',
+                    'Pages.Games'
                 ),
                 new MenuItem(
-                    'Advertisement 1',
-                    '/app/adv-1',
-                    'far fa-circle',
-                    'Pages.Ad1'
+                    this.l('Announcements'),
+                    '/app/announcements',
+                    'fas fa-theater-masks',
+                    'Pages.Announcements'
                 ),
                 new MenuItem(
-                    'Advertisement 2',
-                    '/app/adv-2',
-                    'far fa-circle',
-                    'Pages.Ad2'
+                    this.l('Blogs'),
+                    '/app/blogs',
+                    'fas fa-theater-masks',
+                    ''
+                ),
+                new MenuItem(
+                    this.l('Watch Us'),
+                    '/app/watch-us',
+                    'fas fa-theater-masks',
+                    'Pages.Watchus'
+                ),
+                new MenuItem(
+                    this.l('Articles'),
+                    '/app/articles',
+                    'fas fa-theater-masks',
+                    'Pages.Articles'
+                ),
+                new MenuItem(
+                    this.l('FAQs'),
+                    '/app/faqs',
+                    'fas fa-theater-masks',
+                    'Pages.FAQs'
+                ),
+                new MenuItem(
+                    this.l('Main Slider'),
+                    '/app/slider',
+                    'fas fa-theater-masks',
+                    'Pages.Slider'
+                ),
+                new MenuItem(
+                    this.l('Promotions'),
+                    '/app/promotions',
+                    'fas fa-theater-masks',
+                    'Pages.Promotions'
+                ),
+                new MenuItem(
+                    this.l('Invite Friend'),
+                    '/app/invite-friend',
+                    'fas fa-theater-masks',
+                    'Pages.InviteFriend'
                 ),
             ]),
 
             new MenuItem(this.l('Portal Management'), '', 'fas fa-theater-masks', '', [
                 new MenuItem(
-                    'Favourite Games',
-                    '/app/favourite-games',
-                    'far fa-circle',
-                    'Pages.FavouriteGames'
+                    this.l('Users'),
+                    '/app/users',
+                    'fas fa-users',
+                    'Pages.Users'
                 ),
                 new MenuItem(
-                    'How This works',
-                    '/app/how-this-works',
-                    'far fa-circle',
-                    'Pages.Howthisworks'
+                    this.l('Tournaments'),
+                    '/app/tournaments',
+                    'fas fa-theater-masks',
+                    'Pages.Tournaments'
                 ),
                 new MenuItem(
-                    'Advertisement 1',
-                    '/app/adv-1',
-                    'far fa-circle',
-                    'Pages.Ad1'
-                ),
-                new MenuItem(
-                    'Advertisement 2',
-                    '/app/adv-2',
-                    'far fa-circle',
-                    'Pages.Ad2'
-                ),
+                    this.l('Games'),
+                    '/app/games',
+                    'fas fa-theater-masks',
+                    'Pages.Games'
+                )
             ]),
 
             new MenuItem(this.l('Settings'), '', 'fas fa-theater-masks', '', [
@@ -108,78 +138,14 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
             //     'fas fa-building',
             //     'Pages.Tenants'
             // ),
-            new MenuItem(
-                this.l('Users'),
-                '/app/users',
-                'fas fa-users',
-                'Pages.Users'
-            ),
+           
             // new MenuItem(
             //     this.l('Roles'),
             //     '/app/roles',
             //     'fas fa-theater-masks',
             //     'Pages.Roles'
             // ),
-            new MenuItem(
-                this.l('Tournaments'),
-                '/app/tournaments',
-                'fas fa-theater-masks',
-                'Pages.Tournaments'
-            ),
-            new MenuItem(
-                this.l('Games'),
-                '/app/games',
-                'fas fa-theater-masks',
-                'Pages.Games'
-            ),
-            new MenuItem(
-                this.l('Announcements'),
-                '/app/announcements',
-                'fas fa-theater-masks',
-                'Pages.Announcements'
-            ),
-            new MenuItem(
-                this.l('Blogs'),
-                '/app/blogs',
-                'fas fa-theater-masks',
-                ''
-            ),
-            new MenuItem(
-                this.l('Watch Us'),
-                '/app/watch-us',
-                'fas fa-theater-masks',
-                'Pages.Watchus'
-            ),
-            new MenuItem(
-                this.l('Articles'),
-                '/app/articles',
-                'fas fa-theater-masks',
-                'Pages.Articles'
-            ),
-            new MenuItem(
-                this.l('FAQs'),
-                '/app/faqs',
-                'fas fa-theater-masks',
-                'Pages.FAQs'
-            ),
-            new MenuItem(
-                this.l('Main Slider'),
-                '/app/slider',
-                'fas fa-theater-masks',
-                'Pages.Slider'
-            ),
-            new MenuItem(
-                this.l('Promotions'),
-                '/app/promotions',
-                'fas fa-theater-masks',
-                'Pages.Promotions'
-            ),
-            new MenuItem(
-                this.l('Invite Friend'),
-                '/app/invite-friend',
-                'fas fa-theater-masks',
-                'Pages.InviteFriend'
-            ),
+           
             // new MenuItem(
             //     this.l('Navigations'),
             //     '/app/navigations',
@@ -198,76 +164,76 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
             //     'fas fa-theater-masks',
             //     'Pages.Social'
             // ),
-            new MenuItem(this.l('Site Banners'), '', 'fas fa-theater-masks', '', [
-                new MenuItem(
-                    'Favourite Games',
-                    '/app/favourite-games',
-                    'far fa-circle',
-                    'Pages.FavouriteGames'
-                ),
-                new MenuItem(
-                    'How This works',
-                    '/app/how-this-works',
-                    'far fa-circle',
-                    'Pages.Howthisworks'
-                ),
-                new MenuItem(
-                    'Advertisement 1',
-                    '/app/adv-1',
-                    'far fa-circle',
-                    'Pages.Ad1'
-                ),
-                new MenuItem(
-                    'Advertisement 2',
-                    '/app/adv-2',
-                    'far fa-circle',
-                    'Pages.Ad2'
-                ),
-            ]),
-            new MenuItem(this.l('Corporate Pages'), '', 'fas fa-theater-masks', '', [
-                new MenuItem(
-                    'Game Dev',
-                    '/app/game-dev',
-                    'far fa-circle',
-                    ''
-                ),
-                new MenuItem(
-                    'Metaverse',
-                    '/app/metaverse',
-                    'far fa-circle',
-                    ''
-                ),
-                new MenuItem(
-                    'Contact Page & Support',
-                    '/app/contact-page',
-                    'far fa-circle',
-                    ''
-                ),
-                new MenuItem(
-                    'Social Media Link Pages',
-                    '/app/social-media-page',
-                    'far fa-circle',
-                    ''
-                ),
-                new MenuItem(
-                    'Video Stream',
-                    '/app/video-stream',
-                    'far fa-circle',
-                    ''
-                ),
-                new MenuItem(
-                    'Tokenomics',
-                    '/app/tokenomics',
-                    'far fa-circle',
-                    ''
-                ),
-                new MenuItem(
-                    'Legal',
-                    '/app/legal',
-                    'far fa-circle',
-                    ''
-                ),
-            ])
+            // new MenuItem(this.l('Site Banners'), '', 'fas fa-theater-masks', '', [
+            //     new MenuItem(
+            //         'Favourite Games',
+            //         '/app/favourite-games',
+            //         'far fa-circle',
+            //         'Pages.FavouriteGames'
+            //     ),
+            //     new MenuItem(
+            //         'How This works',
+            //         '/app/how-this-works',
+            //         'far fa-circle',
+            //         'Pages.Howthisworks'
+            //     ),
+            //     new MenuItem(
+            //         'Advertisement 1',
+            //         '/app/adv-1',
+            //         'far fa-circle',
+            //         'Pages.Ad1'
+            //     ),
+            //     new MenuItem(
+            //         'Advertisement 2',
+            //         '/app/adv-2',
+            //         'far fa-circle',
+            //         'Pages.Ad2'
+            //     ),
+            // ]),
+            // new MenuItem(this.l('Corporate Pages'), '', 'fas fa-theater-masks', '', [
+            //     new MenuItem(
+            //         'Game Dev',
+            //         '/app/game-dev',
+            //         'far fa-circle',
+            //         ''
+            //     ),
+            //     new MenuItem(
+            //         'Metaverse',
+            //         '/app/metaverse',
+            //         'far fa-circle',
+            //         ''
+            //     ),
+            //     new MenuItem(
+            //         'Contact Page & Support',
+            //         '/app/contact-page',
+            //         'far fa-circle',
+            //         ''
+            //     ),
+            //     new MenuItem(
+            //         'Social Media Link Pages',
+            //         '/app/social-media-page',
+            //         'far fa-circle',
+            //         ''
+            //     ),
+            //     new MenuItem(
+            //         'Video Stream',
+            //         '/app/video-stream',
+            //         'far fa-circle',
+            //         ''
+            //     ),
+            //     new MenuItem(
+            //         'Tokenomics',
+            //         '/app/tokenomics',
+            //         'far fa-circle',
+            //         ''
+            //     ),
+            //     new MenuItem(
+            //         'Legal',
+            //         '/app/legal',
+            //         'far fa-circle',
+            //         ''
+            //     ),
+            // ])
         ];
     }
 
