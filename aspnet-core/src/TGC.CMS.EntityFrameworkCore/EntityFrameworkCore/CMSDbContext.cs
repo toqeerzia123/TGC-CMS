@@ -10,6 +10,7 @@ using TGC.CMS.PromotionalText;
 using TGC.CMS.Invite;
 using TGC.CMS.Packages;
 using System;
+using TGC.CMS.WatchusChannel;
 
 namespace TGC.CMS.EntityFrameworkCore
 {
@@ -73,6 +74,7 @@ namespace TGC.CMS.EntityFrameworkCore
         public DbSet<MainSlider> MainSliders { get; set; }
         public DbSet<Package> Packages { get; set; }
         public DbSet<UserPackage> UsersPackage { get; set; }
+        public DbSet<WatchUs> WatchUs { get; set; }
 
         // Dashboard
 

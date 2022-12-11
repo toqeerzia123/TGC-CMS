@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TGC.CMS.CMS_Post;
+using TGC.CMS.Publicity;
 
 namespace TGC.CMS.Helper.Extensions
 {
