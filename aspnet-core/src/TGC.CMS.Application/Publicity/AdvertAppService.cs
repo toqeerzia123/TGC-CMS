@@ -114,6 +114,7 @@ namespace TGC.CMS.Publicity
             string imgBaseUrl = _configuration["Content:PostImagesPath"].ToString();
 
             var allIncludes = Repository.GetAll()
+                                        .Where(c => c.AdvId.Contains(input.AdvertismentId))
                                         .OrderByDescending(x => x.CreationTime)
                                         .AsQueryable();
 

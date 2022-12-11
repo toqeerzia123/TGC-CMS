@@ -9,5 +9,6 @@ namespace TGC.CMS.Publicity.Dtos
 {
     public class AdvertResultRequestDto: PagedResultRequestDto
     {
+        public string AdvertismentId { get; set; }
     }
 }

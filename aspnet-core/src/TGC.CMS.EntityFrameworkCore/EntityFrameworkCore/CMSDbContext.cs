@@ -11,6 +11,8 @@ using TGC.CMS.Invite;
 using TGC.CMS.Packages;
 using System;
 using TGC.CMS.WatchusChannel;
+using TGC.CMS.Migrations;
+using TGC.CMS.Publicity;
 
 namespace TGC.CMS.EntityFrameworkCore
 {
@@ -75,6 +77,7 @@ namespace TGC.CMS.EntityFrameworkCore
         public DbSet<Package> Packages { get; set; }
         public DbSet<UserPackage> UsersPackage { get; set; }
         public DbSet<WatchUs> WatchUs { get; set; }
+        public DbSet<Advertisement> Advertisements { get; set; }
 
         // Dashboard
 
