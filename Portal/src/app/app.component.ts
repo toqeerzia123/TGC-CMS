@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
-import { NotifierOptions } from 'angular-notifier';
-import { BaseComponent } from './core/components/base/base.component';
-import { LayoutOptionsModel } from './core/models/layout.model';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +12,12 @@ export class AppComponent implements OnInit {
     
   } 
   ngOnInit(): void {
-  }
   
+   
+    
+
+  }
+
 }
 
 
