@@ -1,33 +1,33 @@
-﻿using Abp.Application.Services;
-using Abp.Application.Services.Dto;
-using Abp.Domain.Entities;
+﻿using Abp.Application.Services.Dto;
+using Abp.Application.Services;
 using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
-using Abp.Extensions;
+using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
+using System.Text;
 using System.Threading.Tasks;
-using TGC.CMS.CMS_Post.Dtos;
-using TGC.CMS.Helper.Extensions;
 using TGC.CMS.Publicity.Dtos;
+using TGC.CMS.Publicity;
+using TGC.CMS.SiteBanners.Dto;
+using Microsoft.Extensions.Configuration;
+using TGC.CMS.Helper.Extensions;
+using Microsoft.EntityFrameworkCore;
 
-namespace TGC.CMS.Publicity
+namespace TGC.CMS.SiteBanners
 {
-    public class AdvertAppService : AsyncCrudAppService<Advertisement, AdvertListDto, int, AdvertResultRequestDto, AdvertCreateDto, AdvertUpdateDto>, IAdvertAppService
+    public class BannerAppService : AsyncCrudAppService<Banners, BannerListDto, int, BannerResultRequestDto, BannerCreateDto, BannerUpdateDto>, IBannerAppService
     {
         private IWebHostEnvironment _environment;
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly IConfiguration _configuration;
-        public AdvertAppService(IUnitOfWorkManager unitOfWorkManager,
-                              IRepository<Advertisement, int> repository,
+        public BannerAppService(IUnitOfWorkManager unitOfWorkManager,
+                              IRepository<Banners, int> repository,
                               IWebHostEnvironment environment,
                               IConfiguration configuration) : base(repository)
         {
@@ -38,13 +38,13 @@ namespace TGC.CMS.Publicity
 
         #region Post Crud APIS
 
-        public override async Task<AdvertListDto> CreateAsync([FromForm] AdvertCreateDto input)
+        public override async Task<BannerListDto> CreateAsync([FromForm] BannerCreateDto input)
         {
             try
             {
                 #region PostDto to Entity Mapping
 
-                var model = ObjectMapper.Map<Advertisement>(input);
+                var model = ObjectMapper.Map<Banners>(input);
                 model.CreationTime = DateTime.Now;
                 model.IsDeleted = false;
 
@@ -53,10 +53,10 @@ namespace TGC.CMS.Publicity
                 #region Storing PostImages into directory and Create a localList
                 if (input.Image != null)
                 {
-                    string uploads = Path.Combine(_environment.WebRootPath, "publicity");
+                    string uploads = Path.Combine(_environment.WebRootPath, "banners");
                     List<IFormFile> formFiles = new List<IFormFile>();
                     formFiles.Add(input.Image);
-                    model.ImageUrl = formFiles.SaveFile(uploads).FirstOrDefault()?.ImageUrl;
+                    model.Image = formFiles.SaveFile(uploads).FirstOrDefault()?.ImageUrl;
                 }
 
                 #endregion
@@ -65,62 +65,67 @@ namespace TGC.CMS.Publicity
 
                 await Repository.InsertAsync(model);
                 _unitOfWorkManager.Current.SaveChanges();
-                return new AdvertListDto() { Id = model.Id, Title = model.Title };
+                return new BannerListDto() { Id = model.Id, FavouriteGameTitle = model.FavouriteGameTitle };
                 #endregion
             }
             catch (Exception ex)
             {
-                return new AdvertListDto() { Id = 0, Title = String.Empty };
+                return new BannerListDto() { Id = 0, FavouriteGameTitle = String.Empty };
             }
         }
-        public override async Task<AdvertListDto> UpdateAsync([FromForm] AdvertUpdateDto input)
+        public override async Task<BannerListDto> UpdateAsync([FromForm] BannerUpdateDto input)
         {
             try
             {
                 var post = Repository.GetAll()
                 .Where(c => c.Id == input.Id).FirstOrDefault();
-                CheckCreatePermission();
 
                 #region Update PostEntity with Dto
 
                 if (input.Image != null)
                 {
-                    string uploads = Path.Combine(_environment.WebRootPath, "publicity");
+                    string uploads = Path.Combine(_environment.WebRootPath, "banners");
                     List<IFormFile> formFiles = new List<IFormFile>();
                     formFiles.Add(input.Image);
-                    post.ImageUrl = formFiles.SaveFile(uploads).FirstOrDefault()?.ImageUrl;
+                    post.Image = formFiles.SaveFile(uploads).FirstOrDefault()?.ImageUrl;
                 }
 
-                post.Title = input.Title;
-                post.Description = input.Description;
-                post.ChannelUrl = input.ChannelUrl;
-                post.Icon = "";
+                post.FavouriteGameTitle = input.FavouriteGameTitle;
+                post.HTW_TitleOne= input.HTW_TitleOne;
+                post.HTW_TitleTwo= input.HTW_TitleTwo;
+                post.HTW_TitleThree = input.HTW_TitleThree;
+                post.HTW_DescriptionOne=input.HTW_DescriptionOne;
+                post.HTW_DescriptionTwo=input.HTW_DescriptionTwo;
+                post.HTW_DescriptionThree= input.HTW_DescriptionThree;
+                post.FavouriteGameDecription= input.FavouriteGameDecription;
+
+
                 post.LastModificationTime = DateTime.UtcNow;
 
                 #endregion
 
                 await Repository.UpdateAsync(post);
                 _unitOfWorkManager.Current.SaveChanges();
-                return new AdvertListDto() { Id = post.Id, Title = post.Title };
+                return new BannerListDto() { Id = post.Id, FavouriteGameTitle = post.FavouriteGameTitle };
             }
             catch (Exception ex)
             {
-                return new AdvertListDto() { Id = 0, Title = "" };
+                return new BannerListDto() { Id = 0, FavouriteGameTitle = "" };
             }
 
         }
-        public override Task<PagedResultDto<AdvertListDto>> GetAllAsync(AdvertResultRequestDto input)
+        public override Task<PagedResultDto<BannerListDto>> GetAllAsync(BannerResultRequestDto input)
         {
-            string imgBaseUrl = _configuration["Content:PostImagesPath"].ToString();
+            //string imgBaseUrl = _configuration["Content:PostImagesPath"].ToString();
 
             var allIncludes = Repository.GetAll()
-                                        .Where(c => c.AdvId.Contains(input.AdvertismentId))
+                                        .Where(c => c.BannerId.Contains(input.BannerId))
                                         .OrderByDescending(x => x.CreationTime)
                                         .AsQueryable();
 
-            IQueryable<Advertisement> paginatedResult = ApplyPaging(allIncludes, input);
+            IQueryable<Banners> paginatedResult = ApplyPaging(allIncludes, input);
 
-            var dtoList = ObjectMapper.Map<List<AdvertListDto>>(paginatedResult);
+            var dtoList = ObjectMapper.Map<List<BannerListDto>>(paginatedResult);
 
             //dtoList.ForEach(x =>
             //{
@@ -131,17 +136,17 @@ namespace TGC.CMS.Publicity
             //    }).ToList();
             //});
 
-            PagedResultDto<AdvertListDto> pagedResultDto = new PagedResultDto<AdvertListDto>(allIncludes.Count(), dtoList);
-            return Task.FromResult<PagedResultDto<AdvertListDto>>(pagedResultDto);
+            PagedResultDto<BannerListDto> pagedResultDto = new PagedResultDto<BannerListDto>(allIncludes.Count(), dtoList);
+            return Task.FromResult<PagedResultDto<BannerListDto>>(pagedResultDto);
         }
-        public override async Task<AdvertListDto> GetAsync(EntityDto<int> input)
+        public override async Task<BannerListDto> GetAsync(EntityDto<int> input)
         {
             var singlePost = await Repository.GetAll().Where(v => v.Id == input.Id).FirstOrDefaultAsync();
             if (singlePost != null)
             {
-                string imgBaseUrl = _configuration["Content:PostImagesPath"].ToString();
+                //string imgBaseUrl = _configuration["Content:PostImagesPath"].ToString();
 
-                var post = ObjectMapper.Map<AdvertListDto>(singlePost);
+                var post = ObjectMapper.Map<BannerListDto>(singlePost);
 
                 //post.PostImages.ToList().ForEach(x => x.ImageUrl = imgBaseUrl + x.ImageUrl);
 
@@ -149,7 +154,7 @@ namespace TGC.CMS.Publicity
             }
             else
             {
-                return new AdvertListDto();
+                return new BannerListDto();
             }
 
         }
