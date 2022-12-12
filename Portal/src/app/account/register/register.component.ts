@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import { Signin } from 'src/app/core/models/signin';
@@ -37,8 +37,11 @@ export class RegisterComponent  implements OnInit, AfterViewInit{
 
   ngAfterViewInit() {
   }
-
+  get f(): { [key: string]: AbstractControl } {
+    return this.signupForm.controls;
+  }
   onSubmit() {
+    this.submitted = true;
     debugger;
     var data=this.signupForm.value;
     this._service.registor(this.signupForm.value)    
@@ -58,6 +61,7 @@ export class RegisterComponent  implements OnInit, AfterViewInit{
       error => {
 debugger;
         this.error = error ? error : '';
+        
       });
 }
 }

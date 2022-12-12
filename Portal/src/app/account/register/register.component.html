@@ -18,14 +18,24 @@
                             <div class="mb-4 row">
                                 <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
                                 <div class="col-sm-9">
-                                    <input type="text" formControlName="userName" class="form-control" id="inputPassword">
+                                    <input type="text" formControlName="userName" class="form-control" id="inputPassword"
+                                    [ngClass]="{ 'is-invalid': submitted && f['userName'].errors }">
+                                    <div *ngIf="submitted && f['userName'].errors" class="text-danger">
+                                        <div *ngIf="f['userName'].errors['required']">Email is required</div>
+                                      </div>
                                 </div>
+
                             </div>
                             <div class="mb-4 row">
                                 <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
                                 <div class="col-sm-9">
                                     <input type="password" formControlName="password" class="form-control" id="inputPassword">
+                                    <div *ngIf="submitted && f['password'].errors" class="text-danger"
+                                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                                        <div *ngIf="f['password'].errors['required']">Password is required</div>
+                                    </div>
                                 </div>
+                              
                             </div>
                             <div class="mb-4 row">
                                 <label for="inputPassword"  class="col-sm-3 col-form-label">Date of Birth </label>
@@ -34,6 +44,10 @@
                                         <input type='text' class="form-control" formControlName="dob" />
                                         <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
                                         </span>
+                                    </div>
+                                    <div *ngIf="submitted && f['dob'].errors" class="text-danger"
+                                    [ngClass]="{ 'is-invalid': submitted && f['dob'].errors }">
+                                        <div *ngIf="f['dob'].errors['required']">Dob is required</div>
                                     </div>
                                 </div>
                             </div>
